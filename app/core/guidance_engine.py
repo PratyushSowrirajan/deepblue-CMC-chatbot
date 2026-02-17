@@ -179,3 +179,4 @@ def get_guidance(schema: Dict[str, Any]) -> Dict[str, Any]:
             "emergency_keywords": [],
             "disclaimer": "Error loading guidance rules."
         }
+    

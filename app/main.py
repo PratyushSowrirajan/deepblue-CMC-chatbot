@@ -112,6 +112,14 @@ class ReportRequest(BaseModel):
     responses: List[SimpleQA]
 
 
+class EndSessionRequest(BaseModel):
+    session_id: str
+
+
+class EndSessionResponse(BaseModel):
+    status: str  # "ended" or "not_found"
+
+
 class ReportResponse(BaseModel):
     report_id: str
     summary: str
@@ -211,19 +219,34 @@ sessions = {}
 followup_sessions = {}  # {session_id: {"symptom": "...", "current_index": 0, "questions": [...]}}
 
 
-def cleanup_session(session_id: str):
-    """Remove session data when chat is complete"""
+def cleanup_session(session_id: str) -> bool:
+    """Remove session data when chat is complete. Returns True if session existed."""
+    found = False
     
     if session_id in sessions:
         del sessions[session_id]
+        found = True
     
     if session_id in conversation_history:
         del conversation_history[session_id]
+        found = True
     
     if session_id in session_store:
         del session_store[session_id]
+        found = True
     
-    print(f"[CLEANUP] Session {session_id} removed from all stores")
+    if session_id in followup_sessions:
+        del followup_sessions[session_id]
+        found = True
+    
+    if session_id in followup_store:
+        del followup_store[session_id]
+        found = True
+    
+    if found:
+        print(f"[CLEANUP] Session {session_id} removed from all stores")
+    
+    return found
 
 
 def build_question_response(question_data: dict) -> Question:
@@ -1096,9 +1119,31 @@ def submit_answer(req: AnswerRequest):
     )
 
 
+@app.post("/assessment/end", response_model=EndSessionResponse)
+def end_assessment(request: EndSessionRequest):
+    """
+    End assessment session and cleanup all related data.
+    
+    Removes session from:
+    - In-memory session stores (sessions, session_store)
+    - Follow-up question stores (followup_sessions, followup_store)
+    - LLM conversation history (conversation_history)
+    
+    Returns:
+    - {"status": "ended"} if session was found and cleaned
+    - {"status": "not_found"} if session didn't exist
+    """
+    session_existed = cleanup_session(request.session_id)
+    
+    if session_existed:
+        return EndSessionResponse(status="ended")
+    else:
+        return EndSessionResponse(status="not_found")
+
+
 @app.post("/session/end")
 def end_session(request: Dict[str, str]):
-    """Cleanup session when user closes or completes chat"""
+    """Cleanup session when user closes or completes chat (legacy endpoint)"""
     session_id = request.get("session_id")
     if not session_id:
         return {"status": "error", "message": "session_id required"}
