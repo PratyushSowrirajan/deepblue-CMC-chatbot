@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import uuid
@@ -6,6 +7,30 @@ import json
 import os
 
 app = FastAPI(title="Healthcare Chatbot", version="0.2.0")
+
+# ─────────────────────────────
+# CORS Configuration
+# ─────────────────────────────
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (ngrok, localhost, etc.)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
+# ─────────────────────────────
+# Include Chatbot Routes
+# ─────────────────────────────
+from app.chatbot.chatbot_routes import router as chatbot_router
+from app.chatbot.chatbot_db import init_db
+app.include_router(chatbot_router)
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize database tables on startup"""
+    init_db()
 
 
 # ─────────────────────────────
