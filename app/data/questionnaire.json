@@ -43,6 +43,13 @@
       "is_compulsory": true
     },
     {
+      "id": "q_image_upload",
+      "text": "Please upload a clear image of the affected area.",
+      "type": "image",
+      "hint": "Take a photo or choose from gallery",
+      "is_compulsory": true
+    },
+    {
       "id": "q_onset",
       "text": "When did your symptoms start?",
       "type": "single_choice",

@@ -15,4 +15,5 @@ torchvision
 transformers
 accelerate
 pillow
+bitsandbytes
 python-multipart

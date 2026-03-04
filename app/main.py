@@ -1,4 +1,7 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, UploadFile, File, Form
+from fastapi.exception_handlers import request_validation_exception_handler
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
@@ -65,6 +68,9 @@ async def startup_event():
     init_medical_db()
     # Initialize reports DB (reports table — stores all generated assessment reports)
     init_reports_db()
+    # Initialize assessment DB (assessment_sessions + assessment_session_answers tables)
+    from app.auth.assessment_db import init_assessment_db
+    init_assessment_db()
     
     # Vision model loading paused - see app/vision_model/ for details
     # To resume: uncomment vision imports above and the vision loading code below
@@ -144,7 +150,7 @@ class AnswerRequest(BaseModel):
 class Question(BaseModel):
     question_id: str
     text: str
-    response_type: str  # "text", "number", "single_choice", "multi_choice"
+    response_type: str  # "text", "number", "single_choice", "multi_choice", "image"
     response_options: Optional[List[Dict[str, str]]] = None
     is_compulsory: bool  # True = user must manually enter; False = app can auto-populate from profile
 
@@ -172,6 +178,7 @@ class AnswerResponse(BaseModel):
     session_id: str
     status: str = "next"  # "next" | "completed" | "error" — never null
     question: Optional[Question] = None
+    rag_error: Optional[str] = None  # populated when RAG pipeline fails (testing feedback)
 
 
 class QAPair(BaseModel):
@@ -247,10 +254,19 @@ def load_questionnaire():
 
 
 def load_decision_tree():
-    """Load decision tree from JSON file"""
-    json_path = os.path.join(os.path.dirname(__file__), "data", "decision_tree.json")
-    with open(json_path, "r") as f:
-        return json.load(f)
+    """
+    Load decision tree — merges generated_decision_tree.json (RAG-generated)
+    with decision_tree.json (static fallback).  RAG entries take priority.
+    Falls back to static-only if rag_adapter fails to import.
+    """
+    try:
+        from app.core.rag_adapter import load_merged_tree
+        return load_merged_tree()
+    except Exception as _e:
+        print(f"[DECISION TREE] rag_adapter unavailable ({_e}), loading static only")
+        json_path = os.path.join(os.path.dirname(__file__), "data", "decision_tree.json")
+        with open(json_path, "r") as f:
+            return json.load(f)
 
 
 def detect_symptom(complaint_text: str) -> Optional[Dict[str, Any]]:
@@ -331,7 +347,8 @@ def build_question_response(question_data: dict) -> Question:
         "text": "text",
         "number": "number",
         "single_choice": "single_choice",
-        "multi_choice": "multi_choice"
+        "multi_choice": "multi_choice",
+        "image": "image"
     }
     
     question = Question(
@@ -386,21 +403,10 @@ def start_assessment(request: Request):
     questionnaire = load_questionnaire()
     first_q = questionnaire["questions"][0]
 
-    # Initialize session
-    sessions[session_id] = {
-        "answers": {},
-        "current_index": 0,
-        "total_questions": len(questionnaire["questions"]),
-        "phase": "questionnaire",  # "questionnaire" or "followup"
-        "followup_questions": None,  # Will be populated after questionnaire
-        "followup_index": 0,
-        "detected_symptom": None
-    }
-
     # Build question response
     question = build_question_response(first_q)
 
-    # ── Fetch stored answers from JWT (optional) ──────────────────────
+    # ── Fetch stored answers + create DB session if JWT present ───────
     stored_answers = []
     auth_header = request.headers.get("Authorization", "")
 
@@ -418,6 +424,15 @@ def start_assessment(request: Request):
             if not user_id:
                 print("[START] WARNING: JWT has no 'sub' field — stored_answers will be empty")
             else:
+                # Create DB session and use the DB-generated session_id
+                try:
+                    from app.auth.assessment_db import create_session as _create_assessment_session
+                    db_sess = _create_assessment_session(user_id)
+                    session_id = str(db_sess["session_id"])
+                    print(f"[START] DB session created — session_id: {session_id[:8]}...")
+                except Exception as db_err:
+                    print(f"[START] DB session creation failed: {db_err} — using in-memory UUID")
+
                 profile_rows = get_profile_by_user_id(user_id)
                 medical_rows = get_medical_by_user_id(user_id)
                 print(f"[START] Profile rows: {len(profile_rows)} | Medical rows: {len(medical_rows)}")
@@ -433,6 +448,17 @@ def start_assessment(request: Request):
         except Exception as e:
             print(f"[START] DB fetch error: {e} — stored_answers will be empty")
 
+    # Initialize in-memory session (uses DB session_id if JWT was valid, else uuid4)
+    sessions[session_id] = {
+        "answers": {},
+        "current_index": 0,
+        "total_questions": len(questionnaire["questions"]),
+        "phase": "questionnaire",  # "questionnaire" or "followup"
+        "followup_questions": None,  # Will be populated after questionnaire
+        "followup_index": 0,
+        "detected_symptom": None
+    }
+
     print(f"\n[START] New session: {session_id[:8]}...")
     print(f"[START] First question: {first_q['id']}")
     print(f"[START] Stored answers returned: {len(stored_answers)}\n")
@@ -444,23 +470,77 @@ def start_assessment(request: Request):
     )
 
 
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Safe validation error handler — never tries to decode binary request bodies."""
+    try:
+        errors = exc.errors()
+        # Strip any 'input' field that might contain binary bytes
+        safe_errors = []
+        for e in errors:
+            safe_e = {k: v for k, v in e.items() if k != "input"}
+            safe_e["msg"] = str(e.get("msg", ""))
+            safe_errors.append(safe_e)
+        return JSONResponse(status_code=422, content={"detail": safe_errors})
+    except Exception:
+        return JSONResponse(status_code=422, content={"detail": "Validation error"})
+
+
 @app.post("/assessment/answer", response_model=AnswerResponse)
-def submit_answer(req: AnswerRequest):
-    """Handle answer and return next question"""
-    session_id = req.session_id
-    
-    # Validate session exists
+async def submit_answer(request: Request):
+    """
+    Handle answer and return next question.
+
+    Accepts BOTH content types so the app can auto-answer with JSON
+    and manually answer (with optional image) via multipart/form-data:
+      • application/json  → {session_id, question_id, question_text, answer_json}
+      • multipart/form-data → same fields as form parts + optional `image` file
+    """
+    content_type = request.headers.get("content-type", "")
+
+    # ── Parse fields depending on content type ──────────────────────────
+    image_bytes: Optional[bytes] = None
+    image_filename: Optional[str] = None
+    image_content_type: Optional[str] = None
+
+    if "application/json" in content_type:
+        body = await request.json()
+        session_id = body["session_id"]
+        question_id = body["question_id"]
+        question_text = body["question_text"]
+        answer_data: Dict[str, Any] = body["answer_json"]
+        if isinstance(answer_data, str):
+            answer_data = json.loads(answer_data)
+    else:
+        # multipart/form-data (or url-encoded)
+        form = await request.form()
+        session_id = form["session_id"]
+        question_id = form["question_id"]
+        question_text = form["question_text"]
+        answer_data = json.loads(form["answer_json"])
+        # Check for optional image upload
+        img = form.get("image")
+        if img and hasattr(img, "read"):
+            image_bytes = await img.read()
+            image_filename = getattr(img, "filename", None)
+            image_content_type = getattr(img, "content_type", None)
+
+    # ── Validate session exists ─────────────────────────────────────────
     if session_id not in sessions:
         print(f"[ERROR] Session {session_id[:8]}... not found")
         return AnswerResponse(
             session_id=session_id,
             status="error"
         )
-    
-    # Store answer based on type
-    answer_data = req.answer_json
-    question_id = req.question_id
-    
+
+    # ── Handle optional image — just acknowledge receipt, no model run ──
+    if image_bytes:
+        size_kb = len(image_bytes) / 1024
+        print(f"[IMAGE] Session {session_id[:8]}... received: {image_filename} "
+              f"({image_content_type}, {size_kb:.1f} KB) — stored as placeholder")
+        answer_data["image_description"] = "image received"
+    # ────────────────────────────────────────────────────────────────────
+
     # Extract answer value based on type
     if answer_data.get("type") == "number":
         answer_value = answer_data.get("value")
@@ -468,11 +548,20 @@ def submit_answer(req: AnswerRequest):
         answer_value = answer_data.get("selected_option_label", answer_data.get("selected_option_id", answer_data.get("value")))
     elif answer_data.get("type") == "multi_choice":
         answer_value = ", ".join(answer_data.get("selected_option_labels", []))
+    elif answer_data.get("type") == "image":
+        answer_value = "image received"
     else:
         answer_value = answer_data.get("value", "")
-    
+
     sessions[session_id]["answers"][question_id] = answer_value
-    
+
+    # Persist answer to DB (best-effort)
+    try:
+        from app.auth.assessment_db import save_session_answer as _save_session_answer
+        _save_session_answer(session_id, question_id, question_text, answer_data)
+    except Exception as _db_err:
+        print(f"[ANSWER] DB save skipped for {question_id}: {_db_err}")
+
     print(f"[ANSWER] Session {session_id[:8]}... answered {question_id}: {answer_value}")
     
     # Get session phase
@@ -524,6 +613,13 @@ def submit_answer(req: AnswerRequest):
                     sessions[session_id]["followup_keys"] = question_keys
                     sessions[session_id]["followup_index"] = 0
                     sessions[session_id]["detected_symptom"] = detected
+
+                    # Update DB session phase + detected symptom (best-effort)
+                    try:
+                        from app.auth.assessment_db import update_session_phase as _update_phase
+                        _update_phase(session_id, "followup", detected["symptom_id"])
+                    except Exception as _db_err:
+                        print(f"[ANSWER] DB phase update skipped: {_db_err}")
                     
                     # Return first follow-up question
                     first_key = question_keys[0]
@@ -547,10 +643,76 @@ def submit_answer(req: AnswerRequest):
                         question=question
                     )
             
-            # No symptom detected or no follow-up questions - end here
-            print(f"⚠️  No symptom detected or no follow-up questions available")
+            # ── No keyword match — try RAG pipeline ────────────────────────
+            if chief_complaint:
+                print(f"\n{'='*60}")
+                print(f"🤖 RAG PIPELINE: no keyword match for '{chief_complaint}'")
+                print(f"   Running RAG to generate followup questions...")
+                print(f"{'='*60}\n")
+
+                try:
+                    from app.core.rag_adapter import run_rag_for_symptom
+                    rag_node, rag_error = run_rag_for_symptom(chief_complaint)
+                except Exception as _rag_import_err:
+                    rag_node, rag_error = None, str(_rag_import_err)
+
+                if rag_error:
+                    print(f"[RAG] Failed: {rag_error}")
+                    return AnswerResponse(
+                        session_id=session_id,
+                        status="error",
+                        rag_error=f"RAG pipeline could not generate questions: {rag_error}"
+                    )
+
+                if rag_node and "followup_questions" in rag_node:
+                    followup_qs = rag_node["followup_questions"]
+                    question_keys = list(followup_qs.keys())
+
+                    rag_detected = {
+                        "symptom_id": rag_node["symptom_id"],
+                        "label": rag_node.get("label", rag_node["symptom_id"]),
+                        "matched_keyword": chief_complaint,
+                        "default_urgency": rag_node.get("default_urgency", "yellow_doctor_visit")
+                    }
+
+                    sessions[session_id]["phase"] = "followup"
+                    sessions[session_id]["followup_questions"] = followup_qs
+                    sessions[session_id]["followup_keys"] = question_keys
+                    sessions[session_id]["followup_index"] = 0
+                    sessions[session_id]["detected_symptom"] = rag_detected
+
+                    try:
+                        from app.auth.assessment_db import update_session_phase as _update_phase
+                        _update_phase(session_id, "followup", rag_node["symptom_id"])
+                    except Exception as _db_err:
+                        print(f"[ANSWER] DB phase update skipped: {_db_err}")
+
+                    first_key = question_keys[0]
+                    first_q_data = followup_qs[first_key]
+
+                    question = Question(
+                        question_id=first_key,
+                        text=first_q_data["question"],
+                        response_type=first_q_data["type"],
+                        response_options=[
+                            {"id": opt, "label": opt.replace("_", " ").title()}
+                            for opt in first_q_data.get("options", [])
+                        ] if "options" in first_q_data else None,
+                        is_compulsory=True
+                    )
+
+                    print(f"[RAG] ✓ Using RAG followup questions — "
+                          f"1/{len(question_keys)}: {first_key}\n")
+
+                    return AnswerResponse(
+                        session_id=session_id,
+                        question=question
+                    )
+
+            # No symptom detected and RAG not triggered (empty complaint)
+            print(f"⚠️  No symptom detected, no follow-up questions available")
             print(f"📊 Ready for final report\n")
-            
+
             return AnswerResponse(
                 session_id=session_id,
                 status="completed"
@@ -686,6 +848,14 @@ def receive_report(req: ReportRequest, request: Request):
     print(f"{'='*60}\n")
 
     report_response = MedicalReportResponse(**medical_report)
+
+    # Mark DB session as completed (best-effort)
+    try:
+        from app.auth.assessment_db import complete_session as _complete_session
+        _complete_session(session_id)
+        print(f"[REPORT] DB session marked completed: {session_id[:8]}...")
+    except Exception as _db_err:
+        print(f"[REPORT] DB complete_session skipped: {_db_err}")
 
     # ── Persist to DB if JWT present ──────────────────────────────────
     auth_header = request.headers.get("Authorization", "")
@@ -1280,7 +1450,14 @@ def end_assessment(request: EndSessionRequest):
     - {"status": "not_found"} if session didn't exist
     """
     session_existed = cleanup_session(request.session_id)
-    
+
+    # Expire DB session (best-effort)
+    try:
+        from app.auth.assessment_db import expire_session as _expire_session
+        _expire_session(request.session_id)
+    except Exception as _db_err:
+        print(f"[END] DB expire_session skipped: {_db_err}")
+
     if session_existed:
         return EndSessionResponse(status="ended")
     else:
