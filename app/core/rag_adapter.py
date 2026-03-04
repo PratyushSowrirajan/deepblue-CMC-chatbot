@@ -29,9 +29,9 @@ from typing import Optional, Tuple
 # ── Paths ──────────────────────────────────────────────────────────────────────
 _HERE              = os.path.dirname(os.path.abspath(__file__))
 _DATA_DIR          = os.path.normpath(os.path.join(_HERE, "..", "data"))
-_STATIC_TREE_PATH  = os.path.join(_DATA_DIR, "decision_tree.json")
-_GEN_TREE_PATH     = os.path.join(_DATA_DIR, "rag_format_temp", "generated_decision_tree.json")
-_RAG_DIR           = os.path.join(_DATA_DIR, "rag_format_temp")
+_STATIC_TREE_PATH  = os.path.join(_DATA_DIR, "rag_model", "decision_tree.json")
+_GEN_TREE_PATH     = os.path.join(_DATA_DIR, "rag_model", "generated_decision_tree.json")
+_RAG_DIR           = os.path.join(_DATA_DIR, "rag_model")
 
 
 # ── File helpers ───────────────────────────────────────────────────────────────
@@ -130,7 +130,7 @@ def run_rag_for_symptom(chief_complaint: str) -> Tuple[Optional[dict], Optional[
     (symptom_node, None)       — on success; node is merged into generated_decision_tree.json
     (None, error_message)      — on failure; error_message can be surfaced to the app
     """
-    # Inject rag_format_temp onto sys.path so we can import rag_pipeline.py
+    # Inject rag_model onto sys.path so we can import rag_pipeline.py
     if _RAG_DIR not in sys.path:
         sys.path.insert(0, _RAG_DIR)
 

@@ -264,7 +264,7 @@ def load_decision_tree():
         return load_merged_tree()
     except Exception as _e:
         print(f"[DECISION TREE] rag_adapter unavailable ({_e}), loading static only")
-        json_path = os.path.join(os.path.dirname(__file__), "data", "decision_tree.json")
+        json_path = os.path.join(os.path.dirname(__file__), "data", "rag_model", "decision_tree.json")
         with open(json_path, "r") as f:
             return json.load(f)
 
