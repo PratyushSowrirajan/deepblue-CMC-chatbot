@@ -93,6 +93,11 @@ def init_assessment_db() -> None:
                 CREATE INDEX IF NOT EXISTS idx_session_answers_session_id
                 ON assessment_session_answers(session_id);
             """)
+        # Add vision_analysis column if it doesn't exist yet (safe migration)
+        cur.execute("""
+            ALTER TABLE assessment_sessions
+            ADD COLUMN IF NOT EXISTS vision_analysis TEXT;
+        """)
         conn.commit()
         print("[ASSESSMENT DB] assessment_sessions + assessment_session_answers tables ready")
     except psycopg2.Error as e:
@@ -327,5 +332,56 @@ def get_session_answers_full(session_id: str) -> list:
         return [dict(row) for row in rows]
     except psycopg2.Error as e:
         raise Exception(f"Failed to fetch full session answers: {str(e)}")
+    finally:
+        conn.close()
+
+
+# ─────────────────────────────
+# Vision Analysis
+# ─────────────────────────────
+
+def save_vision_analysis(session_id: str, analysis_text: str) -> None:
+    """
+    Persist Gemini image analysis text to the assessment_sessions row.
+    Safe to call multiple times — subsequent calls overwrite the previous value.
+    """
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                UPDATE assessment_sessions
+                SET vision_analysis = %s
+                WHERE session_id = %s
+                """,
+                (analysis_text, session_id)
+            )
+        conn.commit()
+        print(f"[ASSESSMENT DB] vision_analysis saved for session {session_id[:8]}...")
+    except psycopg2.Error as e:
+        conn.rollback()
+        raise Exception(f"Failed to save vision analysis: {str(e)}")
+    finally:
+        conn.close()
+
+
+def get_vision_analysis(session_id: str) -> Optional[str]:
+    """
+    Retrieve the stored Gemini vision analysis for a session.
+
+    Returns:
+        The analysis text string, or None if no image was analysed.
+    """
+    conn = _get_conn()
+    try:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT vision_analysis FROM assessment_sessions WHERE session_id = %s",
+                (session_id,)
+            )
+            row = cur.fetchone()
+        return row[0] if row else None
+    except psycopg2.Error as e:
+        raise Exception(f"Failed to fetch vision analysis: {str(e)}")
     finally:
         conn.close()

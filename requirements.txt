@@ -9,11 +9,14 @@ passlib[bcrypt]
 bcrypt==4.0.1
 python-jose[cryptography]
 
-# Vision Model Dependencies
-torch
-torchvision
-transformers
-accelerate
-pillow
-bitsandbytes
+# Vision Model (Gemini API)
+google-generativeai
 python-multipart
+
+# RAG pipeline dependencies
+openai
+tavily-python
+sentence-transformers
+scikit-learn
+numpy
+rank-bm25

@@ -106,13 +106,14 @@ def get_llm_response(medical_schema: Dict[str, Any], guidance: Dict[str, Any], u
     }
 
 
-def generate_medical_report(responses: list, symptom_data: Optional[Dict] = None) -> Dict[str, Any]:
+def generate_medical_report(responses: list, symptom_data: Optional[Dict] = None, vision_analysis: Optional[str] = None) -> Dict[str, Any]:
     """
     Generate a structured medical report using LLM based on questionnaire responses and symptom data.
     
     Args:
         responses: List of Q&A dicts from questionnaire + follow-up questions
         symptom_data: Symptom-specific data from decision_tree.json (optional)
+        vision_analysis: Gemini image analysis text (optional — present when patient uploaded an image)
         
     Returns:
         Structured medical report with patient info, summary, possible causes, advice, urgency
@@ -186,8 +187,30 @@ def generate_medical_report(responses: list, symptom_data: Optional[Dict] = None
                         context += f"  - {item}\n"
                 else:
                     context += f"{key}: {value}\n"
+
+    # Add Gemini image analysis if available
+    if vision_analysis:
+        context += "\n=== MEDICAL IMAGE ANALYSIS (by Gemini AI) ===\n\n"
+        context += vision_analysis.strip()
+        context += "\n\n"
     
     # Build LLM prompt with new format
+    _vision_instruction = ""
+    _vision_json_field  = ""
+    if vision_analysis:
+        _vision_instruction = (
+            "5. A dedicated image analysis section: correlate the Gemini image findings "
+            "(provided above) with the patient's reported symptoms. Describe what the image "
+            "may suggest and how it relates to the chief complaint."
+        )
+        _vision_json_field = """
+  "image_analysis": {{
+    "gemini_findings_summary": "One-sentence summary of what the image showed",
+    "correlation_with_symptoms": "How the image findings relate to the reported complaint",
+    "clinical_significance": "What this may indicate clinically",
+    "recommendation": "Specific follow-up recommendation based on the image"
+  }},"""
+
     prompt = f"""{context}
 
 === TASK ===
@@ -198,10 +221,11 @@ You are a medical AI assistant. Analyze the patient's information and provide:
 2. Possible causes/differential diagnoses (2-3 most likely, with detailed breakdown)
 3. Actionable medical advice (4-6 recommendations)
 4. Urgency level determination
+{_vision_instruction}
 
 REQUIRED JSON OUTPUT FORMAT:
 {{
-  "assessment_topic": "{chief_complaint or 'general_health'}",
+  "assessment_topic": "{chief_complaint or 'general_health'}",{_vision_json_field}
   "summary": [
     "Brief clinical point 1",
     "Brief clinical point 2",

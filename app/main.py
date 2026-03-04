@@ -240,6 +240,7 @@ class MedicalReportResponse(BaseModel):
     possible_causes: List[PossibleCause]
     advice: List[str]
     urgency_level: str
+    image_analysis: Optional[Dict[str, Any]] = None  # Populated when patient uploaded an image
 
 
 # ─────────────────────────────
@@ -486,6 +487,79 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         return JSONResponse(status_code=422, content={"detail": "Validation error"})
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Gemini Vision Analysis — background helper (called inside submit_answer)
+# ─────────────────────────────────────────────────────────────────────────────
+
+async def _run_gemini_analysis(
+    session_id: str,
+    image_bytes: bytes,
+    image_content_type: str,
+    user_id: Optional[str],
+    current_answers: dict,
+) -> None:
+    """
+    Background coroutine:
+      1. Fetch prior DB answers + user profile + medical history.
+      2. Call Gemini with image + context.
+      3. Persist result to assessment_sessions.vision_analysis.
+    Never raises — all errors are logged.
+    """
+    try:
+        from app.vision_model.gemini_vision import analyze_image_with_gemini
+        from app.auth.assessment_db import (
+            get_session_answers_full, save_vision_analysis
+        )
+        from app.auth.profile_db  import get_profile_by_user_id
+        from app.auth.medical_db  import get_medical_by_user_id
+
+        # 1. Prior Q&A from DB
+        try:
+            prior_answers = get_session_answers_full(session_id)
+        except Exception:
+            prior_answers = []
+
+        # 2. User profile
+        user_profile: dict = {}
+        if user_id:
+            try:
+                rows = get_profile_by_user_id(user_id)
+                user_profile = rows[0] if rows else {}
+            except Exception:
+                pass
+
+        # 3. Medical history
+        medical_data: dict = {}
+        if user_id:
+            try:
+                rows = get_medical_by_user_id(user_id)
+                medical_data = rows[0] if rows else {}
+            except Exception:
+                pass
+
+        # 4. Chief complaint from in-memory answers (fast path)
+        chief_complaint = current_answers.get("q_current_ailment", "")
+
+        print(f"[GEMINI VISION] Starting analysis for session {session_id[:8]}...")
+
+        # 5. Call Gemini
+        analysis_text = await analyze_image_with_gemini(
+            image_bytes        = image_bytes,
+            image_content_type = image_content_type,
+            prior_answers      = prior_answers,
+            user_profile       = user_profile,
+            medical_data       = medical_data,
+            chief_complaint    = chief_complaint,
+        )
+
+        # 6. Persist
+        save_vision_analysis(session_id, analysis_text)
+        print(f"[GEMINI VISION] Analysis saved for session {session_id[:8]}")
+
+    except Exception as exc:
+        print(f"[GEMINI VISION] Background task error: {exc}")
+
+
 @app.post("/assessment/answer", response_model=AnswerResponse)
 async def submit_answer(request: Request):
     """
@@ -533,12 +607,34 @@ async def submit_answer(request: Request):
             status="error"
         )
 
-    # ── Handle optional image — just acknowledge receipt, no model run ──
+    # ── Handle optional image — call Gemini async, store in DB, return "image received" ──
     if image_bytes:
         size_kb = len(image_bytes) / 1024
         print(f"[IMAGE] Session {session_id[:8]}... received: {image_filename} "
-              f"({image_content_type}, {size_kb:.1f} KB) — stored as placeholder")
+              f"({image_content_type}, {size_kb:.1f} KB) — launching Gemini analysis")
         answer_data["image_description"] = "image received"
+
+        # Extract user_id from JWT (best-effort)
+        _user_id_for_vision: Optional[str] = None
+        try:
+            from app.auth.auth_config import JWT_SECRET_KEY, JWT_ALGORITHM
+            _auth_hdr = request.headers.get("Authorization", "")
+            if _auth_hdr.startswith("Bearer "):
+                _tok = _auth_hdr.split(" ", 1)[1].strip()
+                _payload = jwt.decode(_tok, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+                _user_id_for_vision = _payload.get("sub")
+        except Exception:
+            pass
+
+        # Fire background Gemini analysis (non-blocking)
+        import asyncio as _asyncio
+        _asyncio.create_task(_run_gemini_analysis(
+            session_id        = session_id,
+            image_bytes       = image_bytes,
+            image_content_type= image_content_type or "image/jpeg",
+            user_id           = _user_id_for_vision,
+            current_answers   = sessions[session_id].get("answers", {}),
+        ))
     # ────────────────────────────────────────────────────────────────────
 
     # Extract answer value based on type
@@ -838,8 +934,20 @@ def receive_report(req: ReportRequest, request: Request):
         print(f"🎯 Detected Symptom: {detected_symptom_raw.get('label')}")
 
     # ── Generate medical report ───────────────────────────────────────
+    # Fetch Gemini vision analysis (if an image was submitted during assessment)
+    vision_analysis: Optional[str] = None
+    try:
+        from app.auth.assessment_db import get_vision_analysis as _get_vision_analysis
+        vision_analysis = _get_vision_analysis(session_id)
+        if vision_analysis:
+            print(f"[REPORT] Vision analysis found ({len(vision_analysis)} chars) — included in report")
+        else:
+            print("[REPORT] No vision analysis found for this session")
+    except Exception as _va_err:
+        print(f"[REPORT] Could not fetch vision analysis: {_va_err}")
+
     print(f"\n🤖 Generating medical report using LLM...")
-    medical_report = generate_medical_report(responses_data, symptom_data)
+    medical_report = generate_medical_report(responses_data, symptom_data, vision_analysis)
 
     print(f"\n{'='*60}")
     print(f"✅ MEDICAL REPORT GENERATED")
