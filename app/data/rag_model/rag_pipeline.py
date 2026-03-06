@@ -21,8 +21,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 from tavily import TavilyClient
 
 # ─────────────────────────────  API KEYS  ────────────────────────────────────
-TAVILY_API_KEY  = "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"
-CEREBRAS_API_KEY = "csk-8nknmmnjc28k6w6mxryy6xjy286wvt9hdhv5m8nrmptryf9m"
+from dotenv import load_dotenv
+load_dotenv()
+
+TAVILY_API_KEY  = os.getenv("TAVILY_API_KEY")
+CEREBRAS_API_KEY = os.getenv("RAG_CEREBRAS_API_KEY")
+
+if not TAVILY_API_KEY:
+    raise ValueError("TAVILY_API_KEY is not set in environment")
+if not CEREBRAS_API_KEY:
+    raise ValueError("RAG_CEREBRAS_API_KEY is not set in environment")
 
 # ─────────────────────  GLOBAL EMBEDDER SINGLETON  ───────────────────────────
 # Loaded once per process — all HybridRAG instances share it.
@@ -347,37 +355,37 @@ The JSON object must follow this EXACT schema (same field names, same nesting de
     "onset_type": {{
       "question": "<How did the {symptom} start?>",
       "type": "single_choice",
-      "options": ["sudden", "gradual_over_minutes", "gradual_over_hours_days", "chronic_recurring", "not_sure"]
+      "options": ["Sudden", "Gradual over minutes", "Gradual over hours or days", "Chronic or recurring", "Not sure"]
     }},
     "severity": {{
       "question": "<How severe is the {symptom} right now?>",
       "type": "single_choice",
-      "options": ["mild", "moderate", "severe", "very_severe_unbearable"]
+      "options": ["Mild", "Moderate", "Severe", "Very severe or unbearable"]
     }},
     "duration": {{
       "question": "<How long have you had this {symptom}?>",
       "type": "single_choice",
-      "options": ["less_than_24_hours", "1_3_days", "4_7_days", "more_than_1_week", "chronic_months"]
+      "options": ["Less than 24 hours", "1-3 days", "4-7 days", "More than 1 week", "Chronic (months+)"]
     }},
     "pain_character": {{
       "question": "<Symptom-appropriate character question>",
       "type": "single_choice",
-      "options": ["option1", "option2", "option3", "option4", "other"]
+      "options": ["Sharp", "Dull", "Aching", "Throbbing", "Other"]
     }},
     "associated_symptoms": {{
       "question": "<Which other symptoms are present with the {symptom}?>",
       "type": "multi_choice",
-      "options": ["symptom_a", "symptom_b", "symptom_c", "symptom_d", "symptom_e", "none"]
+      "options": ["Fever", "Nausea", "Fatigue", "Dizziness", "Headache", "None"]
     }},
     "aggravating_factors": {{
       "question": "<What makes the {symptom} worse?>",
       "type": "multi_choice",
-      "options": ["factor1", "factor2", "factor3", "factor4", "nothing_specific"]
+      "options": ["Physical activity", "Stress", "Eating", "Lying down", "Nothing specific"]
     }},
     "relieving_factors": {{
       "question": "<What makes the {symptom} better?>",
       "type": "multi_choice",
-      "options": ["factor1", "factor2", "factor3", "nothing_helps"]
+      "options": ["Rest", "Medication", "Hydration", "Nothing helps"]
     }}
   }},
 
@@ -409,11 +417,58 @@ The JSON object must follow this EXACT schema (same field names, same nesting de
 
 RULES:
 1. Use ONLY medically accurate information from the RAG context.
-2. Replace ALL placeholder text (e.g. "option1", "factor1") with real medical terms.
+2. Replace ALL placeholder text (e.g. "Fever", "Dizziness") with real symptoms relevant to "{symptom}".
 3. The followup_questions must be clinically relevant to "{symptom}".
 4. Return ONLY the raw JSON object — NO markdown fences, NO explanation text.
 5. Ensure the JSON is 100% valid and parseable.
+6. CRITICAL — ALL option values in every followup_questions options array MUST be human-readable display strings:
+   - Write "1-3 days" NOT "1_3_days"
+   - Write "Less than 24 hours" NOT "less_than_24_hours"
+   - Write "Nothing specific" NOT "nothing_specific"
+   - Write "Physical activity" NOT "physical_activity"
+   - Use plain words with spaces, hyphens for ranges — NO underscores, NO snake_case.
+   - Questions must be full grammatical sentences.
+   - Options must be short phrases a patient can read aloud naturally.
 """
+
+
+def _snake_to_display(s: str) -> str:
+    """Convert a snake_case option string to a human-readable display string.
+
+    Examples:
+        "1_3_days"              → "1-3 days"
+        "less_than_24_hours"    → "Less than 24 hours"
+        "nothing_specific"      → "Nothing specific"
+        "Gradual over minutes"  → unchanged (already display format)
+    """
+    if "_" not in s:
+        return s  # already fine
+
+    import re as _re
+
+    # Handle numeric ranges like "1_3_days", "4_7_days"
+    def replace_numeric_range(m):
+        return f"{m.group(1)}-{m.group(2)} "
+
+    result = _re.sub(r"(\d+)_(\d+)_", replace_numeric_range, s)
+    result = result.replace("_", " ")
+    # Capitalise first letter only (not every word — keeps "over" lowercase)
+    result = result[0].upper() + result[1:] if result else result
+    return result.strip()
+
+
+def _sanitize_options(node: object) -> object:
+    """Recursively walk a parsed dict/list and fix any snake_case option strings."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key == "options" and isinstance(value, list):
+                node[key] = [_snake_to_display(v) if isinstance(v, str) else v for v in value]
+            else:
+                _sanitize_options(value)
+    elif isinstance(node, list):
+        for item in node:
+            _sanitize_options(item)
+    return node
 
 
 def call_cerebras(symptom: str, rag_chunks: list[str]) -> dict:
@@ -461,7 +516,9 @@ def call_cerebras(symptom: str, rag_chunks: list[str]) -> dict:
     if brace_start != -1 and brace_end != -1:
         cleaned = cleaned[brace_start : brace_end + 1]
 
-    return json.loads(cleaned)
+    parsed = json.loads(cleaned)
+    _sanitize_options(parsed)
+    return parsed
 
 
 # ══════════════════════════════════════════════════════════════════════════════
