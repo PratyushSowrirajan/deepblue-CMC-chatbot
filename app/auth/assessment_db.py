@@ -93,11 +93,11 @@ def init_assessment_db() -> None:
                 CREATE INDEX IF NOT EXISTS idx_session_answers_session_id
                 ON assessment_session_answers(session_id);
             """)
-        # Add vision_analysis column if it doesn't exist yet (safe migration)
-        cur.execute("""
-            ALTER TABLE assessment_sessions
-            ADD COLUMN IF NOT EXISTS vision_analysis TEXT;
-        """)
+            # Add vision_analysis column if it doesn't exist yet (safe migration)
+            cur.execute("""
+                ALTER TABLE assessment_sessions
+                ADD COLUMN IF NOT EXISTS vision_analysis TEXT;
+            """)
         conn.commit()
         print("[ASSESSMENT DB] assessment_sessions + assessment_session_answers tables ready")
     except psycopg2.Error as e:

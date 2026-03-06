@@ -197,11 +197,14 @@ def generate_medical_report(responses: list, symptom_data: Optional[Dict] = None
     # Build LLM prompt with new format
     _vision_instruction = ""
     _vision_json_field  = ""
+    _vision_mandatory   = ""
+    _summary_image_example = ""
     if vision_analysis:
         _vision_instruction = (
-            "5. A dedicated image analysis section: correlate the Gemini image findings "
-            "(provided above) with the patient's reported symptoms. Describe what the image "
-            "may suggest and how it relates to the chief complaint."
+            "5. Based on the Gemini image analysis above, write ONE concise sentence "
+            "in the LAST position of the summary array that tells the patient what "
+            "their image indicates about their condition — in plain, natural language. "
+            "Do NOT copy the raw analysis. Interpret it and state what it means clinically."
         )
         _vision_json_field = """
   "image_analysis": {{
@@ -210,6 +213,15 @@ def generate_medical_report(responses: list, symptom_data: Optional[Dict] = None
     "clinical_significance": "What this may indicate clinically",
     "recommendation": "Specific follow-up recommendation based on the image"
   }},"""
+        _vision_mandatory = (
+            "\n- The LAST item in the summary array must be your own one-sentence interpretation "
+            "of what the uploaded image indicates about the patient's condition. "
+            "Write it naturally, e.g. 'The image confirms active bleeding from the right nostril, consistent with your reported nosebleed.' "
+            "Do NOT paste raw analysis text."
+        )
+        _summary_image_example = (
+            ',\n    "The image shows [your one-sentence clinical interpretation here]"'
+        )
 
     prompt = f"""{context}
 
@@ -229,7 +241,7 @@ REQUIRED JSON OUTPUT FORMAT:
   "summary": [
     "Brief clinical point 1",
     "Brief clinical point 2",
-    "Brief clinical point 3"
+    "Brief clinical point 3"{_summary_image_example}
   ],
   "possible_causes": [
     {{
@@ -277,7 +289,7 @@ IMPORTANT GUIDELINES:
 - "short_description" should be under 10 words
 - "subtitle" should provide helpful context (e.g., "Often linked to stress")
 - "how_common percentage" should be realistic (10-90 range)
-- Do NOT include treatment recommendations requiring diagnosis
+- Do NOT include treatment recommendations requiring diagnosis{_vision_mandatory}
 
 Generate the JSON report now:"""
     
@@ -347,7 +359,17 @@ Generate the JSON report now:"""
                 if "urgency_level" not in report:
                     default = symptom_data.get("default_urgency", "green_home_care") if symptom_data else "green_home_care"
                     report["urgency_level"] = default
-                
+
+                # Guarantee image_analysis is present when Gemini ran
+                if vision_analysis and not report.get("image_analysis"):
+                    report["image_analysis"] = {
+                        "gemini_findings_summary": "Image was analysed by Gemini AI.",
+                        "correlation_with_symptoms": "Findings reviewed in context of reported complaint.",
+                        "clinical_significance": "Discuss image findings with your healthcare provider.",
+                        "recommendation": "Show the image to your doctor during consultation.",
+                    }
+                    print("[REPORT] image_analysis missing from LLM — injected placeholder")
+
                 return report
                 
             except json.JSONDecodeError:

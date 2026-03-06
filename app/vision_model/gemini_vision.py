@@ -11,19 +11,19 @@ Flow:
   5. The app always receives "image received" — the analysis is stored silently.
 """
 
-import base64
 import asyncio
 from typing import Optional
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 # ─────────────────────────────
 # Configuration
 # ─────────────────────────────
 GEMINI_API_KEY = "AIzaSyAhDPQJzwlEr_uxDkrz1rlxejEQB-PzsCU"
-GEMINI_MODEL   = "gemini-1.5-flash"
+GEMINI_MODEL   = "gemini-2.5-flash"
 
-genai.configure(api_key=GEMINI_API_KEY)
+_client = genai.Client(api_key=GEMINI_API_KEY)
 
 
 def _build_prompt(
@@ -112,19 +112,17 @@ async def analyze_image_with_gemini(
         Gemini's analysis as a plain-text string, or an error message.
     """
     try:
-        model  = genai.GenerativeModel(GEMINI_MODEL)
         prompt = _build_prompt(prior_answers, user_profile, medical_data, chief_complaint)
 
-        image_part = {
-            "mime_type": image_content_type or "image/jpeg",
-            "data": image_bytes,
-        }
+        image_part = types.Part.from_bytes(
+            data=image_bytes,
+            mime_type=image_content_type or "image/jpeg",
+        )
 
-        # Run the blocking Gemini call in a thread pool so the async loop isn't blocked
-        loop     = asyncio.get_event_loop()
-        response = await loop.run_in_executor(
-            None,
-            lambda: model.generate_content([image_part, prompt])
+        # Use the async client so the event loop isn't blocked
+        response = await _client.aio.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=[image_part, prompt],
         )
 
         analysis = response.text.strip()
@@ -132,6 +130,16 @@ async def analyze_image_with_gemini(
         return analysis
 
     except Exception as exc:
-        error_msg = f"[GEMINI VISION] Analysis failed: {exc}"
-        print(error_msg)
-        return f"Image analysis unavailable: {exc}"
+        err_str = str(exc)
+        if "429" in err_str or "RESOURCE_EXHAUSTED" in err_str:
+            print("=" * 60)
+            print("[GEMINI VISION] !! QUOTA LIMIT HIT !!")
+            print(f"[GEMINI VISION] The Gemini API free-tier daily limit has been")
+            print(f"[GEMINI VISION] exhausted. Image analysis is DISABLED until")
+            print(f"[GEMINI VISION] the quota resets at midnight Pacific Time.")
+            print(f"[GEMINI VISION] Model: {GEMINI_MODEL}")
+            print("=" * 60)
+            return "Image analysis unavailable: Gemini API daily quota exhausted. Resets at midnight PT."
+        else:
+            print(f"[GEMINI VISION] Analysis failed: {exc}")
+            return f"Image analysis unavailable: {exc}"

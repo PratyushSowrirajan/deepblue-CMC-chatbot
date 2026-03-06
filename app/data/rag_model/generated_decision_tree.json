@@ -4,7 +4,7 @@
       "version": "2.0",
       "purpose": "Symptom-specific triage + deep-dive questionnaire",
       "source": "MedlinePlus via Tavily RAG + Cerebras LLM",
-      "generated_date": "2026-03-03",
+      "generated_date": "2026-03-05",
       "medlineplus_url": "https://medlineplus.gov/",
       "assumes_prior_data": [
         "age",
@@ -1670,171 +1670,6 @@
             "Bleeding that is easily controlled with pressure or elevation"
           ],
           "reason": "To prevent further complications and ensure proper treatment",
-          "do_not_delay": true
-        }
-      },
-      {
-        "symptom_id": "rashes",
-        "label": "Rashes",
-        "keywords": [
-          "rash",
-          "itchy skin",
-          "skin irritation",
-          "dermatitis",
-          "contact dermatitis",
-          "allergic reaction",
-          "skin lesion",
-          "skin biopsy",
-          "skin culture",
-          "skin infection",
-          "skin inflammation",
-          "skin redness",
-          "skin swelling"
-        ],
-        "default_urgency": "yellow_doctor_visit",
-        "triage_rationale": {
-          "why_assess_carefully": [
-            "Rashes can be caused by various conditions, including infections, allergies, and skin conditions.",
-            "Some rashes may require medical attention if they are severe, persistent, or accompanied by other symptoms.",
-            "It's essential to determine the underlying cause of the rash to provide appropriate treatment.",
-            "Rashes can be a symptom of an underlying medical condition that requires prompt attention."
-          ],
-          "age_factor": "Children and older adults may be more susceptible to skin infections and allergic reactions.",
-          "sex_specific_notes": "Pregnant women may be more prone to skin conditions such as eczema and psoriasis.",
-          "pregnancy_note": "Rashes during pregnancy can be a sign of an underlying condition that requires medical attention."
-        },
-        "immediate_red_flags": [
-          "Difficulty breathing",
-          "Throat tightness",
-          "Facial swelling",
-          "Rapid spread of the rash",
-          "Severe itching or burning"
-        ],
-        "followup_questions": {
-          "onset_type": {
-            "question": "How did the rashes start?",
-            "type": "single_choice",
-            "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
-            ]
-          },
-          "severity": {
-            "question": "How severe is the rashes right now?",
-            "type": "single_choice",
-            "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
-            ]
-          },
-          "duration": {
-            "question": "How long have you had this rashes?",
-            "type": "single_choice",
-            "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
-            ]
-          },
-          "pain_character": {
-            "question": "Is the rash itchy, painful, or burning?",
-            "type": "single_choice",
-            "options": [
-              "itchy",
-              "painful",
-              "burning",
-              "none_of_the_above"
-            ]
-          },
-          "associated_symptoms": {
-            "question": "Which other symptoms are present with the rashes?",
-            "type": "multi_choice",
-            "options": [
-              "fever",
-              "headache",
-              "fatigue",
-              "nausea",
-              "vomiting",
-              "none"
-            ]
-          },
-          "aggravating_factors": {
-            "question": "What makes the rashes worse?",
-            "type": "multi_choice",
-            "options": [
-              "sweating",
-              "heat",
-              "cold",
-              "irritating substances",
-              "stress",
-              "none"
-            ]
-          },
-          "relieving_factors": {
-            "question": "What makes the rashes better?",
-            "type": "multi_choice",
-            "options": [
-              "cooling",
-              "moisturizing",
-              "antihistamines",
-              "corticosteroids",
-              "none"
-            ]
-          }
-        },
-        "urgency_decision_logic": {
-          "red_emergency": [
-            "Difficulty breathing",
-            "Throat tightness",
-            "Facial swelling",
-            "Rapid spread of the rash",
-            "Severe itching or burning"
-          ],
-          "yellow_doctor_visit": [
-            "Severe rash",
-            "Persistent rash",
-            "Rash accompanied by fever or headache",
-            "Rash that worsens with time",
-            "Uncertain cause of the rash"
-          ],
-          "green_home_care": [
-            "Mild rash",
-            "Rash that improves with time",
-            "Rash caused by known allergen or irritant",
-            "Rash that responds to self-care measures"
-          ]
-        },
-        "llm_analysis_tips": [
-          "Consider the patient's medical history and allergies when assessing the rash.",
-          "Look for signs of infection, such as increased redness, swelling, or pus.",
-          "Determine the underlying cause of the rash to provide appropriate treatment.",
-          "Monitor the patient's symptoms and adjust treatment accordingly."
-        ],
-        "advice": {
-          "action": "Seek medical attention if the rash is severe, persistent, or accompanied by other symptoms.",
-          "emergency_if": [
-            "Difficulty breathing",
-            "Throat tightness",
-            "Facial swelling"
-          ],
-          "doctor_visit_if": [
-            "Severe rash",
-            "Persistent rash",
-            "Rash accompanied by fever or headache"
-          ],
-          "home_care_if": [
-            "Mild rash",
-            "Rash that improves with time",
-            "Rash caused by known allergen or irritant"
-          ],
-          "reason": "To determine the underlying cause of the rash and provide appropriate treatment.",
           "do_not_delay": true
         }
       },
@@ -7210,6 +7045,522 @@
             "Hiccups that are not accompanied by any other symptoms"
           ],
           "reason": "To determine the underlying cause of the hiccups and provide appropriate treatment.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "rashes",
+        "label": "Rashes",
+        "keywords": [
+          "rash",
+          "itchy",
+          "red",
+          "painful",
+          "irritated",
+          "blisters",
+          "patches",
+          "raw skin",
+          "allergic",
+          "irritant",
+          "chemical",
+          "poison ivy"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Rashes can be a sign of a serious health condition",
+            "Severe pain, blisters, or yellow or green fluid in the rash area may indicate an infection",
+            "Fever could be a sign of a viral or bacterial infection",
+            "Rashes can be a symptom of many different medical problems"
+          ],
+          "age_factor": "Children and older adults may be more susceptible to serious complications from rashes",
+          "sex_specific_notes": "Pregnant women may be more prone to certain types of rashes",
+          "pregnancy_note": "Rashes during pregnancy may be a sign of a more serious condition"
+        },
+        "immediate_red_flags": [
+          "Severe pain",
+          "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+          "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+          "Fever",
+          "Difficulty breathing"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the rashes start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the rashes right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this rashes?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is the rashes painful?",
+            "type": "single_choice",
+            "options": [
+              "yes",
+              "no",
+              "sometimes"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the rashes?",
+            "type": "multi_choice",
+            "options": [
+              "itching",
+              "redness",
+              "swelling",
+              "fever",
+              "difficulty breathing",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the rashes worse?",
+            "type": "multi_choice",
+            "options": [
+              "sweating",
+              "heat",
+              "irritants",
+              "allergens",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the rashes better?",
+            "type": "multi_choice",
+            "options": [
+              "cool compresses",
+              "hydrocortisone cream",
+              "oral antihistamines",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Difficulty breathing",
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever"
+          ],
+          "yellow_doctor_visit": [
+            "Rashes that do not go away",
+            "Rashes that are painful or itchy",
+            "Rashes that are accompanied by fever or difficulty breathing",
+            "Rashes that are worsening over time",
+            "Rashes that are causing significant distress"
+          ],
+          "green_home_care": [
+            "Mild rashes that are not painful or itchy",
+            "Rashes that are improving over time",
+            "Rashes that are not accompanied by fever or difficulty breathing",
+            "Rashes that are not causing significant distress"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any underlying conditions",
+          "Assess the patient's symptoms and physical examination findings",
+          "Order laboratory tests or imaging studies as necessary",
+          "Provide education and guidance on self-care and management"
+        ],
+        "advice": {
+          "action": "Seek medical attention if the rashes worsen or do not improve with self-care",
+          "emergency_if": [
+            "Difficulty breathing",
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever"
+          ],
+          "doctor_visit_if": [
+            "Rashes that do not go away",
+            "Rashes that are painful or itchy",
+            "Rashes that are accompanied by fever or difficulty breathing",
+            "Rashes that are worsening over time",
+            "Rashes that are causing significant distress"
+          ],
+          "home_care_if": [
+            "Mild rashes that are not painful or itchy",
+            "Rashes that are improving over time",
+            "Rashes that are not accompanied by fever or difficulty breathing",
+            "Rashes that are not causing significant distress"
+          ],
+          "reason": "To determine the underlying cause of the rashes and provide appropriate treatment",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "dengue_fever",
+        "label": "Dengue Fever",
+        "keywords": [
+          "dengue fever",
+          "dengue",
+          "fever",
+          "rash",
+          "joint aches",
+          "muscle aches",
+          "nausea",
+          "vomiting",
+          "headache",
+          "sore throat",
+          "nasal stuffiness"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Dengue fever can progress to severe dengue, which can cause shock, internal bleeding, and death.",
+            "Severe dengue is more likely to occur in people who have had dengue before, are pregnant, or are infants.",
+            "Dengue fever can cause a range of symptoms, including fever, rash, joint aches, muscle aches, nausea, vomiting, headache, sore throat, and nasal stuffiness.",
+            "Dengue fever is caused by a virus that is spread by the bite of infected mosquitoes."
+          ],
+          "age_factor": "Children and infants are more susceptible to severe dengue.",
+          "sex_specific_notes": "Pregnant women are at higher risk for severe dengue.",
+          "pregnancy_note": "Pregnant women should seek medical attention immediately if they suspect they have dengue fever."
+        },
+        "immediate_red_flags": [
+          "Vomiting blood or passing blood in the stools or urine",
+          "Bleeding from the nose or gums",
+          "Difficulty breathing, rapid breathing",
+          "Severe stomach pain and tenderness",
+          "Bleeding under the skin (looks like bruises)"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the dengue fever start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the dengue fever right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this dengue fever?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "What is the character of the pain?",
+            "type": "single_choice",
+            "options": [
+              "sharp",
+              "dull",
+              "aching",
+              "burning",
+              "other"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the dengue fever?",
+            "type": "multi_choice",
+            "options": [
+              "headache",
+              "joint aches",
+              "muscle aches",
+              "nausea",
+              "vomiting",
+              "sore throat",
+              "nasal stuffiness",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the dengue fever worse?",
+            "type": "multi_choice",
+            "options": [
+              "physical activity",
+              "stress",
+              "heat",
+              "humidity",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the dengue fever better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "fluid intake",
+              "medication",
+              "cooling measures",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Vomiting blood or passing blood in the stools or urine",
+            "Bleeding from the nose or gums",
+            "Difficulty breathing, rapid breathing",
+            "Severe stomach pain and tenderness",
+            "Bleeding under the skin (looks like bruises)"
+          ],
+          "yellow_doctor_visit": [
+            "Fever over 104°F (40°C)",
+            "Rash or joint aches",
+            "Nausea or vomiting",
+            "Headache or sore throat",
+            "Nasal stuffiness"
+          ],
+          "green_home_care": [
+            "Mild symptoms",
+            "No fever",
+            "No rash or joint aches",
+            "No nausea or vomiting",
+            "No headache or sore throat"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's travel history and potential exposure to mosquitoes.",
+          "Assess for signs of dehydration and provide fluid replacement as needed.",
+          "Monitor for signs of severe dengue, such as difficulty breathing, rapid breathing, or bleeding.",
+          "Provide pain management and rest as needed."
+        ],
+        "advice": {
+          "action": "Seek medical attention immediately if symptoms worsen or if you experience difficulty breathing, rapid breathing, or bleeding.",
+          "emergency_if": [
+            "Vomiting blood or passing blood in the stools or urine",
+            "Bleeding from the nose or gums",
+            "Difficulty breathing, rapid breathing",
+            "Severe stomach pain and tenderness",
+            "Bleeding under the skin (looks like bruises)"
+          ],
+          "doctor_visit_if": [
+            "Fever over 104°F (40°C)",
+            "Rash or joint aches",
+            "Nausea or vomiting",
+            "Headache or sore throat",
+            "Nasal stuffiness"
+          ],
+          "home_care_if": [
+            "Mild symptoms",
+            "No fever",
+            "No rash or joint aches",
+            "No nausea or vomiting",
+            "No headache or sore throat"
+          ],
+          "reason": "Dengue fever can progress to severe dengue, which can cause shock, internal bleeding, and death.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "malaria_symptoms",
+        "label": "Malaria Symptoms",
+        "keywords": [
+          "malaria",
+          "fever",
+          "chills",
+          "sweating",
+          "headache",
+          "muscle pain",
+          "nausea",
+          "vomiting",
+          "jaundice",
+          "anemia",
+          "bloody stools",
+          "coma",
+          "convulsions"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Malaria can be life-threatening if not treated promptly.",
+            "Symptoms can be similar to the flu, making it difficult to diagnose.",
+            "Prompt treatment is crucial to prevent death.",
+            "Malaria can cause severe anemia, jaundice, kidney failure, seizures, and coma."
+          ],
+          "age_factor": "Children under 5 and adults over 65 are at higher risk for severe malaria.",
+          "sex_specific_notes": "Pregnant women are at higher risk for severe malaria.",
+          "pregnancy_note": "Pregnant women should seek medical attention immediately if they suspect malaria."
+        },
+        "immediate_red_flags": [
+          "Severe anemia",
+          "Jaundice",
+          "Kidney failure",
+          "Seizures",
+          "Coma"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the malaria start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the malaria right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this malaria?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "What is the character of the pain?",
+            "type": "single_choice",
+            "options": [
+              "sharp",
+              "dull",
+              "aching",
+              "stabbing",
+              "other"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the malaria?",
+            "type": "multi_choice",
+            "options": [
+              "fever",
+              "chills",
+              "sweating",
+              "headache",
+              "muscle pain",
+              "nausea",
+              "vomiting",
+              "jaundice",
+              "anemia",
+              "bloody stools",
+              "coma",
+              "convulsions",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the malaria worse?",
+            "type": "multi_choice",
+            "options": [
+              "exertion",
+              "heat",
+              "humidity",
+              "stress",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the malaria better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "hydration",
+              "medication",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Severe anemia",
+            "Jaundice",
+            "Kidney failure",
+            "Seizures",
+            "Coma"
+          ],
+          "yellow_doctor_visit": [
+            "Fever over 104°F (40°C)",
+            "Chills or sweating",
+            "Headache or muscle pain",
+            "Nausea or vomiting",
+            "Jaundice"
+          ],
+          "green_home_care": [
+            "Mild symptoms",
+            "No fever",
+            "No chills or sweating",
+            "No headache or muscle pain",
+            "No nausea or vomiting"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's travel history and potential exposure to malaria.",
+          "Assess the patient's overall health and any underlying medical conditions.",
+          "Be aware of the patient's age and sex, as these can affect the severity of malaria.",
+          "Use the patient's symptoms and medical history to determine the urgency of the situation."
+        ],
+        "advice": {
+          "action": "Seek medical attention immediately if you suspect malaria.",
+          "emergency_if": [
+            "Severe anemia",
+            "Jaundice",
+            "Kidney failure",
+            "Seizures",
+            "Coma"
+          ],
+          "doctor_visit_if": [
+            "Fever over 104°F (40°C)",
+            "Chills or sweating",
+            "Headache or muscle pain",
+            "Nausea or vomiting",
+            "Jaundice"
+          ],
+          "home_care_if": [
+            "Mild symptoms",
+            "No fever",
+            "No chills or sweating",
+            "No headache or muscle pain",
+            "No nausea or vomiting"
+          ],
+          "reason": "Prompt treatment is crucial to prevent death.",
           "do_not_delay": true
         }
       }

@@ -488,6 +488,59 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Cerebras: decide if ailment needs an image before asking q_image_upload
+# ─────────────────────────────────────────────────────────────────────────────
+
+async def _check_image_needed(ailment: str) -> bool:
+    """
+    Ask Cerebras whether the given ailment benefits from a medical image.
+    Returns True (ask image question) or False (skip it).
+    Falls back to True on any error so we never incorrectly skip.
+    """
+    import asyncio as _asyncio
+    import requests as _requests
+    from config.settings import CEREBRAS_API_KEY, CEREBRAS_API_URL
+
+    if not CEREBRAS_API_KEY:
+        return True  # no key → safe default: ask image
+
+    prompt = (
+        f"A patient reported their chief complaint as: '{ailment}'.\n"
+        "Would a medical photograph or image of the affected area help a doctor "
+        "diagnose this condition? Answer with ONLY the single word yes or no."
+    )
+
+    def _call():
+        try:
+            resp = _requests.post(
+                CEREBRAS_API_URL,
+                headers={
+                    "Authorization": f"Bearer {CEREBRAS_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": "llama3.1-8b",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "temperature": 0.0,
+                    "max_tokens": 5,
+                },
+                timeout=8,
+            )
+            if resp.status_code == 200:
+                answer = resp.json()["choices"][0]["message"]["content"].strip().lower()
+                return answer.startswith("yes")
+        except Exception:
+            pass
+        return True  # fallback: ask image
+
+    loop = _asyncio.get_event_loop()
+    result = await loop.run_in_executor(None, _call)
+    decision = "NEEDED" if result else "NOT NEEDED"
+    print(f"[IMAGE CHECK] Cerebras says image {decision} for ailment: '{ailment}'")
+    return result
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Gemini Vision Analysis — background helper (called inside submit_answer)
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -815,8 +868,21 @@ async def submit_answer(request: Request):
             )
         
         # Return next questionnaire question
-        sessions[session_id]["current_index"] = next_index
+        # ── If we just answered q_current_ailment and the next question is
+        #    q_image_upload, ask Cerebras whether an image is actually needed.
+        #    If not, skip straight past q_image_upload.
         next_q = all_questions[next_index]
+        if question_id == "q_current_ailment" and next_q["id"] == "q_image_upload":
+            image_needed = await _check_image_needed(answer_value)
+            if not image_needed:
+                # Skip the image question
+                next_index += 1
+                print(f"[IMAGE CHECK] Skipping q_image_upload — image not needed for '{answer_value}'")
+                if next_index >= len(all_questions):
+                    return AnswerResponse(session_id=session_id, status="completed")
+                next_q = all_questions[next_index]
+
+        sessions[session_id]["current_index"] = next_index
         question = build_question_response(next_q)
         
         print(f"[NEXT] Session {session_id[:8]}... question {next_index + 1}/{len(all_questions)}: {next_q['id']}")
