@@ -8,19 +8,30 @@ from typing import List, Optional, Dict, Any
 import uuid
 import json
 import os
+import re
+from dotenv import load_dotenv
 from jose import jwt, JWTError
+
+load_dotenv()
 
 app = FastAPI(title="Healthcare Chatbot", version="0.2.0")
 
 # ─────────────────────────────
 # CORS Configuration
 # ─────────────────────────────
+_cors_origins_raw = os.getenv("CORS_ALLOWED_ORIGINS", "*")
+_cors_origins = ["*"] if _cors_origins_raw.strip() == "*" else [
+    o.strip() for o in _cors_origins_raw.split(",") if o.strip()
+]
+# allow_credentials=True is incompatible with wildcard origin per CORS spec
+_cors_credentials = _cors_origins != ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins (ngrok, localhost, etc.)
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
+    allow_origins=_cors_origins,
+    allow_credentials=_cors_credentials,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ─────────────────────────────
@@ -47,12 +58,10 @@ from app.auth.reports_db import init_reports_db, save_report
 app.include_router(profile_router)
 
 # ─────────────────────────────
-# Vision Model Routes (PAUSED - Isolated)
+# Vision Model Routes (/vision/analyze)
 # ─────────────────────────────
-# Vision module is paused and isolated
-# Uncomment below to re-enable when resuming project
-# from app.vision_model.vision_routes import router as vision_router
-# app.include_router(vision_router)
+from app.vision_model.vision_routes import router as vision_router
+app.include_router(vision_router)
 
 
 @app.on_event("startup")
@@ -72,15 +81,7 @@ async def startup_event():
     from app.auth.assessment_db import init_assessment_db
     init_assessment_db()
     
-    # Vision model loading paused - see app/vision_model/ for details
-    # To resume: uncomment vision imports above and the vision loading code below
-    # 
-    # from app.vision_model.vision_config import VISION_LOAD_ON_STARTUP
-    # if VISION_LOAD_ON_STARTUP:
-    #     import asyncio
-    #     from concurrent.futures import ThreadPoolExecutor
-    #     from app.vision_model.vision_client import vision_client
-    #     ... (rest of vision loading code)
+    # Vision model uses Gemini API (lazy init — no preloading needed)
 
 
 # ─────────────────────────────
@@ -270,29 +271,59 @@ def load_decision_tree():
             return json.load(f)
 
 
+def _norm(text: str) -> str:
+    """Strip non-alphanumeric chars and lowercase — used for exact id/label matching."""
+    return re.sub(r"[^a-z0-9]", "", text.lower())
+
+
 def detect_symptom(complaint_text: str) -> Optional[Dict[str, Any]]:
-    """Match chief complaint text against symptom keywords in decision tree"""
+    """
+    Match chief complaint text against the decision tree.
+
+    Priority order:
+      1. Exact match against symptom_id or label (normalised, ignoring punctuation/spaces).
+         e.g. user types "rashes" → matches symptom_id "rashes" directly.
+      2. Whole-word keyword match using regex word boundaries.
+         e.g. keyword "dengue" matches complaint "dengue fever" but
+         keyword "rash" does NOT match complaint "rashes" (no word boundary after h).
+
+    Whole-word matching prevents co-symptoms like "rash" inside dengue_fever
+    from hijacking unrelated chief complaints such as "rashes".
+    """
     if not complaint_text:
         return None
-    
+
     complaint_lower = complaint_text.lower().strip()
-    decision_tree = load_decision_tree()
-    symptoms = decision_tree["symptom_decision_tree"]["symptoms"]
-    
-    # Try to match against keywords
+    complaint_norm  = _norm(complaint_lower)
+    decision_tree   = load_decision_tree()
+    symptoms        = decision_tree["symptom_decision_tree"]["symptoms"]
+
+    # ── Pass 1: exact id / label match ──────────────────────────────────
     for symptom in symptoms:
-        keywords = symptom.get("keywords", [])
-        for keyword in keywords:
-            if keyword.lower() in complaint_lower:
-                print(f"\n🔍 SYMPTOM DETECTED: '{keyword}' matched to {symptom['symptom_id']}")
+        if (_norm(symptom["symptom_id"]) == complaint_norm or
+                _norm(symptom.get("label", "")) == complaint_norm):
+            print(f"\n🔍 SYMPTOM DETECTED (exact id/label): '{complaint_text}' → {symptom['symptom_id']}")
+            return {
+                "symptom_id": symptom["symptom_id"],
+                "label": symptom["label"],
+                "matched_keyword": complaint_text,
+                "default_urgency": symptom.get("default_urgency", "yellow_doctor_visit"),
+            }
+
+    # ── Pass 2: whole-word keyword match ────────────────────────────────
+    for symptom in symptoms:
+        for keyword in symptom.get("keywords", []):
+            pattern = r"\b" + re.escape(keyword.lower()) + r"\b"
+            if re.search(pattern, complaint_lower):
+                print(f"\n🔍 SYMPTOM DETECTED (keyword): '{keyword}' → {symptom['symptom_id']}")
                 return {
                     "symptom_id": symptom["symptom_id"],
                     "label": symptom["label"],
                     "matched_keyword": keyword,
-                    "default_urgency": symptom.get("default_urgency", "yellow_doctor_visit")
+                    "default_urgency": symptom.get("default_urgency", "yellow_doctor_visit"),
                 }
-    
-    print(f"\n⚠️  NO SYMPTOM MATCH: Could not match '{complaint_text}' to any symptom")
+
+    print(f"\n⚠️  NO SYMPTOM MATCH: Could not match '{complaint_text}' to any keyword — RAG will run")
     return None
 
 
@@ -342,6 +373,98 @@ def cleanup_session(session_id: str) -> bool:
     return found
 
 
+def _restore_session_from_db(session_id: str) -> bool:
+    """
+    Rebuild in-memory session from DB after a server restart.
+    Returns True if session found and restored, False otherwise.
+    """
+    try:
+        from app.auth.assessment_db import get_session_by_id, get_session_answers
+
+        db_sess = get_session_by_id(session_id)
+        if not db_sess:
+            return False
+
+        raw_answers = get_session_answers(session_id)  # {question_id: answer_json_dict}
+
+        answers_dict: Dict[str, Any] = {}
+        for qid, aj in raw_answers.items():
+            t = aj.get("type", "text") if isinstance(aj, dict) else "text"
+            if t == "number":
+                v = aj.get("value")
+            elif t == "single_choice":
+                v = aj.get("selected_option_label",
+                           aj.get("selected_option_id", aj.get("value", "")))
+            elif t == "multi_choice":
+                v = ", ".join(aj.get("selected_option_labels", []))
+            elif t == "image":
+                v = "image received"
+            else:
+                v = aj.get("value", "") if isinstance(aj, dict) else str(aj)
+            answers_dict[qid] = v
+
+        phase = db_sess.get("phase", "questionnaire")
+        detected_symptom_id = db_sess.get("detected_symptom")
+
+        followup_qs = None
+        followup_keys: list = []
+        followup_index = 0
+        detected_symptom = None
+
+        if detected_symptom_id:
+            decision_tree = load_decision_tree()
+            for s in decision_tree["symptom_decision_tree"]["symptoms"]:
+                if s["symptom_id"] == detected_symptom_id:
+                    followup_qs = s.get("followup_questions")
+                    detected_symptom = {
+                        "symptom_id": s["symptom_id"],
+                        "label": s.get("label", s["symptom_id"]),
+                        "matched_keyword": answers_dict.get("q_current_ailment", ""),
+                        "default_urgency": s.get("default_urgency", "yellow_doctor_visit"),
+                    }
+                    break
+
+        if followup_qs:
+            followup_keys = list(followup_qs.keys())
+            answered_followup = sum(1 for k in followup_keys if k in answers_dict)
+            followup_index = answered_followup
+
+        questionnaire = load_questionnaire()
+        all_q_ids = [q["id"] for q in questionnaire["questions"]]
+        answered_q_count = sum(1 for qid in all_q_ids if qid in answers_dict)
+
+        sessions[session_id] = {
+            "answers": answers_dict,
+            "current_index": answered_q_count,
+            "total_questions": len(all_q_ids),
+            "phase": phase,
+            "followup_questions": followup_qs,
+            "followup_keys": followup_keys,
+            "followup_index": followup_index,
+            "detected_symptom": detected_symptom,
+        }
+
+        print(f"[SESSION RESTORE] Rebuilt {session_id[:8]}... from DB "
+              f"(phase={phase}, {len(answers_dict)} answers)")
+        return True
+
+    except Exception as exc:
+        print(f"[SESSION RESTORE] Could not restore {session_id[:8]}...: {exc}")
+        return False
+
+
+def _opt_label(opt: str) -> str:
+    """
+    Return the display label for an option string.
+    RAG/decision-tree options are already human-readable (contain spaces, hyphens,
+    or mixed case) — leave them untouched.
+    Questionnaire options are snake_case ids — convert to Title Case.
+    """
+    if " " in opt or "-" in opt or any(c.isupper() for c in opt):
+        return opt
+    return opt.replace("_", " ").title()
+
+
 def build_question_response(question_data: dict) -> Question:
     """Convert questionnaire format to app's expected format"""
     response_type_map = {
@@ -360,13 +483,16 @@ def build_question_response(question_data: dict) -> Question:
         is_compulsory=question_data.get("is_compulsory", False)  # Default to False if not specified
     )
     
-    # Add options if single_choice or multi_choice
+    # Add options if single_choice or multi_choice.
+    # RAG/decision-tree options are already human-readable display strings
+    # (e.g. "1-3 days", "Physical activity") — preserve them as-is.
+    # Questionnaire options are snake_case ids — convert those.
     if question_data["type"] in ["single_choice", "multi_choice"]:
         question.response_options = [
-            {"id": opt, "label": opt.replace("_", " ").title()}
+            {"id": opt, "label": _opt_label(opt)}
             for opt in question_data["options"]
         ]
-    
+
     return question
 
 
@@ -654,11 +780,12 @@ async def submit_answer(request: Request):
 
     # ── Validate session exists ─────────────────────────────────────────
     if session_id not in sessions:
-        print(f"[ERROR] Session {session_id[:8]}... not found")
-        return AnswerResponse(
-            session_id=session_id,
-            status="error"
-        )
+        if not _restore_session_from_db(session_id):
+            print(f"[ERROR] Session {session_id[:8]}... not found in memory or DB")
+            return AnswerResponse(
+                session_id=session_id,
+                status="error"
+            )
 
     # ── Handle optional image — call Gemini async, store in DB, return "image received" ──
     if image_bytes:
@@ -779,7 +906,7 @@ async def submit_answer(request: Request):
                         text=first_q_data["question"],
                         response_type=first_q_data["type"],
                         response_options=[
-                            {"id": opt, "label": opt.replace("_", " ").title()}
+                            {"id": opt, "label": _opt_label(opt)}
                             for opt in first_q_data.get("options", [])
                         ] if "options" in first_q_data else None,
                         is_compulsory=True  # Follow-up questions are always compulsory
@@ -844,7 +971,7 @@ async def submit_answer(request: Request):
                         text=first_q_data["question"],
                         response_type=first_q_data["type"],
                         response_options=[
-                            {"id": opt, "label": opt.replace("_", " ").title()}
+                            {"id": opt, "label": _opt_label(opt)}
                             for opt in first_q_data.get("options", [])
                         ] if "options" in first_q_data else None,
                         is_compulsory=True
@@ -923,7 +1050,7 @@ async def submit_answer(request: Request):
             text=next_q_data["question"],
             response_type=next_q_data["type"],
             response_options=[
-                {"id": opt, "label": opt.replace("_", " ").title()}
+                {"id": opt, "label": _opt_label(opt)}
                 for opt in next_q_data.get("options", [])
             ] if "options" in next_q_data else None,
             is_compulsory=True  # Follow-up questions are always compulsory
@@ -953,9 +1080,10 @@ def receive_report(req: ReportRequest, request: Request):
 
     # ── Reconstruct responses from in-memory session ──────────────────
     if session_id not in sessions:
-        print(f"[REPORT] ERROR: session {session_id[:8]}... not found")
-        from fastapi import HTTPException
-        raise HTTPException(status_code=404, detail="Session not found. Please start a new assessment.")
+        if not _restore_session_from_db(session_id):
+            print(f"[REPORT] ERROR: session {session_id[:8]}... not found in memory or DB")
+            from fastapi import HTTPException
+            raise HTTPException(status_code=404, detail="Session not found. Please start a new assessment.")
 
     session = sessions[session_id]
     answers_dict = session.get("answers", {})  # {question_id: answer_text}
@@ -1142,7 +1270,7 @@ def start_followup(symptom: str):
         for opt in first_question_data["options"]:
             options.append({
                 "id": opt,
-                "label": opt.replace("_", " ").title()
+                "label": _opt_label(opt)
             })
         response["question"]["response_options"] = options
     
@@ -1212,7 +1340,7 @@ def answer_followup(req: AnswerRequest):
         for opt in next_question_data["options"]:
             options.append({
                 "id": opt,
-                "label": opt.replace("_", " ").title()
+                "label": _opt_label(opt)
             })
         response["question"]["response_options"] = options
     
@@ -1316,7 +1444,7 @@ def receive_context(req: ContextRequest):
     if first_question["type"] == "single_choice":
         question_block.input_mode = "buttons"
         options = [
-            AnswerOption(id=opt, label=opt.replace("_", " ").title())
+            AnswerOption(id=opt, label=_opt_label(opt))
             for opt in first_question["options"]
         ]
     else:
@@ -1395,7 +1523,7 @@ def submit_answer(req: AnswerRequest):
         if next_question["type"] == "single_choice":
             question_block.input_mode = "buttons"
             options = [
-                AnswerOption(id=opt, label=opt.replace("_", " ").title())
+                AnswerOption(id=opt, label=_opt_label(opt))
                 for opt in next_question["options"]
             ]
         else:
