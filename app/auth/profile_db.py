@@ -90,9 +90,8 @@ def save_profile_answers(user_id: str, answers: list) -> None:
       - question_text (str)
       - answer_json   (dict)
 
-    Special handling:
-      - q_profile_image: base64 image is saved to users.profile_image column
-        and NOT stored in user_profiles rows (keeps GET /profile payload light).
+    All answers including q_profile_image are stored as rows in user_profiles.
+    q_profile_image is also mirrored to users.profile_image for convenience.
 
     Deletes any previous profile answers for this user before inserting new ones.
     (Re-onboarding replaces old data cleanly.)
@@ -100,29 +99,25 @@ def save_profile_answers(user_id: str, answers: list) -> None:
     conn = _get_conn()
     try:
         with conn.cursor() as cur:
-            # Extract profile image before clearing rows
-            profile_image_b64 = None
+            # Mirror profile image to users.profile_image if present
             for item in answers:
                 if item["question_id"] == "q_profile_image":
                     aj = item["answer_json"]
-                    if isinstance(aj, dict):
-                        profile_image_b64 = aj.get("value")
+                    if isinstance(aj, dict) and aj.get("value"):
+                        try:
+                            cur.execute(
+                                "UPDATE users SET profile_image = %s WHERE id = %s;",
+                                (aj["value"], user_id)
+                            )
+                        except psycopg2.Error:
+                            pass  # column may not exist on older deployments — not fatal
                     break
-
-            # Save profile image to users table if provided
-            if profile_image_b64:
-                cur.execute(
-                    "UPDATE users SET profile_image = %s WHERE id = %s;",
-                    (profile_image_b64, user_id)
-                )
 
             # Clear existing profile answers (idempotent re-onboarding)
             cur.execute("DELETE FROM user_profiles WHERE user_id = %s;", (user_id,))
 
-            # Insert each Q&A as a separate row (skip image — stored on users)
+            # Insert ALL answers including q_profile_image
             for item in answers:
-                if item["question_id"] == "q_profile_image":
-                    continue
                 cur.execute(
                     """
                     INSERT INTO user_profiles (user_id, question_id, question_text, answer_json)
