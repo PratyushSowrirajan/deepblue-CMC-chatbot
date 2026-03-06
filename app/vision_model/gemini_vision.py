@@ -12,15 +12,19 @@ Flow:
 """
 
 import asyncio
+import os
 from typing import Optional
 
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+
+load_dotenv()
 
 # ─────────────────────────────
 # Configuration
 # ─────────────────────────────
-GEMINI_API_KEY = "AIzaSyAhDPQJzwlEr_uxDkrz1rlxejEQB-PzsCU"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 GEMINI_MODEL   = "gemini-2.5-flash"
 
 _client = genai.Client(api_key=GEMINI_API_KEY)
