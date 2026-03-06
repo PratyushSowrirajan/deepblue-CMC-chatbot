@@ -64,80 +64,80 @@
             "question": "How did the leg pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the leg pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this leg pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the leg pain sharp and stabbing, or dull and aching?",
             "type": "single_choice",
             "options": [
-              "sharp_stabbing",
-              "dull_aching",
-              "both",
-              "neither"
+              "Sharp or stabbing",
+              "Dull / aching",
+              "Both",
+              "Neither"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the leg pain?",
             "type": "multi_choice",
             "options": [
-              "numbness",
-              "tingling",
-              "swelling",
-              "redness",
-              "warmth",
-              "coldness",
-              "weakness",
-              "fatigue",
-              "none"
+              "Numbness",
+              "Tingling",
+              "Swelling",
+              "Redness",
+              "Warmth",
+              "Coldness",
+              "Weakness",
+              "Fatigue",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the leg pain worse?",
             "type": "multi_choice",
             "options": [
-              "standing",
-              "walking",
-              "exercise",
-              "sitting",
-              "lying down",
-              "nothing_specific"
+              "Standing",
+              "Walking",
+              "Exercise",
+              "Sitting",
+              "Lying down",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the leg pain better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "elevation",
-              "compression",
-              "stretching",
-              "nothing_helps"
+              "Rest",
+              "Elevation",
+              "Compression",
+              "Stretching",
+              "Nothing helps"
             ]
           }
         },
@@ -230,83 +230,83 @@
             "question": "How did the depression start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the depression right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this depression?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How would you describe the pain associated with the depression?",
             "type": "single_choice",
             "options": [
-              "aching",
-              "burning",
-              "sharp",
-              "dull",
-              "other"
+              "Aching",
+              "Burning",
+              "Sharp",
+              "Dull",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the depression?",
             "type": "multi_choice",
             "options": [
-              "insomnia",
-              "hypersomnia",
-              "loss of appetite",
-              "weight loss",
-              "weight gain",
-              "fatigue",
-              "irritability",
-              "guilt",
-              "worthlessness",
-              "helplessness",
-              "suicidal thoughts",
-              "none"
+              "Insomnia",
+              "Hypersomnia",
+              "Loss of appetite",
+              "Weight loss",
+              "Weight gain",
+              "Fatigue",
+              "Irritability",
+              "Guilt",
+              "Worthlessness",
+              "Helplessness",
+              "Suicidal thoughts",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the depression worse?",
             "type": "multi_choice",
             "options": [
-              "stress",
-              "trauma",
-              "substance abuse",
-              "social isolation",
-              "nothing_specific"
+              "Stress",
+              "Trauma",
+              "Substance abuse",
+              "Social isolation",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the depression better?",
             "type": "multi_choice",
             "options": [
-              "exercise",
-              "meditation",
-              "social support",
-              "hobbies",
-              "nothing_helps"
+              "Exercise",
+              "Meditation",
+              "Social support",
+              "Hobbies",
+              "Nothing helps"
             ]
           }
         },
@@ -392,80 +392,80 @@
             "question": "How did the abdominal pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the abdominal pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this abdominal pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the abdominal pain crampy, colicky, or constant?",
             "type": "single_choice",
             "options": [
-              "crampy",
-              "colicky",
-              "constant",
-              "not_sure"
+              "Crampy",
+              "Colicky",
+              "Constant",
+              "Not sure"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the abdominal pain?",
             "type": "multi_choice",
             "options": [
-              "vomiting",
-              "diarrhea",
-              "fever",
-              "abdominal tenderness",
-              "abdominal guarding",
-              "nausea",
-              "headache",
-              "fatigue",
-              "none"
+              "Vomiting",
+              "Diarrhea",
+              "Fever",
+              "Abdominal tenderness",
+              "Abdominal guarding",
+              "Nausea",
+              "Headache",
+              "Fatigue",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the abdominal pain worse?",
             "type": "multi_choice",
             "options": [
-              "eating",
-              "drinking",
-              "movement",
-              "coughing",
-              "lifting",
-              "nothing_specific"
+              "Eating",
+              "Drinking",
+              "Movement",
+              "Coughing",
+              "Lifting",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the abdominal pain better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "medication",
-              "heat",
-              "cold",
-              "nothing_helps"
+              "Rest",
+              "Medication",
+              "Heat",
+              "Cold",
+              "Nothing helps"
             ]
           }
         },
@@ -557,75 +557,75 @@
             "question": "How did the shortness of breath start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the shortness of breath right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this shortness of breath?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the shortness of breath accompanied by chest pain or pressure?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "not_sure"
+              "Yes",
+              "No",
+              "Not sure"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the shortness of breath?",
             "type": "multi_choice",
             "options": [
-              "coughing",
-              "wheezing",
-              "chest pain",
-              "fatigue",
-              "nausea",
-              "vomiting",
-              "none"
+              "Coughing",
+              "Wheezing",
+              "Chest pain",
+              "Fatigue",
+              "Nausea",
+              "Vomiting",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the shortness of breath worse?",
             "type": "multi_choice",
             "options": [
-              "exertion",
-              "lying flat",
-              "anxiety",
-              "stress",
-              "nothing_specific"
+              "Exertion",
+              "Lying flat",
+              "Anxiety",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the shortness of breath better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "oxygen therapy",
-              "medication",
-              "nothing_helps"
+              "Rest",
+              "Oxygen therapy",
+              "Medication",
+              "Nothing helps"
             ]
           }
         },
@@ -724,80 +724,80 @@
             "question": "How did the back pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the back pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this back pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the back pain sharp, dull, aching, or burning?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the back pain?",
             "type": "multi_choice",
             "options": [
-              "numbness",
-              "weakness",
-              "tingling",
-              "fever",
-              "nausea",
-              "vomiting",
-              "diarrhea",
-              "urinary retention",
-              "none"
+              "Numbness",
+              "Weakness",
+              "Tingling",
+              "Fever",
+              "Nausea",
+              "Vomiting",
+              "Diarrhea",
+              "Urinary retention",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the back pain worse?",
             "type": "multi_choice",
             "options": [
-              "lifting",
-              "bending",
-              "twisting",
-              "whole body vibration",
-              "nothing_specific"
+              "Lifting",
+              "Bending",
+              "Twisting",
+              "Whole body vibration",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the back pain better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "ice",
-              "heat",
-              "stretching",
-              "nothing_helps"
+              "Rest",
+              "Ice",
+              "Heat",
+              "Stretching",
+              "Nothing helps"
             ]
           }
         },
@@ -896,77 +896,77 @@
             "question": "How did the nausea and vomiting start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the nausea and vomiting right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this nausea and vomiting?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the abdominal pain sharp, dull, crampy, or aching?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "crampy",
-              "aching",
-              "other"
+              "Sharp",
+              "Dull",
+              "Crampy",
+              "Aching",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the nausea and vomiting?",
             "type": "multi_choice",
             "options": [
-              "abdominal pain",
-              "headache",
-              "stiff neck",
-              "diarrhea",
-              "fever",
-              "none"
+              "Abdominal pain",
+              "Headache",
+              "Stiff neck",
+              "Diarrhea",
+              "Fever",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the nausea and vomiting worse?",
             "type": "multi_choice",
             "options": [
-              "eating",
-              "smelling food",
-              "stress",
-              "anxiety",
-              "nothing_specific"
+              "Eating",
+              "Smelling food",
+              "Stress",
+              "Anxiety",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the nausea and vomiting better?",
             "type": "multi_choice",
             "options": [
-              "resting",
-              "drinking fluids",
-              "eating small meals",
-              "taking medication",
-              "nothing_helps"
+              "Resting",
+              "Drinking fluids",
+              "Eating small meals",
+              "Taking medication",
+              "Nothing helps"
             ]
           }
         },
@@ -1067,74 +1067,74 @@
             "question": "How did the dizziness start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the dizziness right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this dizziness?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the dizziness accompanied by a feeling of spinning or moving?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "sometimes"
+              "Yes",
+              "No",
+              "Sometimes"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the dizziness?",
             "type": "multi_choice",
             "options": [
-              "nausea",
-              "vomiting",
-              "headache",
-              "fatigue",
-              "none"
+              "Nausea",
+              "Vomiting",
+              "Headache",
+              "Fatigue",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the dizziness worse?",
             "type": "multi_choice",
             "options": [
-              "standing up quickly",
-              "bending or stooping",
-              "looking up or down",
-              "certain foods or smells",
-              "nothing_specific"
+              "Standing up quickly",
+              "Bending or stooping",
+              "Looking up or down",
+              "Certain foods or smells",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the dizziness better?",
             "type": "multi_choice",
             "options": [
-              "resting",
-              "lying down",
-              "sitting down",
-              "eating",
-              "nothing_helps"
+              "Resting",
+              "Lying down",
+              "Sitting down",
+              "Eating",
+              "Nothing helps"
             ]
           }
         },
@@ -1233,76 +1233,76 @@
             "question": "How did the eye irritation start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the eye irritation right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this eye irritation?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What is the character of the eye pain?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the eye irritation?",
             "type": "multi_choice",
             "options": [
-              "redness",
-              "itching",
-              "discharge",
-              "vision loss",
-              "headache",
-              "none"
+              "Redness",
+              "Itching",
+              "Discharge",
+              "Vision loss",
+              "Headache",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the eye irritation worse?",
             "type": "multi_choice",
             "options": [
-              "bright light",
-              "wind",
-              "smoke",
-              "chemical exposure",
-              "nothing_specific"
+              "Bright light",
+              "Wind",
+              "Smoke",
+              "Chemical exposure",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the eye irritation better?",
             "type": "multi_choice",
             "options": [
-              "artificial tears",
-              "rest",
-              "cool compress",
-              "nothing_helps"
+              "Artificial tears",
+              "Rest",
+              "Cool compress",
+              "Nothing helps"
             ]
           }
         },
@@ -1562,72 +1562,72 @@
             "question": "How did the bleeding start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the bleeding right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this bleeding?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the bleeding accompanied by pain?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "not_sure"
+              "Yes",
+              "No",
+              "Not sure"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the bleeding?",
             "type": "multi_choice",
             "options": [
-              "dizziness",
-              "low blood pressure",
-              "abdominal pain",
-              "urinary retention",
-              "none"
+              "Dizziness",
+              "Low blood pressure",
+              "Abdominal pain",
+              "Urinary retention",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the bleeding worse?",
             "type": "multi_choice",
             "options": [
-              "physical activity",
-              "coughing",
-              "straining",
-              "nothing_specific"
+              "Physical activity",
+              "Coughing",
+              "Straining",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the bleeding better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "elevation",
-              "pressure",
-              "nothing_helps"
+              "Rest",
+              "Elevation",
+              "Pressure",
+              "Nothing helps"
             ]
           }
         },
@@ -1710,74 +1710,74 @@
             "question": "How did the thyroid symptoms start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe are the thyroid symptoms right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had these thyroid symptoms?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What does the thyroid pain feel like?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the thyroid?",
             "type": "multi_choice",
             "options": [
-              "fatigue",
-              "weight gain",
-              "cold intolerance",
-              "hair loss",
-              "none"
+              "Fatigue",
+              "Weight gain",
+              "Cold intolerance",
+              "Hair loss",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the thyroid symptoms worse?",
             "type": "multi_choice",
             "options": [
-              "stress",
-              "cold weather",
-              "hunger",
-              "nothing_specific"
+              "Stress",
+              "Cold weather",
+              "Hunger",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the thyroid symptoms better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "warmth",
-              "food",
-              "nothing_helps"
+              "Rest",
+              "Warmth",
+              "Food",
+              "Nothing helps"
             ]
           }
         },
@@ -1865,78 +1865,78 @@
             "question": "How did the fever start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How high is the temperature?",
             "type": "single_choice",
             "options": [
-              "low_grade_99_100F",
-              "moderate_100_102F",
-              "high_102_104F",
-              "very_high_above_104F"
+              "Low grade (99–100°F)",
+              "Moderate (100–102°F)",
+              "High (102–104°F)",
+              "Very high (above 104°F)"
             ]
           },
           "duration": {
             "question": "How long have you had the fever?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How does the fever feel?",
             "type": "single_choice",
             "options": [
-              "constant",
-              "comes_and_goes",
-              "spikes_at_night",
-              "spikes_after_activity",
-              "other"
+              "Constant",
+              "Comes and goes",
+              "Spikes at night",
+              "Spikes after activity",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the fever?",
             "type": "multi_choice",
             "options": [
-              "chills",
-              "sweating",
-              "headache",
-              "body_aches",
-              "sore_throat",
-              "cough",
-              "none"
+              "Chills",
+              "Sweating",
+              "Headache",
+              "Body aches",
+              "Sore throat",
+              "Cough",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the fever worse?",
             "type": "multi_choice",
             "options": [
-              "physical_activity",
-              "hot_environment",
-              "dehydration",
-              "not_taking_medication",
-              "nothing_specific"
+              "Physical activity",
+              "Hot environment",
+              "Dehydration",
+              "Not taking medication",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the fever better?",
             "type": "multi_choice",
             "options": [
-              "acetaminophen",
-              "ibuprofen",
-              "cool_compress",
-              "rest_hydration",
-              "nothing_helps"
+              "Acetaminophen",
+              "Ibuprofen",
+              "Cool compress",
+              "Rest / hydration",
+              "Nothing helps"
             ]
           }
         },
@@ -2028,79 +2028,79 @@
             "question": "How did the headache start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the headache right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this headache?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How would you describe the headache pain?",
             "type": "single_choice",
             "options": [
-              "throbbing_pulsating",
-              "pressure_squeezing",
-              "stabbing_sharp",
-              "dull_constant",
-              "other"
+              "Throbbing pulsating",
+              "Pressure squeezing",
+              "Stabbing sharp",
+              "Dull constant",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the headache?",
             "type": "multi_choice",
             "options": [
-              "nausea_vomiting",
-              "light_sensitivity",
-              "sound_sensitivity",
-              "visual_aura",
-              "fever",
-              "stiff_neck",
-              "none"
+              "Nausea / vomiting",
+              "Light sensitivity",
+              "Sound sensitivity",
+              "Visual aura",
+              "Fever",
+              "Stiff neck",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the headache worse?",
             "type": "multi_choice",
             "options": [
-              "light",
-              "sound",
-              "movement",
-              "bending_forward",
-              "stress",
-              "nothing_specific"
+              "Light",
+              "Sound",
+              "Movement",
+              "Bending forward",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the headache better?",
             "type": "multi_choice",
             "options": [
-              "dark_quiet_room",
-              "sleep",
-              "pain_relievers",
-              "cold_compress",
-              "nothing_helps"
+              "Dark quiet room",
+              "Sleep",
+              "Pain relievers",
+              "Cold compress",
+              "Nothing helps"
             ]
           }
         },
@@ -2190,79 +2190,79 @@
             "question": "How did the chest pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the chest pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this chest pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How would you describe the chest pain?",
             "type": "single_choice",
             "options": [
-              "crushing_squeezing",
-              "sharp_stabbing",
-              "burning_heartburn",
-              "dull_pressure",
-              "other"
+              "Crushing squeezing",
+              "Sharp or stabbing",
+              "Burning heartburn",
+              "Dull pressure",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the chest pain?",
             "type": "multi_choice",
             "options": [
-              "shortness_of_breath",
-              "sweating",
-              "nausea",
-              "arm_jaw_pain",
-              "palpitations",
-              "dizziness",
-              "none"
+              "Shortness of breath",
+              "Sweating",
+              "Nausea",
+              "Arm jaw pain",
+              "Palpitations",
+              "Dizziness",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the chest pain worse?",
             "type": "multi_choice",
             "options": [
-              "exertion",
-              "deep_breathing",
-              "lying_flat",
-              "eating",
-              "stress",
-              "nothing_specific"
+              "Exertion",
+              "Deep breathing",
+              "Lying flat",
+              "Eating",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the chest pain better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "nitroglycerin",
-              "antacids",
-              "sitting_upright",
-              "nothing_helps"
+              "Rest",
+              "Nitroglycerin",
+              "Antacids",
+              "Sitting upright",
+              "Nothing helps"
             ]
           }
         },
@@ -2351,79 +2351,79 @@
             "question": "How did the cough start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How disruptive is the cough?",
             "type": "single_choice",
             "options": [
-              "mild_occasional",
-              "moderate_frequent",
-              "severe_exhausting",
-              "very_severe_unable_to_sleep"
+              "Mild occasional",
+              "Moderate frequent",
+              "Severe exhausting",
+              "Very severe unable to sleep"
             ]
           },
           "duration": {
             "question": "How long have you had this cough?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What does the cough produce?",
             "type": "single_choice",
             "options": [
-              "dry_no_mucus",
-              "clear_mucus",
-              "yellow_green_mucus",
-              "blood_tinged",
-              "other"
+              "Dry no mucus",
+              "Clear mucus",
+              "Yellow green mucus",
+              "Blood tinged",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the cough?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "shortness_of_breath",
-              "wheezing",
-              "sore_throat",
-              "runny_nose",
-              "weight_loss",
-              "none"
+              "Fever",
+              "Shortness of breath",
+              "Wheezing",
+              "Sore throat",
+              "Runny nose",
+              "Weight loss",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the cough worse?",
             "type": "multi_choice",
             "options": [
-              "cold_air",
-              "exercise",
-              "lying_flat_at_night",
-              "eating",
-              "dust_allergens",
-              "nothing_specific"
+              "Cold air",
+              "Exercise",
+              "Lying flat at night",
+              "Eating",
+              "Dust allergens",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the cough better?",
             "type": "multi_choice",
             "options": [
-              "warm_fluids",
-              "cough_suppressants",
-              "sitting_upright",
-              "humidifier",
-              "nothing_helps"
+              "Warm fluids",
+              "Cough suppressants",
+              "Sitting upright",
+              "Humidifier",
+              "Nothing helps"
             ]
           }
         },
@@ -2512,78 +2512,78 @@
             "question": "How did the fatigue start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the fatigue?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you been experiencing fatigue?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How does the fatigue affect your daily activities?",
             "type": "single_choice",
             "options": [
-              "minor_reduction_in_activity",
-              "moderate_50_percent_reduction",
-              "severe_mostly_bedridden",
-              "completely_bedridden",
-              "other"
+              "Minor reduction in activity",
+              "Moderate 50 percent reduction",
+              "Severe mostly bedridden",
+              "Completely bedridden",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the fatigue?",
             "type": "multi_choice",
             "options": [
-              "weight_loss",
-              "fever",
-              "shortness_of_breath",
-              "depression",
-              "joint_pain",
-              "hair_loss",
-              "none"
+              "Weight loss",
+              "Fever",
+              "Shortness of breath",
+              "Depression",
+              "Joint pain",
+              "Hair loss",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the fatigue worse?",
             "type": "multi_choice",
             "options": [
-              "physical_activity",
-              "mental_stress",
-              "poor_sleep",
-              "illness",
-              "nothing_specific"
+              "Physical activity",
+              "Mental stress",
+              "Poor sleep",
+              "Illness",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the fatigue better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "sleep",
-              "reducing_stress",
-              "improving_diet",
-              "nothing_helps"
+              "Rest",
+              "Sleep",
+              "Reducing stress",
+              "Improving diet",
+              "Nothing helps"
             ]
           }
         },
@@ -2671,78 +2671,78 @@
             "question": "How did the sore throat start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the sore throat?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this sore throat?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Where is the throat pain?",
             "type": "single_choice",
             "options": [
-              "diffuse_both_sides",
-              "one_sided",
-              "at_the_base_of_tongue",
-              "radiating_to_ear",
-              "other"
+              "Diffuse both sides",
+              "One sided",
+              "At the base of tongue",
+              "Radiating to ear",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the sore throat?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "white_patches_on_tonsils",
-              "swollen_lymph_nodes",
-              "runny_nose",
-              "cough",
-              "difficulty_breathing",
-              "none"
+              "Fever",
+              "White patches on tonsils",
+              "Swollen lymph nodes",
+              "Runny nose",
+              "Cough",
+              "Difficulty breathing",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the sore throat worse?",
             "type": "multi_choice",
             "options": [
-              "swallowing",
-              "talking",
-              "cold_drinks",
-              "dry_air",
-              "nothing_specific"
+              "Swallowing",
+              "Talking",
+              "Cold drinks",
+              "Dry air",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the sore throat better?",
             "type": "multi_choice",
             "options": [
-              "warm_fluids",
-              "lozenges",
-              "pain_relievers",
-              "gargling_salt_water",
-              "nothing_helps"
+              "Warm fluids",
+              "Lozenges",
+              "Pain relievers",
+              "Gargling salt water",
+              "Nothing helps"
             ]
           }
         },
@@ -2830,78 +2830,78 @@
             "question": "How did the urinary symptoms start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe are the urinary symptoms?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had these urinary symptoms?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What best describes the urinary problem?",
             "type": "single_choice",
             "options": [
-              "burning_pain_when_urinating",
-              "frequent_urge_to_urinate",
-              "difficulty_starting_urination",
-              "blood_in_urine",
-              "other"
+              "Burning pain when urinating",
+              "Frequent urge to urinate",
+              "Difficulty starting urination",
+              "Blood in urine",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "flank_pain",
-              "pelvic_pain",
-              "nausea",
-              "cloudy_urine",
-              "foul_smelling_urine",
-              "none"
+              "Fever",
+              "Flank pain",
+              "Pelvic pain",
+              "Nausea",
+              "Cloudy urine",
+              "Foul smelling urine",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the urinary symptoms worse?",
             "type": "multi_choice",
             "options": [
-              "holding_urine",
-              "drinking_caffeine_alcohol",
-              "cold_weather",
-              "sexual_activity",
-              "nothing_specific"
+              "Holding urine",
+              "Drinking caffeine alcohol",
+              "Cold weather",
+              "Sexual activity",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the urinary symptoms better?",
             "type": "multi_choice",
             "options": [
-              "urinating",
-              "antibiotics",
-              "increasing_water_intake",
-              "pain_relievers",
-              "nothing_helps"
+              "Urinating",
+              "Antibiotics",
+              "Increasing water intake",
+              "Pain relievers",
+              "Nothing helps"
             ]
           }
         },
@@ -2988,80 +2988,80 @@
             "question": "How did the joint pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the joint pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this joint pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How many joints are involved?",
             "type": "single_choice",
             "options": [
-              "single_joint",
-              "two_or_three_joints",
-              "many_joints_symmetrical",
-              "migratory_moving",
-              "other"
+              "Single joint",
+              "Two or three joints",
+              "Many joints symmetrical",
+              "Migratory moving",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the joint pain?",
             "type": "multi_choice",
             "options": [
-              "joint_swelling",
-              "joint_redness",
-              "joint_warmth",
-              "morning_stiffness",
-              "fever",
-              "skin_rash",
-              "none"
+              "Joint swelling",
+              "Joint redness",
+              "Joint warmth",
+              "Morning stiffness",
+              "Fever",
+              "Skin rash",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the joint pain worse?",
             "type": "multi_choice",
             "options": [
-              "movement",
-              "rest",
-              "morning",
-              "cold_weather",
-              "bearing_weight",
-              "nothing_specific"
+              "Movement",
+              "Rest",
+              "Morning",
+              "Cold weather",
+              "Bearing weight",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the joint pain better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "movement_warming_up",
-              "NSAIDs",
-              "ice",
-              "heat",
-              "nothing_helps"
+              "Rest",
+              "Movement warming up",
+              "Nsaids",
+              "Ice",
+              "Heat",
+              "Nothing helps"
             ]
           }
         },
@@ -3147,76 +3147,76 @@
             "question": "How did the lymph node swelling start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How large are the swollen lymph nodes?",
             "type": "single_choice",
             "options": [
-              "small_pea_sized",
-              "moderate_marble_sized",
-              "large_golf_ball_sized",
-              "very_large_visible_from_distance"
+              "Small pea sized",
+              "Moderate marble sized",
+              "Large golf ball sized",
+              "Very large visible from distance"
             ]
           },
           "duration": {
             "question": "How long have the lymph nodes been swollen?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Are the swollen lymph nodes tender?",
             "type": "single_choice",
             "options": [
-              "painful_tender",
-              "mildly_tender",
-              "painless_non_tender",
-              "painful_with_pressure_only",
-              "other"
+              "Painful tender",
+              "Mildly tender",
+              "Painless non tender",
+              "Painful with pressure only",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the lymph node swelling?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "night_sweats",
-              "weight_loss",
-              "sore_throat",
-              "skin_infection_nearby",
-              "fatigue",
-              "none"
+              "Fever",
+              "Night sweats",
+              "Weight loss",
+              "Sore throat",
+              "Skin infection nearby",
+              "Fatigue",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the lymph node swelling worse?",
             "type": "multi_choice",
             "options": [
-              "pressure_on_node",
-              "infection_worsening",
-              "stress",
-              "nothing_specific"
+              "Pressure on node",
+              "Infection worsening",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the lymph node swelling better?",
             "type": "multi_choice",
             "options": [
-              "antibiotics",
-              "resolving_infection",
-              "pain_relievers",
-              "nothing_helps"
+              "Antibiotics",
+              "Resolving infection",
+              "Pain relievers",
+              "Nothing helps"
             ]
           }
         },
@@ -3303,80 +3303,80 @@
             "question": "How did the anxiety start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the anxiety right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you experienced anxiety?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How does the anxiety manifest?",
             "type": "single_choice",
             "options": [
-              "constant_low_level_worry",
-              "episodic_panic_attacks",
-              "situational_triggered",
-              "physical_symptoms_mainly",
-              "other"
+              "Constant low level worry",
+              "Episodic panic attacks",
+              "Situational triggered",
+              "Physical symptoms mainly",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which physical symptoms accompany the anxiety?",
             "type": "multi_choice",
             "options": [
-              "palpitations",
-              "shortness_of_breath",
-              "sweating",
-              "trembling",
-              "dizziness",
-              "chest_tightness",
-              "none"
+              "Palpitations",
+              "Shortness of breath",
+              "Sweating",
+              "Trembling",
+              "Dizziness",
+              "Chest tightness",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What triggers the anxiety?",
             "type": "multi_choice",
             "options": [
-              "stress",
-              "social_situations",
-              "specific_phobias",
-              "no_trigger_spontaneous",
-              "caffeine",
-              "nothing_specific"
+              "Stress",
+              "Social situations",
+              "Specific phobias",
+              "No trigger spontaneous",
+              "Caffeine",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What helps with the anxiety?",
             "type": "multi_choice",
             "options": [
-              "relaxation_breathing",
-              "exercise",
-              "medication",
-              "avoidance",
-              "therapy",
-              "nothing_helps"
+              "Relaxation breathing",
+              "Exercise",
+              "Medication",
+              "Avoidance",
+              "Therapy",
+              "Nothing helps"
             ]
           }
         },
@@ -3460,79 +3460,79 @@
             "question": "How did the insomnia start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How much does the insomnia affect your daily life?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had insomnia?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What type of insomnia do you experience?",
             "type": "single_choice",
             "options": [
-              "difficulty_falling_asleep",
-              "waking_during_night",
-              "early_morning_awakening",
-              "all_of_the_above",
-              "other"
+              "Difficulty falling asleep",
+              "Waking during night",
+              "Early morning awakening",
+              "All of the above",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the insomnia?",
             "type": "multi_choice",
             "options": [
-              "anxiety",
-              "depression",
-              "pain",
-              "frequent_urination_at_night",
-              "snoring_apnea",
-              "restless_legs",
-              "none"
+              "Anxiety",
+              "Depression",
+              "Pain",
+              "Frequent urination at night",
+              "Snoring apnea",
+              "Restless legs",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What worsens the insomnia?",
             "type": "multi_choice",
             "options": [
-              "stress",
-              "caffeine_alcohol",
-              "screen_time_at_night",
-              "irregular_sleep_schedule",
-              "noise_light",
-              "nothing_specific"
+              "Stress",
+              "Caffeine alcohol",
+              "Screen time at night",
+              "Irregular sleep schedule",
+              "Noise light",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What helps with the insomnia?",
             "type": "multi_choice",
             "options": [
-              "relaxation_techniques",
-              "sleep_medications",
-              "regular_schedule",
-              "exercise",
-              "nothing_helps"
+              "Relaxation techniques",
+              "Sleep medications",
+              "Regular schedule",
+              "Exercise",
+              "Nothing helps"
             ]
           }
         },
@@ -3616,80 +3616,80 @@
             "question": "How did the palpitations start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How distressing are the palpitations?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long do the palpitations last?",
             "type": "single_choice",
             "options": [
-              "seconds",
-              "minutes",
-              "hours",
-              "constant_ongoing",
-              "intermittent"
+              "Seconds",
+              "Minutes",
+              "Hours",
+              "Constant ongoing",
+              "Intermittent"
             ]
           },
           "pain_character": {
             "question": "How would you describe the palpitations?",
             "type": "single_choice",
             "options": [
-              "rapid_regular",
-              "rapid_irregular",
-              "skipped_beats",
-              "strong_pounding",
-              "other"
+              "Rapid regular",
+              "Rapid irregular",
+              "Skipped beats",
+              "Strong pounding",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the palpitations?",
             "type": "multi_choice",
             "options": [
-              "chest_pain",
-              "shortness_of_breath",
-              "dizziness",
-              "syncope",
-              "sweating",
-              "anxiety",
-              "none"
+              "Chest pain",
+              "Shortness of breath",
+              "Dizziness",
+              "Syncope",
+              "Sweating",
+              "Anxiety",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What triggers the palpitations?",
             "type": "multi_choice",
             "options": [
-              "caffeine_alcohol",
-              "physical_activity",
-              "stress_anxiety",
-              "lying_on_left_side",
-              "spontaneous",
-              "nothing_specific"
+              "Caffeine alcohol",
+              "Physical activity",
+              "Stress anxiety",
+              "Lying on left side",
+              "Spontaneous",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What stops the palpitations?",
             "type": "multi_choice",
             "options": [
-              "valsalva_maneuver",
-              "rest",
-              "cold_water_splash",
-              "medication",
-              "resolves_spontaneously",
-              "nothing_helps"
+              "Valsalva maneuver",
+              "Rest",
+              "Cold water splash",
+              "Medication",
+              "Resolves spontaneously",
+              "Nothing helps"
             ]
           }
         },
@@ -3775,79 +3775,79 @@
             "question": "How did the swelling start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the swelling?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had the swelling?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Where is the swelling located?",
             "type": "single_choice",
             "options": [
-              "one_leg",
-              "both_legs",
-              "face_lips_throat",
-              "abdomen",
-              "generalized_all_over",
-              "other"
+              "One leg",
+              "Both legs",
+              "Face lips throat",
+              "Abdomen",
+              "Generalized all over",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the swelling?",
             "type": "multi_choice",
             "options": [
-              "shortness_of_breath",
-              "pain_in_swollen_area",
-              "skin_changes",
-              "weight_gain",
-              "decreased_urine_output",
-              "high_blood_pressure",
-              "none"
+              "Shortness of breath",
+              "Pain in swollen area",
+              "Skin changes",
+              "Weight gain",
+              "Decreased urine output",
+              "High blood pressure",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the swelling worse?",
             "type": "multi_choice",
             "options": [
-              "prolonged_standing_sitting",
-              "heat",
-              "high_salt_intake",
-              "end_of_day",
-              "nothing_specific"
+              "Prolonged standing sitting",
+              "Heat",
+              "High salt intake",
+              "End of day",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the swelling better?",
             "type": "multi_choice",
             "options": [
-              "leg_elevation",
-              "compression_stockings",
-              "diuretics",
-              "reducing_salt",
-              "nothing_helps"
+              "Leg elevation",
+              "Compression stockings",
+              "Diuretics",
+              "Reducing salt",
+              "Nothing helps"
             ]
           }
         },
@@ -3932,78 +3932,78 @@
             "question": "How did the loss of appetite start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the loss of appetite?",
             "type": "single_choice",
             "options": [
-              "mild_reduced_intake",
-              "moderate_eating_half_normal",
-              "severe_barely_eating",
-              "complete_not_eating_at_all"
+              "Mild reduced intake",
+              "Moderate eating half normal",
+              "Severe barely eating",
+              "Complete not eating at all"
             ]
           },
           "duration": {
             "question": "How long have you had poor appetite?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What stops you from eating?",
             "type": "single_choice",
             "options": [
-              "nausea_when_eating",
-              "pain_after_eating",
-              "just_not_hungry",
-              "fear_of_eating",
-              "other"
+              "Nausea when eating",
+              "Pain after eating",
+              "Just not hungry",
+              "Fear of eating",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the loss of appetite?",
             "type": "multi_choice",
             "options": [
-              "weight_loss",
-              "nausea_vomiting",
-              "abdominal_pain",
-              "fatigue",
-              "depression",
-              "jaundice",
-              "none"
+              "Weight loss",
+              "Nausea / vomiting",
+              "Abdominal pain",
+              "Fatigue",
+              "Depression",
+              "Jaundice",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the loss of appetite worse?",
             "type": "multi_choice",
             "options": [
-              "smell_of_food",
-              "stress_anxiety",
-              "pain",
-              "medication_side_effects",
-              "nothing_specific"
+              "Smell of food",
+              "Stress anxiety",
+              "Pain",
+              "Medication side effects",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What helps with the loss of appetite?",
             "type": "multi_choice",
             "options": [
-              "small_frequent_meals",
-              "treating_underlying_condition",
-              "appetite_stimulants",
-              "treating_nausea",
-              "nothing_helps"
+              "Small frequent meals",
+              "Treating underlying condition",
+              "Appetite stimulants",
+              "Treating nausea",
+              "Nothing helps"
             ]
           }
         },
@@ -4088,77 +4088,77 @@
             "question": "How did the jaundice start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How pronounced is the yellowing?",
             "type": "single_choice",
             "options": [
-              "mild_only_eyes",
-              "moderate_eyes_and_skin",
-              "severe_deep_yellow_orange",
-              "very_severe_greenish_tinge"
+              "Mild only eyes",
+              "Moderate eyes and skin",
+              "Severe deep yellow orange",
+              "Very severe greenish tinge"
             ]
           },
           "duration": {
             "question": "How long have you had jaundice?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is there any pain with the jaundice?",
             "type": "single_choice",
             "options": [
-              "painless",
-              "right_upper_abdomen_pain",
-              "severe_colicky_pain",
-              "dull_constant_abdominal_pain",
-              "other"
+              "Painless",
+              "Right upper abdomen pain",
+              "Severe colicky pain",
+              "Dull constant abdominal pain",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the jaundice?",
             "type": "multi_choice",
             "options": [
-              "dark_urine",
-              "pale_stools",
-              "itching",
-              "fever",
-              "nausea_vomiting",
-              "confusion",
-              "none"
+              "Dark urine",
+              "Pale stools",
+              "Itching",
+              "Fever",
+              "Nausea / vomiting",
+              "Confusion",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What worsens the jaundice symptoms?",
             "type": "multi_choice",
             "options": [
-              "alcohol_intake",
-              "fatty_food",
-              "medication",
-              "dehydration",
-              "nothing_specific"
+              "Alcohol intake",
+              "Fatty food",
+              "Medication",
+              "Dehydration",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What improves symptoms with the jaundice?",
             "type": "multi_choice",
             "options": [
-              "avoiding_alcohol",
-              "medication",
-              "treating_infection",
-              "nothing_helps"
+              "Avoiding alcohol",
+              "Medication",
+              "Treating infection",
+              "Nothing helps"
             ]
           }
         },
@@ -4239,79 +4239,79 @@
             "question": "How did the numbness or tingling start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the numbness or tingling?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had the numbness or tingling?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Where is the numbness or tingling located?",
             "type": "single_choice",
             "options": [
-              "one_hand_or_arm",
-              "both_hands",
-              "one_foot_or_leg",
-              "both_feet_and_legs",
-              "face_or_one_side_of_body",
-              "other"
+              "One hand or arm",
+              "Both hands",
+              "One foot or leg",
+              "Both feet and legs",
+              "Face or one side of body",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the numbness or tingling?",
             "type": "multi_choice",
             "options": [
-              "weakness",
-              "pain",
-              "coordination_problems",
-              "bladder_bowel_changes",
-              "dizziness",
-              "speech_difficulty",
-              "none"
+              "Weakness",
+              "Pain",
+              "Coordination problems",
+              "Bladder bowel changes",
+              "Dizziness",
+              "Speech difficulty",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the numbness or tingling worse?",
             "type": "multi_choice",
             "options": [
-              "specific_posture_or_position",
-              "repetitive_hand_use",
-              "cold",
-              "walking",
-              "nothing_specific"
+              "Specific posture or position",
+              "Repetitive hand use",
+              "Cold",
+              "Walking",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the numbness or tingling better?",
             "type": "multi_choice",
             "options": [
-              "changing_position",
-              "shaking_hands_feet",
-              "warmth",
-              "rest",
-              "nothing_helps"
+              "Changing position",
+              "Shaking hands feet",
+              "Warmth",
+              "Rest",
+              "Nothing helps"
             ]
           }
         },
@@ -4398,78 +4398,78 @@
             "question": "How did the confusion start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the confusion?",
             "type": "single_choice",
             "options": [
-              "mild_slightly_disoriented",
-              "moderate_significant_confusion",
-              "severe_does_not_know_person_place",
-              "very_severe_unresponsive"
+              "Mild slightly disoriented",
+              "Moderate significant confusion",
+              "Severe does not know person place",
+              "Very severe unresponsive"
             ]
           },
           "duration": {
             "question": "How long has the person been confused?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How did the confusion begin?",
             "type": "single_choice",
             "options": [
-              "following_trauma",
-              "after_fever_developed",
-              "with_low_blood_sugar",
-              "gradually_without_trigger",
-              "other"
+              "Following trauma",
+              "After fever developed",
+              "With low blood sugar",
+              "Gradually without trigger",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the confusion?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "stiff_neck",
-              "weakness",
-              "seizures",
-              "slurred_speech",
-              "loss_of_consciousness",
-              "none"
+              "Fever",
+              "Stiff neck",
+              "Weakness",
+              "Seizures",
+              "Slurred speech",
+              "Loss of consciousness",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What worsens the confusion?",
             "type": "multi_choice",
             "options": [
-              "nighttime",
-              "medications",
-              "infections",
-              "dehydration",
-              "nothing_specific"
+              "Nighttime",
+              "Medications",
+              "Infections",
+              "Dehydration",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What improves the confusion?",
             "type": "multi_choice",
             "options": [
-              "correcting_blood_sugar",
-              "rehydration",
-              "treating_infection",
-              "familiar_environment",
-              "nothing_helps"
+              "Correcting blood sugar",
+              "Rehydration",
+              "Treating infection",
+              "Familiar environment",
+              "Nothing helps"
             ]
           }
         },
@@ -4548,78 +4548,78 @@
             "question": "How did the toothache start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the toothache?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this toothache?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How would you describe the toothache?",
             "type": "single_choice",
             "options": [
-              "sharp_when_biting",
-              "constant_throbbing",
-              "sensitive_to_hot_cold",
-              "dull_persistent",
-              "other"
+              "Sharp when biting",
+              "Constant throbbing",
+              "Sensitive to hot cold",
+              "Dull persistent",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the toothache?",
             "type": "multi_choice",
             "options": [
-              "swelling_of_gum_or_face",
-              "fever",
-              "bad_taste_in_mouth",
-              "difficulty_opening_mouth",
-              "bleeding_gums",
-              "sensitivity_to_temperature",
-              "none"
+              "Swelling of gum or face",
+              "Fever",
+              "Bad taste in mouth",
+              "Difficulty opening mouth",
+              "Bleeding gums",
+              "Sensitivity to temperature",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the toothache worse?",
             "type": "multi_choice",
             "options": [
-              "biting_chewing",
-              "hot_food_drink",
-              "cold_food_drink",
-              "lying_down",
-              "nothing_specific"
+              "Biting chewing",
+              "Hot food drink",
+              "Cold food drink",
+              "Lying down",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the toothache better?",
             "type": "multi_choice",
             "options": [
-              "pain_relievers",
-              "cold_compress",
-              "clove_oil",
-              "antibiotics",
-              "nothing_helps"
+              "Pain relievers",
+              "Cold compress",
+              "Clove oil",
+              "Antibiotics",
+              "Nothing helps"
             ]
           }
         },
@@ -4706,79 +4706,79 @@
             "question": "How did the ear pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the ear pain?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this ear pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "How would you describe the ear pain?",
             "type": "single_choice",
             "options": [
-              "deep_throbbing_inside",
-              "sharp_outer_ear",
-              "pressure_fullness",
-              "constant_severe",
-              "other"
+              "Deep throbbing inside",
+              "Sharp outer ear",
+              "Pressure fullness",
+              "Constant severe",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the ear pain?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "ear_discharge",
-              "hearing_loss",
-              "dizziness",
-              "sore_throat",
-              "jaw_pain",
-              "none"
+              "Fever",
+              "Ear discharge",
+              "Hearing loss",
+              "Dizziness",
+              "Sore throat",
+              "Jaw pain",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the ear pain worse?",
             "type": "multi_choice",
             "options": [
-              "pulling_outer_ear",
-              "swallowing",
-              "chewing",
-              "lying_on_affected_side",
-              "blowing_nose",
-              "nothing_specific"
+              "Pulling outer ear",
+              "Swallowing",
+              "Chewing",
+              "Lying on affected side",
+              "Blowing nose",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the ear pain better?",
             "type": "multi_choice",
             "options": [
-              "pain_relievers",
-              "warm_compress",
-              "decongestants",
-              "antibiotic_drops",
-              "nothing_helps"
+              "Pain relievers",
+              "Warm compress",
+              "Decongestants",
+              "Antibiotic drops",
+              "Nothing helps"
             ]
           }
         },
@@ -4862,79 +4862,79 @@
             "question": "How did the nosebleed start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How heavy is the bleeding?",
             "type": "single_choice",
             "options": [
-              "light_minor_spots",
-              "moderate",
-              "heavy_flowing",
-              "very_heavy_gushing"
+              "Light minor spots",
+              "Moderate",
+              "Heavy flowing",
+              "Very heavy gushing"
             ]
           },
           "duration": {
             "question": "How long has the nose been bleeding?",
             "type": "single_choice",
             "options": [
-              "less_than_5_minutes",
-              "5_to_20_minutes",
-              "20_to_60_minutes",
-              "more_than_1_hour",
-              "stops_and_restarts"
+              "Less than 5 minutes",
+              "5 to 20 minutes",
+              "20 to 60 minutes",
+              "More than 1 hour",
+              "Stops and restarts"
             ]
           },
           "pain_character": {
             "question": "Where does it seem to come from?",
             "type": "single_choice",
             "options": [
-              "front_of_nose",
-              "back_dripping_down_throat",
-              "both",
-              "unclear",
-              "other"
+              "Front of nose",
+              "Back dripping down throat",
+              "Both",
+              "Unclear",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the nosebleed?",
             "type": "multi_choice",
             "options": [
-              "dizziness",
-              "headache",
-              "high_blood_pressure",
-              "recent_trauma",
-              "swallowing_blood",
-              "easy_bruising",
-              "none"
+              "Dizziness",
+              "Headache",
+              "High blood pressure",
+              "Recent trauma",
+              "Swallowing blood",
+              "Easy bruising",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What triggered the nosebleed?",
             "type": "multi_choice",
             "options": [
-              "nose_picking",
-              "trauma",
-              "dry_air",
-              "blowing_nose",
-              "spontaneous",
-              "nothing_specific"
+              "Nose picking",
+              "Trauma",
+              "Dry air",
+              "Blowing nose",
+              "Spontaneous",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What helps stop the nosebleed?",
             "type": "multi_choice",
             "options": [
-              "pinching_nose",
-              "leaning_forward",
-              "cold_compress",
-              "nasal_spray",
-              "nothing_helps"
+              "Pinching nose",
+              "Leaning forward",
+              "Cold compress",
+              "Nasal spray",
+              "Nothing helps"
             ]
           }
         },
@@ -5020,79 +5020,79 @@
             "question": "How did the itching start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the itching?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had the itching?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Where is the itching?",
             "type": "single_choice",
             "options": [
-              "localized_small_area",
-              "one_region_of_body",
-              "widespread_generalized",
-              "entire_body",
-              "other"
+              "Localized small area",
+              "One region of body",
+              "Widespread generalized",
+              "Entire body",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the itching?",
             "type": "multi_choice",
             "options": [
-              "visible_rash",
-              "hives",
-              "jaundice",
-              "dry_skin",
-              "swelling",
-              "fever",
-              "none"
+              "Visible rash",
+              "Hives",
+              "Jaundice",
+              "Dry skin",
+              "Swelling",
+              "Fever",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the itching worse?",
             "type": "multi_choice",
             "options": [
-              "heat",
-              "sweating",
-              "soaps_detergents",
-              "certain_foods",
-              "nighttime",
-              "nothing_specific"
+              "Heat",
+              "Sweating",
+              "Soaps detergents",
+              "Certain foods",
+              "Nighttime",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What relieves the itching?",
             "type": "multi_choice",
             "options": [
-              "moisturizer",
-              "antihistamines",
-              "cold_compress",
-              "steroid_cream",
-              "nothing_helps"
+              "Moisturizer",
+              "Antihistamines",
+              "Cold compress",
+              "Steroid cream",
+              "Nothing helps"
             ]
           }
         },
@@ -5173,77 +5173,77 @@
             "question": "When did you notice the weight loss?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How much weight have you lost?",
             "type": "single_choice",
             "options": [
-              "less_than_2kg",
-              "2_5kg",
-              "5_10kg",
-              "more_than_10kg"
+              "Less than 2kg",
+              "2 5kg",
+              "5 10kg",
+              "More than 10kg"
             ]
           },
           "duration": {
             "question": "Over what time period has the weight loss occurred?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the weight loss associated with poor appetite or eating normally?",
             "type": "single_choice",
             "options": [
-              "reduced_appetite",
-              "normal_appetite_but_still_losing",
-              "increased_appetite_but_still_losing",
-              "fear_of_eating",
-              "other"
+              "Reduced appetite",
+              "Normal appetite but still losing",
+              "Increased appetite but still losing",
+              "Fear of eating",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms accompany the weight loss?",
             "type": "multi_choice",
             "options": [
-              "fatigue",
-              "night_sweats",
-              "fever",
-              "altered_bowel_habits",
-              "abdominal_pain",
-              "excessive_thirst_urination",
-              "none"
+              "Fatigue",
+              "Night sweats",
+              "Fever",
+              "Altered bowel habits",
+              "Abdominal pain",
+              "Excessive thirst urination",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What seems to drive the weight loss?",
             "type": "multi_choice",
             "options": [
-              "poor_intake",
-              "increased_metabolism_heat_intolerance",
-              "malabsorption_diarrhea",
-              "stress_depression",
-              "nothing_specific"
+              "Poor intake",
+              "Increased metabolism heat intolerance",
+              "Malabsorption diarrhea",
+              "Stress depression",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "Have any interventions slowed or stopped the weight loss?",
             "type": "multi_choice",
             "options": [
-              "improved_nutrition",
-              "treating_underlying_illness",
-              "counselling_eating_disorder",
-              "nothing_helps"
+              "Improved nutrition",
+              "Treating underlying illness",
+              "Counselling eating disorder",
+              "Nothing helps"
             ]
           }
         },
@@ -5323,75 +5323,75 @@
             "question": "How did the ear pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the ear pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this ear pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the ear pain sharp, dull, or aching?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the ear pain?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "headache",
-              "dizziness",
-              "nausea",
-              "vomiting",
-              "none"
+              "Fever",
+              "Headache",
+              "Dizziness",
+              "Nausea",
+              "Vomiting",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the ear pain worse?",
             "type": "multi_choice",
             "options": [
-              "lying down",
-              "moving the head",
-              "coughing",
-              "sneezing",
-              "nothing_specific"
+              "Lying down",
+              "Moving the head",
+              "Coughing",
+              "Sneezing",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the ear pain better?",
             "type": "multi_choice",
             "options": [
-              "over-the-counter pain medication",
-              "warm compresses",
-              "rest",
-              "nothing_helps"
+              "Over-the-counter pain medication",
+              "Warm compresses",
+              "Rest",
+              "Nothing helps"
             ]
           }
         },
@@ -5486,77 +5486,77 @@
             "question": "How did the throat pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the throat pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this throat pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What does the throat pain feel like?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the throat pain?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "chills",
-              "cough",
-              "soreness",
-              "swollen lymph nodes",
-              "none"
+              "Fever",
+              "Chills",
+              "Cough",
+              "Soreness",
+              "Swollen lymph nodes",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the throat pain worse?",
             "type": "multi_choice",
             "options": [
-              "swallowing",
-              "speaking",
-              "coughing",
-              "cold air",
-              "nothing_specific"
+              "Swallowing",
+              "Speaking",
+              "Coughing",
+              "Cold air",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the throat pain better?",
             "type": "multi_choice",
             "options": [
-              "warm liquids",
-              "throat lozenges",
-              "cough drops",
-              "rest",
-              "nothing_helps"
+              "Warm liquids",
+              "Throat lozenges",
+              "Cough drops",
+              "Rest",
+              "Nothing helps"
             ]
           }
         },
@@ -5652,79 +5652,79 @@
             "question": "How did the tooth pain start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the tooth pain right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this tooth pain?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What does the tooth pain feel like?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "stinging",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Stinging",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the tooth pain?",
             "type": "multi_choice",
             "options": [
-              "bad breath",
-              "swollen gums",
-              "sensitivity to hot or cold foods and drinks",
-              "difficulty swallowing",
-              "headache",
-              "earache",
-              "facial pain",
-              "none"
+              "Bad breath",
+              "Swollen gums",
+              "Sensitivity to hot or cold foods and drinks",
+              "Difficulty swallowing",
+              "Headache",
+              "Earache",
+              "Facial pain",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the tooth pain worse?",
             "type": "multi_choice",
             "options": [
-              "eating sweet or hot foods and drinks",
-              "brushing or flossing",
-              "cold air",
-              "stress or anxiety",
-              "nothing specific"
+              "Eating sweet or hot foods and drinks",
+              "Brushing or flossing",
+              "Cold air",
+              "Stress or anxiety",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the tooth pain better?",
             "type": "multi_choice",
             "options": [
-              "over-the-counter pain medication",
-              "cold compress",
-              "warm saltwater rinse",
-              "nothing helps"
+              "Over-the-counter pain medication",
+              "Cold compress",
+              "Warm saltwater rinse",
+              "Nothing helps"
             ]
           }
         },
@@ -5804,76 +5804,76 @@
             "question": "How did the ulcer start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the ulcer right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this ulcer?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What is the character of the abdominal pain?",
             "type": "single_choice",
             "options": [
-              "cramping",
-              "dull_aching",
-              "sharp_stabbing",
-              "burning",
-              "other"
+              "Cramping",
+              "Dull / aching",
+              "Sharp or stabbing",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the ulcer?",
             "type": "multi_choice",
             "options": [
-              "nausea",
-              "vomiting",
-              "diarrhea",
-              "constipation",
-              "abdominal bloating",
-              "none"
+              "Nausea",
+              "Vomiting",
+              "Diarrhea",
+              "Constipation",
+              "Abdominal bloating",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the ulcer worse?",
             "type": "multi_choice",
             "options": [
-              "eating spicy food",
-              "drinking alcohol",
-              "taking NSAIDs",
-              "stress",
-              "nothing_specific"
+              "Eating spicy food",
+              "Drinking alcohol",
+              "Taking NSAIDs",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the ulcer better?",
             "type": "multi_choice",
             "options": [
-              "taking antacids",
-              "eating bland food",
-              "resting",
-              "nothing_helps"
+              "Taking antacids",
+              "Eating bland food",
+              "Resting",
+              "Nothing helps"
             ]
           }
         },
@@ -5962,81 +5962,81 @@
             "question": "How did the tumor start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the tumor right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this tumor?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What is the character of the pain associated with the tumor?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the tumor?",
             "type": "multi_choice",
             "options": [
-              "fatigue",
-              "weight loss",
-              "nausea",
-              "vomiting",
-              "diarrhea",
-              "constipation",
-              "abdominal pain",
-              "shortness of breath",
-              "coughing",
-              "none"
+              "Fatigue",
+              "Weight loss",
+              "Nausea",
+              "Vomiting",
+              "Diarrhea",
+              "Constipation",
+              "Abdominal pain",
+              "Shortness of breath",
+              "Coughing",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the tumor worse?",
             "type": "multi_choice",
             "options": [
-              "coughing",
-              "sneezing",
-              "lying down",
-              "eating",
-              "nothing_specific"
+              "Coughing",
+              "Sneezing",
+              "Lying down",
+              "Eating",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the tumor better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "ice",
-              "elevation",
-              "compression",
-              "nothing_helps"
+              "Rest",
+              "Ice",
+              "Elevation",
+              "Compression",
+              "Nothing helps"
             ]
           }
         },
@@ -6446,77 +6446,77 @@
             "question": "How did the urine discoloration start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the urine discoloration right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this urine discoloration?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is there any pain or discomfort associated with the urine discoloration?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "mild",
-              "moderate",
-              "severe"
+              "Yes",
+              "No",
+              "Mild",
+              "Moderate",
+              "Severe"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the urine discoloration?",
             "type": "multi_choice",
             "options": [
-              "urinary frequency",
-              "urinary urgency",
-              "urinary incontinence",
-              "painful urination",
-              "cloudy urine",
-              "foul urine odor",
-              "none"
+              "Urinary frequency",
+              "Urinary urgency",
+              "Urinary incontinence",
+              "Painful urination",
+              "Cloudy urine",
+              "Foul urine odor",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the urine discoloration worse?",
             "type": "multi_choice",
             "options": [
-              "certain foods",
-              "certain medications",
-              "dehydration",
-              "urinary tract infection",
-              "nothing_specific"
+              "Certain foods",
+              "Certain medications",
+              "Dehydration",
+              "Urinary tract infection",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the urine discoloration better?",
             "type": "multi_choice",
             "options": [
-              "fluid intake",
-              "medications",
-              "rest",
-              "nothing_helps"
+              "Fluid intake",
+              "Medications",
+              "Rest",
+              "Nothing helps"
             ]
           }
         },
@@ -6613,77 +6613,77 @@
             "question": "How did the hematuria start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the hematuria right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this hematuria?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the pain constant or does it come and go?",
             "type": "single_choice",
             "options": [
-              "constant",
-              "comes_and_goes",
-              "worsens_with_urination",
-              "worsens_with_movement",
-              "other"
+              "Constant",
+              "Comes and goes",
+              "Worsens with urination",
+              "Worsens with movement",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the hematuria?",
             "type": "multi_choice",
             "options": [
-              "proteinuria",
-              "hypercholesterolemia",
-              "ascites",
-              "edema",
-              "anemia",
-              "abnormal blood clotting",
-              "none"
+              "Proteinuria",
+              "Hypercholesterolemia",
+              "Ascites",
+              "Edema",
+              "Anemia",
+              "Abnormal blood clotting",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the hematuria worse?",
             "type": "multi_choice",
             "options": [
-              "physical activity",
-              "urination",
-              "coughing",
-              "sneezing",
-              "nothing_specific"
+              "Physical activity",
+              "Urination",
+              "Coughing",
+              "Sneezing",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the hematuria better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "fluid intake",
-              "medication",
-              "nothing_helps"
+              "Rest",
+              "Fluid intake",
+              "Medication",
+              "Nothing helps"
             ]
           }
         },
@@ -6773,76 +6773,76 @@
             "question": "How did the scalp condition start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the scalp condition right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this scalp condition?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the scalp pain sharp, dull, or aching?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the scalp condition?",
             "type": "multi_choice",
             "options": [
-              "headache",
-              "fever",
-              "fatigue",
-              "nausea",
-              "vomiting",
-              "none"
+              "Headache",
+              "Fever",
+              "Fatigue",
+              "Nausea",
+              "Vomiting",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the scalp condition worse?",
             "type": "multi_choice",
             "options": [
-              "stress",
-              "hormonal changes",
-              "environmental factors",
-              "medications",
-              "nothing_specific"
+              "Stress",
+              "Hormonal changes",
+              "Environmental factors",
+              "Medications",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the scalp condition better?",
             "type": "multi_choice",
             "options": [
-              "medications",
-              "topical treatments",
-              "lifestyle changes",
-              "nothing_helps"
+              "Medications",
+              "Topical treatments",
+              "Lifestyle changes",
+              "Nothing helps"
             ]
           }
         },
@@ -6931,74 +6931,74 @@
             "question": "How did the hiccups start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the hiccups right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this hiccups?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the hiccups accompanied by pain or discomfort?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "not_sure"
+              "Yes",
+              "No",
+              "Not sure"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the hiccups?",
             "type": "multi_choice",
             "options": [
-              "abdominal pain",
-              "fever",
-              "rapid heartbeat",
-              "difficulty breathing",
-              "vision problems",
-              "none"
+              "Abdominal pain",
+              "Fever",
+              "Rapid heartbeat",
+              "Difficulty breathing",
+              "Vision problems",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the hiccups worse?",
             "type": "multi_choice",
             "options": [
-              "eating or drinking too quickly",
-              "lying flat on the back",
-              "stress or anxiety",
-              "certain foods or drinks",
-              "nothing_specific"
+              "Eating or drinking too quickly",
+              "Lying flat on the back",
+              "Stress or anxiety",
+              "Certain foods or drinks",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the hiccups better?",
             "type": "multi_choice",
             "options": [
-              "deep breathing exercises",
-              "holding the breath",
-              "gargling with water",
-              "nothing_helps"
+              "Deep breathing exercises",
+              "Holding the breath",
+              "Gargling with water",
+              "Nothing helps"
             ]
           }
         },
@@ -7089,74 +7089,74 @@
             "question": "How did the rashes start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the rashes right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this rashes?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "Is the rashes painful?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "sometimes"
+              "Yes",
+              "No",
+              "Sometimes"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the rashes?",
             "type": "multi_choice",
             "options": [
-              "itching",
-              "redness",
-              "swelling",
-              "fever",
-              "difficulty breathing",
-              "none"
+              "Itching",
+              "Redness",
+              "Swelling",
+              "Fever",
+              "Difficulty breathing",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the rashes worse?",
             "type": "multi_choice",
             "options": [
-              "sweating",
-              "heat",
-              "irritants",
-              "allergens",
-              "nothing_specific"
+              "Sweating",
+              "Heat",
+              "Irritants",
+              "Allergens",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the rashes better?",
             "type": "multi_choice",
             "options": [
-              "cool compresses",
-              "hydrocortisone cream",
-              "oral antihistamines",
-              "nothing_helps"
+              "Cool compresses",
+              "Hydrocortisone cream",
+              "Oral antihistamines",
+              "Nothing helps"
             ]
           }
         },
@@ -7254,79 +7254,79 @@
             "question": "How did the dengue fever start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the dengue fever right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this dengue fever?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What is the character of the pain?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "burning",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Burning",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the dengue fever?",
             "type": "multi_choice",
             "options": [
-              "headache",
-              "joint aches",
-              "muscle aches",
-              "nausea",
-              "vomiting",
-              "sore throat",
-              "nasal stuffiness",
-              "none"
+              "Headache",
+              "Joint aches",
+              "Muscle aches",
+              "Nausea",
+              "Vomiting",
+              "Sore throat",
+              "Nasal stuffiness",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the dengue fever worse?",
             "type": "multi_choice",
             "options": [
-              "physical activity",
-              "stress",
-              "heat",
-              "humidity",
-              "nothing_specific"
+              "Physical activity",
+              "Stress",
+              "Heat",
+              "Humidity",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the dengue fever better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "fluid intake",
-              "medication",
-              "cooling measures",
-              "nothing_helps"
+              "Rest",
+              "Fluid intake",
+              "Medication",
+              "Cooling measures",
+              "Nothing helps"
             ]
           }
         },
@@ -7428,83 +7428,83 @@
             "question": "How did the malaria start?",
             "type": "single_choice",
             "options": [
-              "sudden",
-              "gradual_over_minutes",
-              "gradual_over_hours_days",
-              "chronic_recurring",
-              "not_sure"
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours/days",
+              "Chronic / recurring",
+              "Not sure"
             ]
           },
           "severity": {
             "question": "How severe is the malaria right now?",
             "type": "single_choice",
             "options": [
-              "mild",
-              "moderate",
-              "severe",
-              "very_severe_unbearable"
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe / unbearable"
             ]
           },
           "duration": {
             "question": "How long have you had this malaria?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_3_days",
-              "4_7_days",
-              "more_than_1_week",
-              "chronic_months"
+              "Less than 24 hours",
+              "1–3 days",
+              "4–7 days",
+              "More than 1 week",
+              "Chronic (months+)"
             ]
           },
           "pain_character": {
             "question": "What is the character of the pain?",
             "type": "single_choice",
             "options": [
-              "sharp",
-              "dull",
-              "aching",
-              "stabbing",
-              "other"
+              "Sharp",
+              "Dull",
+              "Aching",
+              "Stabbing",
+              "Other"
             ]
           },
           "associated_symptoms": {
             "question": "Which other symptoms are present with the malaria?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "chills",
-              "sweating",
-              "headache",
-              "muscle pain",
-              "nausea",
-              "vomiting",
-              "jaundice",
-              "anemia",
-              "bloody stools",
-              "coma",
-              "convulsions",
-              "none"
+              "Fever",
+              "Chills",
+              "Sweating",
+              "Headache",
+              "Muscle pain",
+              "Nausea",
+              "Vomiting",
+              "Jaundice",
+              "Anemia",
+              "Bloody stools",
+              "Coma",
+              "Convulsions",
+              "None"
             ]
           },
           "aggravating_factors": {
             "question": "What makes the malaria worse?",
             "type": "multi_choice",
             "options": [
-              "exertion",
-              "heat",
-              "humidity",
-              "stress",
-              "nothing_specific"
+              "Exertion",
+              "Heat",
+              "Humidity",
+              "Stress",
+              "Nothing specific"
             ]
           },
           "relieving_factors": {
             "question": "What makes the malaria better?",
             "type": "multi_choice",
             "options": [
-              "rest",
-              "hydration",
-              "medication",
-              "nothing_helps"
+              "Rest",
+              "Hydration",
+              "Medication",
+              "Nothing helps"
             ]
           }
         },

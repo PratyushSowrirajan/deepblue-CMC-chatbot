@@ -12,14 +12,14 @@
       "text": "What is your age?",
       "type": "single_choice",
       "options": [
-        "under_18",
-        "18_25",
-        "26_35",
-        "36_45",
-        "46_55",
-        "56_65",
-        "66_75",
-        "over_75"
+        "Under 18",
+        "18–25",
+        "26–35",
+        "36–45",
+        "46–55",
+        "56–65",
+        "66–75",
+        "Over 75"
       ],
       "is_compulsory": false
     },
@@ -28,10 +28,10 @@
       "text": "What is your sex assigned at birth?",
       "type": "single_choice",
       "options": [
-        "male",
-        "female",
-        "intersex",
-        "prefer_not_to_say"
+        "Male",
+        "Female",
+        "Intersex",
+        "Prefer not to say"
       ],
       "is_compulsory": false
     },
@@ -54,15 +54,15 @@
       "text": "When did your symptoms start?",
       "type": "single_choice",
       "options": [
-        "less_than_1_hour",
-        "1_6_hours",
-        "6_24_hours",
-        "1_3_days",
-        "4_7_days",
-        "1_2_weeks",
-        "2_4_weeks",
-        "more_than_1_month",
-        "more_than_3_months"
+        "Less than 1 hour",
+        "1–6 hours",
+        "6–24 hours",
+        "1–3 days",
+        "4–7 days",
+        "1–2 weeks",
+        "2–4 weeks",
+        "More than 1 month",
+        "More than 3 months"
       ],
       "is_compulsory": true
     },
@@ -71,11 +71,11 @@
       "text": "How severe are your symptoms on a scale of 1-10?",
       "type": "single_choice",
       "options": [
-        "1_2_minimal",
-        "3_4_mild",
-        "5_6_moderate",
-        "7_8_severe",
-        "9_10_worst_ever"
+        "1–2 (Minimal)",
+        "3–4 (Mild)",
+        "5–6 (Moderate)",
+        "7–8 (Severe)",
+        "9–10 (Worst ever)"
       ],
       "is_compulsory": true
     },
@@ -84,11 +84,11 @@
       "text": "How would you describe your symptom pattern?",
       "type": "single_choice",
       "options": [
-        "constant",
-        "intermittent",
-        "getting_worse",
-        "getting_better",
-        "comes_and_goes"
+        "Constant",
+        "Intermittent",
+        "Getting worse",
+        "Getting better",
+        "Comes and goes"
       ],
       "is_compulsory": true
     },
@@ -97,18 +97,18 @@
       "text": "Select any associated symptoms you're experiencing:",
       "type": "single_choice",
       "options": [
-        "fever",
-        "nausea_vomiting",
-        "dizziness",
-        "shortness_of_breath",
-        "chest_pain",
-        "headache",
-        "fatigue",
-        "loss_of_appetite",
-        "sweating",
-        "confusion",
-        "weakness",
-        "none_of_these"
+        "Fever",
+        "Nausea / vomiting",
+        "Dizziness",
+        "Shortness of breath",
+        "Chest pain",
+        "Headache",
+        "Fatigue",
+        "Loss of appetite",
+        "Sweating",
+        "Confusion",
+        "Weakness",
+        "None of these"
       ],
       "is_compulsory": true
     },
@@ -116,25 +116,7 @@
       "id": "q_additional_symptoms",
       "text": "Any other symptoms not listed above?",
       "type": "text",
-      "hint": "Optional: List any additional symptoms",
-      "is_compulsory": true
-    },
-    {
-      "id": "q_pain_location",
-      "text": "Where is your pain/discomfort located? (if applicable)",
-      "type": "single_choice",
-      "options": [
-        "head",
-        "chest",
-        "abdomen_upper",
-        "abdomen_lower",
-        "back",
-        "neck",
-        "arms",
-        "legs",
-        "widespread",
-        "no_pain"
-      ],
+      "hint": "Type any symptoms you have that aren't in the list above, or write 'none'",
       "is_compulsory": true
     },
     {
@@ -142,14 +124,14 @@
       "text": "What makes your symptoms worse?",
       "type": "single_choice",
       "options": [
-        "physical_activity",
-        "eating",
-        "lying_down",
-        "standing_up",
-        "stress",
-        "certain_foods",
-        "nothing_specific",
-        "not_applicable"
+        "Physical activity",
+        "Eating",
+        "Lying down",
+        "Standing up",
+        "Stress",
+        "Certain foods",
+        "Nothing specific",
+        "Not applicable"
       ],
       "is_compulsory": false
     },
@@ -158,12 +140,12 @@
       "text": "What makes your symptoms better?",
       "type": "single_choice",
       "options": [
-        "rest",
-        "medication",
-        "eating",
-        "changing_position",
-        "nothing_helps",
-        "not_sure"
+        "Rest",
+        "Medication",
+        "Eating",
+        "Changing position",
+        "Nothing helps",
+        "Not sure"
       ],
       "is_compulsory": false
     },
@@ -172,17 +154,17 @@
       "text": "Do you have any past medical conditions?",
       "type": "single_choice",
       "options": [
-        "diabetes",
-        "hypertension",
-        "heart_disease",
-        "asthma_copd",
-        "kidney_disease",
-        "liver_disease",
-        "cancer_history",
-        "autoimmune_disease",
-        "mental_health_conditions",
-        "multiple_conditions",
-        "none"
+        "Diabetes",
+        "Hypertension",
+        "Heart disease",
+        "Asthma / COPD",
+        "Kidney disease",
+        "Liver disease",
+        "Cancer history",
+        "Autoimmune disease",
+        "Mental health conditions",
+        "Multiple conditions",
+        "None"
       ],
       "is_compulsory": false
     },
@@ -198,24 +180,24 @@
       "text": "Have you had any surgeries?",
       "type": "single_choice",
       "options": [
-        "yes",
-        "no"
+        "Yes",
+        "No"
       ],
       "is_compulsory": false
     },
     {
-      "id": "q_family_history", 
+      "id": "q_family_history",
       "text": "Any significant family medical history?",
       "type": "single_choice",
       "options": [
-        "heart_disease",
-        "diabetes",
-        "cancer",
-        "stroke",
-        "mental_illness",
-        "autoimmune_disease",
-        "multiple_conditions",
-        "none_known"
+        "Heart disease",
+        "Diabetes",
+        "Cancer",
+        "Stroke",
+        "Mental illness",
+        "Autoimmune disease",
+        "Multiple conditions",
+        "None known"
       ],
       "is_compulsory": false
     },
@@ -224,11 +206,11 @@
       "text": "Are you currently taking any medications?",
       "type": "single_choice",
       "options": [
-        "prescription_medications",
-        "over_the_counter_only",
-        "herbal_supplements",
-        "multiple_medications",
-        "none"
+        "Prescription medications",
+        "Over-the-counter only",
+        "Herbal supplements",
+        "Multiple medications",
+        "None"
       ],
       "is_compulsory": false
     },
@@ -244,12 +226,12 @@
       "text": "Do you have any known allergies?",
       "type": "single_choice",
       "options": [
-        "medication_allergy",
-        "food_allergy",
-        "environmental_allergy",
-        "latex_allergy",
-        "multiple_allergies",
-        "none_known"
+        "Medication allergy",
+        "Food allergy",
+        "Environmental allergy",
+        "Latex allergy",
+        "Multiple allergies",
+        "None known"
       ],
       "is_compulsory": false
     },
@@ -265,10 +247,10 @@
       "text": "What is your smoking status?",
       "type": "single_choice",
       "options": [
-        "never_smoked",
-        "former_smoker",
-        "current_smoker",
-        "vaping_only"
+        "Never smoked",
+        "Former smoker",
+        "Current smoker",
+        "Vaping only"
       ],
       "is_compulsory": false
     },
@@ -277,11 +259,11 @@
       "text": "How often do you consume alcohol?",
       "type": "single_choice",
       "options": [
-        "never",
-        "rarely",
-        "socially",
-        "regularly",
-        "daily"
+        "Never",
+        "Rarely",
+        "Socially",
+        "Regularly",
+        "Daily"
       ],
       "is_compulsory": false
     },
@@ -290,15 +272,15 @@
       "text": "Have you experienced any recent events that might be related?",
       "type": "single_choice",
       "options": [
-        "recent_injury",
-        "recent_travel",
-        "recent_illness",
-        "new_medication",
-        "dietary_change",
-        "stress_event",
-        "exposure_to_sick_person",
-        "insect_bite",
-        "none"
+        "Recent injury",
+        "Recent travel",
+        "Recent illness",
+        "New medication",
+        "Dietary change",
+        "Stress event",
+        "Exposure to sick person",
+        "Insect bite",
+        "None"
       ],
       "is_compulsory": false
     },
@@ -307,11 +289,11 @@
       "text": "Have you already tried any treatment for this issue?",
       "type": "single_choice",
       "options": [
-        "home_remedies",
-        "over_the_counter_meds",
-        "prescription_meds",
-        "nothing_yet",
-        "multiple_treatments"
+        "Home remedies",
+        "Over-the-counter meds",
+        "Prescription meds",
+        "Nothing yet",
+        "Multiple treatments"
       ],
       "is_compulsory": false
     },
@@ -330,13 +312,13 @@
         "text": "What is your pregnancy status?",
         "type": "single_choice",
         "options": [
-          "pregnant",
-          "trying_to_conceive",
-          "postpartum_0_6_weeks",
-          "postpartum_6_weeks_plus",
-          "breastfeeding",
-          "menopausal",
-          "not_applicable"
+          "Pregnant",
+          "Trying to conceive",
+          "Postpartum (0–6 weeks)",
+          "Postpartum (6+ weeks)",
+          "Breastfeeding",
+          "Menopausal",
+          "Not applicable"
         ],
         "is_compulsory": true
       },
@@ -345,13 +327,13 @@
         "text": "What is your current menstrual cycle status?",
         "type": "single_choice",
         "options": [
-          "regular_cycle",
-          "irregular_cycle",
-          "currently_menstruating",
-          "missed_period",
-          "heavy_bleeding",
-          "painful_periods",
-          "not_applicable"
+          "Regular cycle",
+          "Irregular cycle",
+          "Currently menstruating",
+          "Missed period",
+          "Heavy bleeding",
+          "Painful periods",
+          "Not applicable"
         ],
         "is_compulsory": true
       }

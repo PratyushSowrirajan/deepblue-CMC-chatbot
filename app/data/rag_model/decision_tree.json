@@ -17,9 +17,7 @@
         "recent_events"
       ]
     },
-
     "symptoms": [
-
       {
         "symptom_id": "chest_pain",
         "label": "Chest Pain",
@@ -41,7 +39,6 @@
           "chest uncomfortable"
         ],
         "default_urgency": "red_emergency",
-
         "triage_rationale": {
           "why_assess_carefully": [
             "May represent life-threatening cardiac ischemia",
@@ -53,7 +50,6 @@
           "sex_specific_notes": "Females may present with atypical symptoms (fatigue, nausea, jaw pain)",
           "pregnancy_note": "Pregnancy increases clot risk (PE concern)"
         },
-
         "immediate_red_flags": [
           "Crushing or pressure-like pain",
           "Pain radiating to arm, jaw, or back",
@@ -62,77 +58,75 @@
           "Sudden onset severe pain",
           "Known heart disease"
         ],
-
         "followup_questions": {
           "onset_type": {
             "question": "How did the chest pain start?",
             "type": "single_choice",
             "options": [
-              "sudden_severe",
-              "gradual_over_minutes",
-              "gradual_over_hours",
-              "came_and_went",
-              "not_sure"
+              "Sudden and severe",
+              "Gradual over minutes",
+              "Gradual over hours",
+              "Came and went",
+              "Not sure"
             ]
           },
           "pain_character": {
             "question": "How would you describe the chest pain?",
             "type": "single_choice",
             "options": [
-              "pressure_or_heaviness",
-              "sharp_stabbing",
-              "burning",
-              "tightness",
-              "aching",
-              "other"
+              "Pressure or heaviness",
+              "Sharp or stabbing",
+              "Burning",
+              "Tightness",
+              "Aching",
+              "Other"
             ]
           },
           "radiation": {
             "question": "Does the pain spread anywhere?",
             "type": "single_choice",
             "options": [
-              "left_arm",
-              "right_arm",
-              "both_arms",
-              "jaw_neck",
-              "back",
-              "no_radiation"
+              "Left arm",
+              "Right arm",
+              "Both arms",
+              "Jaw or neck",
+              "Back",
+              "No radiation"
             ]
           },
           "activity_relation": {
             "question": "Did it start during physical activity or stress?",
             "type": "single_choice",
             "options": [
-              "during_exertion",
-              "at_rest",
-              "after_emotional_stress",
-              "unknown"
+              "During exertion",
+              "At rest",
+              "After emotional stress",
+              "Unknown"
             ]
           },
           "breathing_relation": {
             "question": "Does the pain worsen with deep breathing or coughing?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "not_sure"
+              "Yes",
+              "No",
+              "Not sure"
             ]
           },
           "associated_symptoms": {
             "question": "Are any of these present with the chest pain?",
             "type": "multi_choice",
             "options": [
-              "shortness_of_breath",
-              "sweating",
-              "nausea_vomiting",
-              "dizziness_fainting",
-              "palpitations",
-              "cough",
-              "none"
+              "Shortness of breath",
+              "Sweating",
+              "Nausea / vomiting",
+              "Dizziness or fainting",
+              "Palpitations",
+              "Cough",
+              "None"
             ]
           }
         },
-
         "urgency_decision_logic": {
           "red_emergency": [
             "Pressure/crushing pain + radiation to arm/jaw",
@@ -152,14 +146,12 @@
             "Only if clearly musculoskeletal and reproducible with movement"
           ]
         },
-
         "llm_analysis_tips": [
           "Combine pain quality + radiation + exertional onset for cardiac risk scoring",
           "Young age does NOT exclude serious pathology",
           "Pregnancy + chest pain → consider PE even if vitals normal",
           "When in doubt, assume emergency"
         ],
-
         "advice": {
           "action": "Emergency evaluation needed for most chest pain",
           "emergency_if": [
@@ -173,7 +165,6 @@
           "do_not_delay": true
         }
       },
-
       {
         "symptom_id": "fever",
         "label": "Fever",
@@ -197,7 +188,6 @@
           "shivering"
         ],
         "default_urgency": "yellow_doctor_visit",
-
         "triage_rationale": {
           "why_assess_carefully": [
             "Duration matters - short fever (<3 days) may be viral, prolonged needs evaluation",
@@ -208,67 +198,65 @@
           "age_factor": "Elderly and infants may have serious illness with mild fever",
           "immunocompromised_note": "Lower threshold for escalation"
         },
-
         "followup_questions": {
           "duration": {
             "question": "How long have you had fever?",
             "type": "single_choice",
             "options": [
-              "less_than_24_hours",
-              "1_2_days",
-              "3_5_days",
-              "6_7_days",
-              "more_than_1_week",
-              "not_sure"
+              "Less than 24 hours",
+              "1–2 days",
+              "3–5 days",
+              "6–7 days",
+              "More than 1 week",
+              "Not sure"
             ]
           },
           "max_temperature": {
             "question": "What is the highest recorded temperature?",
             "type": "single_choice",
             "options": [
-              "below_38C_100F",
-              "38_39C_100_102F",
-              "39_40C_102_104F",
-              "above_40C_104F",
-              "not_measured"
+              "Below 38°C / 100°F",
+              "38–39°C / 100–102°F",
+              "39–40°C / 102–104°F",
+              "Above 40°C / 104°F",
+              "Not measured"
             ]
           },
           "pattern": {
             "question": "How does the fever behave?",
             "type": "single_choice",
             "options": [
-              "constant",
-              "comes_and_goes",
-              "worse_at_night",
-              "improving",
-              "worsening"
+              "Constant",
+              "Comes and goes",
+              "Worse at night",
+              "Improving",
+              "Worsening"
             ]
           },
           "associated_symptoms": {
             "question": "Which symptoms are present with the fever?",
             "type": "multi_choice",
             "options": [
-              "cough",
-              "sore_throat",
-              "rash",
-              "burning_urination",
-              "abdominal_pain",
-              "neck_stiffness",
-              "confusion",
-              "none"
+              "Cough",
+              "Sore throat",
+              "Rash",
+              "Burning urination",
+              "Abdominal pain",
+              "Neck stiffness",
+              "Confusion",
+              "None"
             ]
           },
           "medication_response": {
             "question": "Does the fever reduce with medication like paracetamol?",
             "type": "single_choice",
             "options": [
-              "yes_temporarily",
-              "no_response",
-              "not_tried"
+              "Yes, temporarily",
+              "No response",
+              "Not tried"
             ]
           }
         },
-
         "urgency_decision_logic": {
           "red_emergency": [
             "Duration > 3 days + no medication response",
@@ -289,14 +277,12 @@
             "No red flag symptoms"
           ]
         },
-
         "llm_analysis_tips": [
           "Duration is critical - >3 days requires escalation",
           "Pattern + temperature + medication response together indicate severity",
           "Look for localization clues (urinary, respiratory, GI)",
           "Elderly may have serious infection without high temperature"
         ],
-
         "advice": {
           "action": "Assessment needed to determine urgency",
           "escalation_criteria": [
@@ -315,7 +301,6 @@
           ]
         }
       },
-
       {
         "symptom_id": "headache",
         "label": "Headache",
@@ -339,7 +324,6 @@
           "terrible headache"
         ],
         "default_urgency": "green_home_care",
-
         "triage_rationale": {
           "why_assess_carefully": [
             "Most headaches are benign (tension-type or migraine)",
@@ -350,94 +334,92 @@
           "age_factor": "New headache >50 years requires caution",
           "pregnancy_note": "Headache with visual changes needs escalation"
         },
-
         "followup_questions": {
           "onset_type": {
             "question": "How did the headache start?",
             "type": "single_choice",
             "options": [
-              "gradual_over_hours_days",
-              "sudden_within_seconds",
-              "woke_up_with_it",
-              "after_injury",
-              "not_sure"
+              "Gradual over hours/days",
+              "Sudden within seconds",
+              "Woke up with it",
+              "After injury",
+              "Not sure"
             ]
           },
           "severity_description": {
             "question": "Is this the worst headache you've ever had?",
             "type": "single_choice",
             "options": [
-              "yes_worst_ever",
-              "very_severe",
-              "moderate",
-              "mild"
+              "Yes, worst ever",
+              "Very severe",
+              "Moderate",
+              "Mild"
             ]
           },
           "headache_type": {
             "question": "Which best describes your headache?",
             "type": "single_choice",
             "options": [
-              "band_like_pressure",
-              "throbbing_one_side",
-              "sharp_stabbing",
-              "dull_generalized",
-              "other"
+              "Band-like pressure",
+              "Throbbing on one side",
+              "Sharp or stabbing",
+              "Dull / generalized",
+              "Other"
             ]
           },
           "duration": {
             "question": "How long does each headache episode last?",
             "type": "single_choice",
             "options": [
-              "less_than_1_hour",
-              "1_4_hours",
-              "4_24_hours",
-              "more_than_24_hours",
-              "constant_for_days"
+              "Less than 1 hour",
+              "1–4 hours",
+              "4–24 hours",
+              "More than 24 hours",
+              "Constant for days"
             ]
           },
           "frequency": {
             "question": "How often do these headaches occur?",
             "type": "single_choice",
             "options": [
-              "first_time",
-              "occasional",
-              "frequent",
-              "daily",
-              "this_is_different_from_usual"
+              "First time",
+              "Occasional",
+              "Frequent",
+              "Daily",
+              "This is different from usual"
             ]
           },
           "light_sound_sensitivity": {
             "question": "Do light or sounds worsen the headache?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no",
-              "not_sure"
+              "Yes",
+              "No",
+              "Not sure"
             ]
           },
           "neurological_symptoms": {
             "question": "Any weakness, vision loss, or speech difficulty?",
             "type": "single_choice",
             "options": [
-              "yes",
-              "no"
+              "Yes",
+              "No"
             ]
           },
           "associated_symptoms": {
             "question": "Are any of these present with the headache?",
             "type": "multi_choice",
             "options": [
-              "fever",
-              "neck_stiffness",
-              "nausea_vomiting",
-              "confusion",
-              "vision_changes",
-              "weakness_numbness",
-              "none"
+              "Fever",
+              "Neck stiffness",
+              "Nausea / vomiting",
+              "Confusion",
+              "Vision changes",
+              "Weakness / numbness",
+              "None"
             ]
           }
         },
-
         "urgency_decision_logic": {
           "red_emergency": [
             "Sudden onset 'worst-ever' headache (thunderclap)",
@@ -460,14 +442,12 @@
             "Responding to over-the-counter medication"
           ]
         },
-
         "llm_analysis_tips": [
           "Sudden onset + severe → emergency until proven otherwise",
           "Pattern matters - is this new or different from usual?",
           "Rule out red flags before offering reassurance",
           "Age >50 with new headache requires investigation"
         ],
-
         "advice": {
           "action": "Assessment needed to determine urgency",
           "emergency_if": [
@@ -490,7 +470,6 @@
           ]
         }
       }
-
     ]
   }
 }
