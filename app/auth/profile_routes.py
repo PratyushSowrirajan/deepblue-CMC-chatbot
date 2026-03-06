@@ -411,6 +411,17 @@ async def bootstrap(request: Request):
 
     try:
         profile = get_profile_by_user_id(user_id)
+        # q_profile_image is stored on users.profile_image, not in user_profiles rows.
+        # Prepend it so the app receives the full profile including the image.
+        profile_image = get_profile_image(user_id)
+        if profile_image:
+            profile = [
+                {
+                    "question_id": "q_profile_image",
+                    "question_text": "Profile Image",
+                    "answer_json": {"type": "image", "value": profile_image},
+                }
+            ] + profile
     except Exception as e:
         profile = []
         print(f"[BOOTSTRAP] Failed to fetch profile for {user_id[:8]}: {e}")
