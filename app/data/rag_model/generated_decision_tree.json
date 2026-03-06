@@ -7050,6 +7050,333 @@
           "reason": "Prompt assessment and treatment are crucial to prevent vision loss and complications.",
           "do_not_delay": true
         }
+      },
+      {
+        "symptom_id": "fever",
+        "label": "Fever",
+        "keywords": [
+          "fever",
+          "high temperature",
+          "body aches",
+          "chills",
+          "sweating",
+          "headache",
+          "fatigue",
+          "nausea",
+          "vomiting",
+          "diarrhea"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Fever can be a symptom of a serious underlying condition, such as a bacterial infection or a viral infection.",
+            "Fever can be a sign of a systemic infection, such as sepsis.",
+            "Fever can be a symptom of a heat-related illness, such as heat exhaustion or heat stroke.",
+            "Fever can be a symptom of a neurological condition, such as meningitis or encephalitis."
+          ],
+          "age_factor": "Children under 3 months old and adults over 65 years old are at higher risk for complications from fever.",
+          "sex_specific_notes": "Pregnant women are at higher risk for complications from fever.",
+          "pregnancy_note": "Fever during pregnancy can increase the risk of complications, such as preterm labor and fetal distress."
+        },
+        "immediate_red_flags": [
+          "Difficulty breathing",
+          "Seizures",
+          "Confusion",
+          "Unconsciousness",
+          "Severe headache",
+          "Stiff neck",
+          "High fever with headache and stiff neck",
+          "Sudden hard to wake up, too sleepy, or confused"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the fever start?",
+            "type": "single_choice",
+            "options": [
+              "Sudden",
+              "Gradual over minutes",
+              "Gradual over hours or days",
+              "Chronic or recurring",
+              "Not sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the fever right now?",
+            "type": "single_choice",
+            "options": [
+              "Mild",
+              "Moderate",
+              "Severe",
+              "Very severe or unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this fever?",
+            "type": "single_choice",
+            "options": [
+              "Less than 24 hours",
+              "1-3 days",
+              "4-7 days",
+              "More than 1 week",
+              "Chronic or recurring"
+            ]
+          },
+          "pain_character": {
+            "question": "What is the character of the fever?",
+            "type": "single_choice",
+            "options": [
+              "Intermittent",
+              "Continuous",
+              "Worsening",
+              "Improving",
+              "Other"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the fever?",
+            "type": "multi_choice",
+            "options": [
+              "Headache",
+              "Fatigue",
+              "Nausea or vomiting",
+              "Diarrhea",
+              "Abdominal pain",
+              "None"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the fever worse?",
+            "type": "multi_choice",
+            "options": [
+              "Heat or humidity",
+              "Physical activity",
+              "Stress",
+              "Other",
+              "Nothing specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the fever better?",
+            "type": "multi_choice",
+            "options": [
+              "Rest",
+              "Fluids",
+              "Medication",
+              "Cooling measures",
+              "Nothing helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Difficulty breathing",
+            "Seizures",
+            "Confusion",
+            "Unconsciousness",
+            "Severe headache with stiff neck"
+          ],
+          "yellow_doctor_visit": [
+            "High fever with headache and stiff neck",
+            "Sudden hard to wake up, too sleepy, or confused",
+            "Severe body aches or muscle pain",
+            "Vomiting or diarrhea",
+            "Fever that lasts more than 3 days"
+          ],
+          "green_home_care": [
+            "Mild fever with no other symptoms",
+            "Fever that improves with rest and fluids",
+            "Fever that is accompanied by a viral infection, such as the common cold or flu"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's age and medical history when assessing the severity of the fever.",
+          "Fever can be a symptom of a serious underlying condition, such as a bacterial infection or a viral infection.",
+          "Fever can be a sign of a systemic infection, such as sepsis.",
+          "Fever can be a symptom of a heat-related illness, such as heat exhaustion or heat stroke."
+        ],
+        "advice": {
+          "action": "Seek medical attention if the fever is severe, lasts more than 3 days, or is accompanied by other symptoms such as headache, stiff neck, or difficulty breathing.",
+          "emergency_if": [
+            "Difficulty breathing",
+            "Seizures",
+            "Confusion",
+            "Unconsciousness",
+            "Severe headache with stiff neck"
+          ],
+          "doctor_visit_if": [
+            "High fever with headache and stiff neck",
+            "Sudden hard to wake up, too sleepy, or confused",
+            "Severe body aches or muscle pain",
+            "Vomiting or diarrhea"
+          ],
+          "home_care_if": [
+            "Mild fever with no other symptoms",
+            "Fever that improves with rest and fluids",
+            "Fever that is accompanied by a viral infection, such as the common cold or flu"
+          ],
+          "reason": "To determine the cause of the fever and provide appropriate treatment.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "rashes",
+        "label": "Rashes",
+        "keywords": [
+          "rash",
+          "itchy skin",
+          "red skin",
+          "skin irritation",
+          "skin inflammation",
+          "allergic reaction",
+          "infection",
+          "fever",
+          "painful skin"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Rashes can be a sign of a serious health condition, such as an infection or allergic reaction.",
+            "Some rashes can be contagious, so it's essential to assess the situation carefully.",
+            "Rashes can be a symptom of a systemic infection, which requires prompt medical attention.",
+            "Rashes can be a sign of an allergic reaction, which can be life-threatening if not treated promptly."
+          ],
+          "age_factor": "Children and older adults are more susceptible to serious skin conditions.",
+          "sex_specific_notes": "Pregnant women may be more prone to skin conditions due to hormonal changes.",
+          "pregnancy_note": "Pregnant women should consult their healthcare provider if they experience any skin symptoms."
+        },
+        "immediate_red_flags": [
+          "Severe pain",
+          "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+          "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+          "Fever",
+          "Difficulty breathing"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the rashes start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the rashes right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this rashes?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is the rashes painful?",
+            "type": "single_choice",
+            "options": [
+              "yes",
+              "no",
+              "sometimes"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the rashes?",
+            "type": "multi_choice",
+            "options": [
+              "fever",
+              "itching",
+              "swelling",
+              "redness",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the rashes worse?",
+            "type": "multi_choice",
+            "options": [
+              "sweating",
+              "heat",
+              "cold",
+              "irritating substances",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the rashes better?",
+            "type": "multi_choice",
+            "options": [
+              "cool compresses",
+              "hydrocortisone cream",
+              "antihistamines",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Difficulty breathing",
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever"
+          ],
+          "yellow_doctor_visit": [
+            "Mild to moderate pain",
+            "Itching or swelling",
+            "Redness or inflammation",
+            "Fever",
+            "Recent exposure to allergens or irritants"
+          ],
+          "green_home_care": [
+            "Mild rashes without pain or itching",
+            "Rashes that are improving with self-care",
+            "No fever or other concerning symptoms"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any recent exposures to allergens or irritants.",
+          "Assess the patient's overall condition and any potential underlying conditions.",
+          "Be aware of any potential interactions between medications and the patient's symptoms.",
+          "Consider the patient's age and any age-specific considerations."
+        ],
+        "advice": {
+          "action": "Seek medical attention if the rashes worsen or do not improve with self-care.",
+          "emergency_if": [
+            "Difficulty breathing",
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever"
+          ],
+          "doctor_visit_if": [
+            "Mild to moderate pain",
+            "Itching or swelling",
+            "Redness or inflammation",
+            "Fever",
+            "Recent exposure to allergens or irritants"
+          ],
+          "home_care_if": [
+            "Mild rashes without pain or itching",
+            "Rashes that are improving with self-care",
+            "No fever or other concerning symptoms"
+          ],
+          "reason": "To determine the underlying cause of the rashes and provide appropriate treatment.",
+          "do_not_delay": true
+        }
       }
     ]
   }

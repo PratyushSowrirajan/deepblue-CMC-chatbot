@@ -23,14 +23,8 @@ from tavily import TavilyClient
 # ─────────────────────────────  API KEYS  ────────────────────────────────────
 from dotenv import load_dotenv
 load_dotenv()
-
-TAVILY_API_KEY  = os.getenv("TAVILY_API_KEY")
+TAVILY_API_KEY   = os.getenv("TAVILY_API_KEY")
 CEREBRAS_API_KEY = os.getenv("RAG_CEREBRAS_API_KEY")
-
-if not TAVILY_API_KEY:
-    raise ValueError("TAVILY_API_KEY is not set in environment")
-if not CEREBRAS_API_KEY:
-    raise ValueError("RAG_CEREBRAS_API_KEY is not set in environment")
 
 # ─────────────────────  GLOBAL EMBEDDER SINGLETON  ───────────────────────────
 # Loaded once per process — all HybridRAG instances share it.
@@ -308,23 +302,11 @@ def fetch_medlineplus(symptom: str) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 #  STEP 2 – CEREBRAS LLM  →  structured decision-tree JSON
 # ══════════════════════════════════════════════════════════════════════════════
-SYSTEM_PROMPT = """You are a clinical decision-support AI that produces a single valid JSON object.
-
-YOUR ONLY DATA SOURCE IS THE RAG CONTEXT PROVIDED BY THE USER.
-You must NOT use your training memory, prior knowledge, or generic medical templates for any
-option values. Every question and every answer option you write must be directly traceable to
-a fact stated in the retrieved RAG context.
-
-This is especially mandatory for these four fields:
-  - pain_character   (how the symptom physically feels or presents)
-  - associated_symptoms  (what co-occurs with this specific symptom)
-  - aggravating_factors  (what specifically worsens this symptom)
-  - relieving_factors    (what specifically helps this symptom)
-
-Before writing any option for those four fields, locate the supporting sentence in the RAG
-context. If you cannot find it, do not write it.
-
-Output ONLY the raw JSON object — no markdown fences, no explanation, nothing else."""
+SYSTEM_PROMPT = """You are a senior medical AI engineer and clinical decision-support specialist.
+Your job is to produce a SINGLE, VALID JSON object (no markdown fences, no extra text) 
+that represents a clinical triage decision tree for a given medical symptom.
+The JSON must follow the exact schema provided by the user and use ONLY medically accurate
+information drawn from the provided RAG context."""
 
 
 def build_llm_prompt(symptom: str, rag_chunks: list[str]) -> str:
@@ -334,51 +316,29 @@ def build_llm_prompt(symptom: str, rag_chunks: list[str]) -> str:
     if len(rag_text) > 8000:
         rag_text = rag_text[:8000] + "\n... [truncated]"
 
-    return f"""=== RETRIEVED MEDICAL CONTEXT (MedlinePlus via Tavily) ===
+    return f"""
+=== RETRIEVED MEDICAL CONTEXT (RAG – MedlinePlus) ===
 {rag_text}
-=== END OF RAG CONTEXT ===
 
-─────────────────────────────────────────────────────────────
-STEP 1 — READ BEFORE YOU WRITE (internal reasoning, not output)
+=== TASK ===
+Using ONLY the medical information above, generate a comprehensive clinical decision-tree JSON
+object for the symptom: "{symptom}"
 
-Before generating the JSON, scan the RAG context above and answer these
-four questions in your head:
-
-  Q-A: What physical qualities or sensations does the RAG use to describe
-       how "{symptom}" feels? (these become pain_character options)
-
-  Q-B: Which other symptoms or conditions does the RAG say commonly occur
-       alongside "{symptom}"? (these become associated_symptoms options)
-
-  Q-C: What does the RAG say specifically makes "{symptom}" worse — diet,
-       activity, environment, conditions? (these become aggravating_factors)
-
-  Q-D: What does the RAG say specifically relieves or treats "{symptom}" —
-       medications, behaviours, positions, interventions? (these become
-       relieving_factors options)
-
-If the RAG does not clearly answer one of these questions, search harder —
-look for synonyms, related conditions, treatment sections. Only after you
-have RAG-sourced answers for all four should you proceed to STEP 2.
-
-─────────────────────────────────────────────────────────────
-STEP 2 — GENERATE JSON
-
-Now produce the JSON object for symptom: "{symptom}"
-
-Use this EXACT schema:
+The JSON object must follow this EXACT schema (same field names, same nesting depth):
 
 {{
   "symptom_id": "<snake_case_id>",
   "label": "<Human Readable Label>",
-  "keywords": ["keyword1", "keyword2", "...(12-16 terms a patient might type)"],
+  "keywords": [
+    "keyword1", "keyword2", "...(12-16 terms a patient might use)"
+  ],
   "default_urgency": "<red_emergency | yellow_doctor_visit | green_home_care>",
 
   "triage_rationale": {{
     "why_assess_carefully": ["reason1", "reason2", "reason3", "reason4"],
-    "age_factor": "<age-specific consideration drawn from RAG>",
-    "sex_specific_notes": "<sex-specific note drawn from RAG>",
-    "pregnancy_note": "<pregnancy-specific note drawn from RAG>"
+    "age_factor": "<age-specific consideration>",
+    "sex_specific_notes": "<sex-specific note if applicable>",
+    "pregnancy_note": "<pregnancy-specific note>"
   }},
 
   "immediate_red_flags": [
@@ -387,151 +347,75 @@ Use this EXACT schema:
 
   "followup_questions": {{
     "onset_type": {{
-      "question": "How did the {symptom} start?",
+      "question": "<How did the {symptom} start?>",
       "type": "single_choice",
-      "options": ["Sudden", "Gradual over minutes", "Gradual over hours or days", "Chronic or recurring", "Not sure"]
+      "options": ["sudden", "gradual_over_minutes", "gradual_over_hours_days", "chronic_recurring", "not_sure"]
     }},
     "severity": {{
-      "question": "How severe is the {symptom} right now?",
+      "question": "<How severe is the {symptom} right now?>",
       "type": "single_choice",
-      "options": ["Mild", "Moderate", "Severe", "Very severe or unbearable"]
+      "options": ["mild", "moderate", "severe", "very_severe_unbearable"]
     }},
     "duration": {{
-      "question": "How long have you had this {symptom}?",
+      "question": "<How long have you had this {symptom}?>",
       "type": "single_choice",
-      "options": ["Less than 24 hours", "1-3 days", "4-7 days", "More than 1 week", "Chronic (months+)"]
+      "options": ["less_than_24_hours", "1_3_days", "4_7_days", "more_than_1_week", "chronic_months"]
     }},
     "pain_character": {{
-      "question": "<A precise question about how {symptom} physically feels or presents — formed from what Q-A found in the RAG>",
+      "question": "<Symptom-appropriate character question>",
       "type": "single_choice",
-      "options": [
-        "<Physical descriptor 1 the RAG uses for {symptom}>",
-        "<Physical descriptor 2 from RAG>",
-        "<Physical descriptor 3 from RAG>",
-        "<Physical descriptor 4 from RAG>",
-        "Other"
-      ]
+      "options": ["option1", "option2", "option3", "option4", "other"]
     }},
     "associated_symptoms": {{
-      "question": "<Ask which other symptoms commonly occur with {symptom} — name the actual conditions from Q-B>",
+      "question": "<Which other symptoms are present with the {symptom}?>",
       "type": "multi_choice",
-      "options": [
-        "<Co-occurring symptom 1 that Q-B found in the RAG for {symptom}>",
-        "<Co-occurring symptom 2 from RAG>",
-        "<Co-occurring symptom 3 from RAG>",
-        "<Co-occurring symptom 4 from RAG>",
-        "<Co-occurring symptom 5 from RAG>",
-        "None"
-      ]
+      "options": ["symptom_a", "symptom_b", "symptom_c", "symptom_d", "symptom_e", "none"]
     }},
     "aggravating_factors": {{
-      "question": "<Ask what makes {symptom} worse — use the specific factors Q-C found in the RAG>",
+      "question": "<What makes the {symptom} worse?>",
       "type": "multi_choice",
-      "options": [
-        "<Aggravating factor 1 that Q-C found in RAG for {symptom}>",
-        "<Aggravating factor 2 from RAG>",
-        "<Aggravating factor 3 from RAG>",
-        "<Aggravating factor 4 from RAG>",
-        "Nothing specific"
-      ]
+      "options": ["factor1", "factor2", "factor3", "factor4", "nothing_specific"]
     }},
     "relieving_factors": {{
-      "question": "<Ask what makes {symptom} better — use the specific measures Q-D found in the RAG>",
+      "question": "<What makes the {symptom} better?>",
       "type": "multi_choice",
-      "options": [
-        "<Relief measure 1 that Q-D found in RAG for {symptom}>",
-        "<Relief measure 2 from RAG>",
-        "<Relief measure 3 from RAG>",
-        "<Relief measure 4 from RAG>",
-        "Nothing helps"
-      ]
+      "options": ["factor1", "factor2", "factor3", "nothing_helps"]
     }}
   }},
 
   "urgency_decision_logic": {{
-    "red_emergency": ["condition1 from RAG", "condition2", "condition3"],
-    "yellow_doctor_visit": ["condition1 from RAG", "condition2", "condition3"],
-    "green_home_care": ["condition1 from RAG", "condition2"]
+    "red_emergency": [
+      "Condition that requires immediate ER", "...(3-5 items)"
+    ],
+    "yellow_doctor_visit": [
+      "Condition that requires doctor visit", "...(3-5 items)"
+    ],
+    "green_home_care": [
+      "Condition that can be managed at home", "...(3-5 items)"
+    ]
   }},
 
-  "llm_analysis_tips": ["tip1", "tip2", "tip3", "tip4"],
+  "llm_analysis_tips": [
+    "tip1", "tip2", "tip3", "tip4"
+  ],
 
   "advice": {{
-    "action": "<Primary recommended action from RAG>",
+    "action": "<Primary recommended action string>",
     "emergency_if": ["condition1", "condition2", "condition3"],
     "doctor_visit_if": ["condition1", "condition2"],
     "home_care_if": ["condition1", "condition2"],
-    "reason": "<Short reason>",
+    "reason": "<Short reason for the primary action>",
     "do_not_delay": <true | false>
   }}
 }}
 
-─────────────────────────────────────────────────────────────
 RULES:
-
-1. RAG IS LAW — every option in pain_character, associated_symptoms,
-   aggravating_factors, and relieving_factors must come from the RAG context
-   above. Not from your training data. Not from memory. From the RAG text.
-
-2. onset_type / severity / duration — copy the option lists EXACTLY as shown
-   in the schema. Do not change a single word.
-
-3. Angle-bracket placeholders like "<Physical descriptor 1...>" are structural
-   instructions — REPLACE them with actual content from the RAG. Do not copy
-   the angle-bracket text itself into the output.
-
-4. SPECIFICITY CHECK — before writing each option, ask: "Could this option
-   appear word-for-word in a completely different symptom's JSON?" If yes, it
-   is too generic. Find something more specific in the RAG.
-
-5. Return ONLY the raw JSON object — NO markdown fences, NO explanation text,
-   NO text before the opening brace or after the closing brace.
-
-6. The JSON must be 100% valid and parseable.
-
-7. All option values must be human-readable display strings:
-   "1-3 days" not "1_3_days", spaces not underscores, natural phrases a
-   patient can read aloud.
+1. Use ONLY medically accurate information from the RAG context.
+2. Replace ALL placeholder text (e.g. "option1", "factor1") with real medical terms.
+3. The followup_questions must be clinically relevant to "{symptom}".
+4. Return ONLY the raw JSON object — NO markdown fences, NO explanation text.
+5. Ensure the JSON is 100% valid and parseable.
 """
-
-
-def _snake_to_display(s: str) -> str:
-    """Convert a snake_case option string to a human-readable display string.
-
-    Examples:
-        "1_3_days"              → "1-3 days"
-        "less_than_24_hours"    → "Less than 24 hours"
-        "nothing_specific"      → "Nothing specific"
-        "Gradual over minutes"  → unchanged (already display format)
-    """
-    if "_" not in s:
-        return s  # already fine
-
-    import re as _re
-
-    # Handle numeric ranges like "1_3_days", "4_7_days"
-    def replace_numeric_range(m):
-        return f"{m.group(1)}-{m.group(2)} "
-
-    result = _re.sub(r"(\d+)_(\d+)_", replace_numeric_range, s)
-    result = result.replace("_", " ")
-    # Capitalise first letter only (not every word — keeps "over" lowercase)
-    result = result[0].upper() + result[1:] if result else result
-    return result.strip()
-
-
-def _sanitize_options(node: object) -> object:
-    """Recursively walk a parsed dict/list and fix any snake_case option strings."""
-    if isinstance(node, dict):
-        for key, value in node.items():
-            if key == "options" and isinstance(value, list):
-                node[key] = [_snake_to_display(v) if isinstance(v, str) else v for v in value]
-            else:
-                _sanitize_options(value)
-    elif isinstance(node, list):
-        for item in node:
-            _sanitize_options(item)
-    return node
 
 
 def call_cerebras(symptom: str, rag_chunks: list[str]) -> dict:
@@ -539,8 +423,7 @@ def call_cerebras(symptom: str, rag_chunks: list[str]) -> dict:
     prompt  = build_llm_prompt(symptom, rag_chunks)
 
     models_to_try = [
-        "llama3.3-70b",   # best quality — try first
-        "llama3.1-8b",    # fallback if 70b unavailable
+        "llama3.1-8b",    # only available model
     ]
 
     raw_response = ""
@@ -579,9 +462,7 @@ def call_cerebras(symptom: str, rag_chunks: list[str]) -> dict:
     if brace_start != -1 and brace_end != -1:
         cleaned = cleaned[brace_start : brace_end + 1]
 
-    parsed = json.loads(cleaned)
-    _sanitize_options(parsed)
-    return parsed
+    return json.loads(cleaned)
 
 
 # ══════════════════════════════════════════════════════════════════════════════

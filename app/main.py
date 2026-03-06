@@ -57,11 +57,7 @@ from app.auth.medical_db import init_medical_db
 from app.auth.reports_db import init_reports_db, save_report
 app.include_router(profile_router)
 
-# ─────────────────────────────
-# Vision Model Routes (/vision/analyze)
-# ─────────────────────────────
-from app.vision_model.vision_routes import router as vision_router
-app.include_router(vision_router)
+# Vision routes are handled inline in this file (no separate router)
 
 
 @app.on_event("startup")
@@ -759,18 +755,34 @@ async def submit_answer(request: Request):
     if "application/json" in content_type:
         body = await request.json()
         session_id = body["session_id"]
-        question_id = body["question_id"]
-        question_text = body["question_text"]
-        answer_data: Dict[str, Any] = body["answer_json"]
+        # Support both formats:
+        #   Old: { question_id, question_text, answer_json }
+        #   New (frontend): { question: {question_id, text, ...}, answer: {...} }
+        if "question_id" in body:
+            question_id = body["question_id"]
+            question_text = body["question_text"]
+            answer_data: Dict[str, Any] = body["answer_json"]
+        else:
+            q_obj = body.get("question", {})
+            question_id = q_obj.get("question_id", "")
+            question_text = q_obj.get("text", "")
+            answer_data: Dict[str, Any] = body.get("answer", {})
         if isinstance(answer_data, str):
             answer_data = json.loads(answer_data)
     else:
         # multipart/form-data (or url-encoded)
         form = await request.form()
         session_id = form["session_id"]
-        question_id = form["question_id"]
-        question_text = form["question_text"]
-        answer_data = json.loads(form["answer_json"])
+        # Support both flat and nested formats
+        if "question_id" in form:
+            question_id = form["question_id"]
+            question_text = form.get("question_text", "")
+            answer_data = json.loads(form.get("answer_json", "{}"))
+        else:
+            _q_obj = json.loads(form.get("question", "{}"))
+            question_id = _q_obj.get("question_id", form.get("question_id", ""))
+            question_text = _q_obj.get("text", form.get("question_text", ""))
+            answer_data = json.loads(form.get("answer_json", form.get("answer", "{}")))
         # Check for optional image upload
         img = form.get("image")
         if img and hasattr(img, "read"):
