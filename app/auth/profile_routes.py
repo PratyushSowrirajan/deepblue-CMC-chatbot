@@ -19,7 +19,7 @@ from typing import Any
 from jose import jwt, JWTError
 
 from app.auth.auth_config import JWT_SECRET_KEY, JWT_ALGORITHM
-from app.auth.profile_db import save_profile_answers, get_profile_by_user_id
+from app.auth.profile_db import save_profile_answers, get_profile_by_user_id, get_profile_image
 from app.auth.medical_db import save_medical_answers, get_medical_by_user_id
 from app.auth.reports_db import get_reports_by_user_id
 
@@ -130,7 +130,7 @@ async def onboard_profile(request: Request, body: OnboardingRequest):
 
     return JSONResponse(
         status_code=status.HTTP_200_OK,
-        content={"success": True, "message": "Profile stored successfully"}
+        content={"success": True, "message": "Profile saved successfully"}
     )
 
 
@@ -170,6 +170,37 @@ async def get_profile(request: Request):
     return JSONResponse(
         status_code=status.HTTP_200_OK,
         content={"success": True, "profile": profile}
+    )
+
+
+@router.get("/profile/image", status_code=status.HTTP_200_OK)
+async def get_profile_image_endpoint(request: Request):
+    """
+    Fetch the profile image (base64) for the authenticated user.
+
+    Response:
+      { "success": true, "profile_image": "BASE64_STRING" }
+      or
+      { "success": true, "profile_image": null }  (if not set)
+    """
+    user_id = extract_user_id_from_request(request)
+    if not user_id:
+        return JSONResponse(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            content={"success": False, "message": "Invalid token"}
+        )
+
+    try:
+        image = get_profile_image(user_id)
+    except Exception as e:
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={"success": False, "message": f"Failed to fetch image: {str(e)}"}
+        )
+
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={"success": True, "profile_image": image}
     )
 
 

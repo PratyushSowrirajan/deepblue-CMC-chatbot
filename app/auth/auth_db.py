@@ -56,11 +56,16 @@ def init_auth_db() -> None:
         with conn.cursor() as cur:
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS users (
-                    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-                    email         VARCHAR(320) UNIQUE NOT NULL,
+                    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                    email           VARCHAR(320) UNIQUE NOT NULL,
                     hashed_password TEXT NOT NULL,
-                    created_at    TIMESTAMP DEFAULT NOW()
+                    profile_image   TEXT,
+                    created_at      TIMESTAMP DEFAULT NOW()
                 );
+            """)
+            # Add profile_image column if upgrading an existing DB
+            cur.execute("""
+                ALTER TABLE users ADD COLUMN IF NOT EXISTS profile_image TEXT;
             """)
         conn.commit()
         print("[AUTH DB] users table ready")
