@@ -4,7 +4,7 @@
       "version": "2.0",
       "purpose": "Symptom-specific triage + deep-dive questionnaire",
       "source": "MedlinePlus via Tavily RAG + Cerebras LLM",
-      "generated_date": "2026-03-05",
+      "generated_date": "2026-03-06",
       "medlineplus_url": "https://medlineplus.gov/",
       "assumes_prior_data": [
         "age",
@@ -1820,169 +1820,6 @@
           ],
           "reason": "Thyroid symptoms can be life-threatening if left untreated.",
           "do_not_delay": true
-        }
-      },
-      {
-        "symptom_id": "fever",
-        "label": "Fever",
-        "keywords": [
-          "fever",
-          "high temperature",
-          "elevated temperature",
-          "chills",
-          "sweating",
-          "hot skin",
-          "feverish",
-          "pyrexia",
-          "low grade fever",
-          "high fever",
-          "body heat",
-          "temperature spike",
-          "febrile",
-          "overheating"
-        ],
-        "default_urgency": "yellow_doctor_visit",
-        "triage_rationale": {
-          "why_assess_carefully": [
-            "Fever can indicate a serious bacterial or viral infection requiring treatment.",
-            "Very high fevers (above 104°F/40°C) can cause seizures and brain damage.",
-            "Fever in infants under 3 months is always a medical emergency.",
-            "Persistent fever may signal an underlying chronic illness or malignancy."
-          ],
-          "age_factor": "Infants and elderly patients are at highest risk for complications from fever.",
-          "sex_specific_notes": "No significant sex-specific differences; women with UTI-related fever may present differently.",
-          "pregnancy_note": "Fever during pregnancy, especially in the first trimester, can harm fetal development and requires prompt evaluation."
-        },
-        "immediate_red_flags": [
-          "Fever above 104°F (40°C)",
-          "Fever in an infant under 3 months old",
-          "Fever with stiff neck, severe headache, or light sensitivity",
-          "Fever with difficulty breathing or chest pain",
-          "Fever with a purple or red non-blanching rash"
-        ],
-        "followup_questions": {
-          "onset_type": {
-            "question": "How did the fever start?",
-            "type": "single_choice",
-            "options": [
-              "Sudden",
-              "Gradual over minutes",
-              "Gradual over hours/days",
-              "Chronic or recurring",
-              "Not sure"
-            ]
-          },
-          "severity": {
-            "question": "How high is the temperature?",
-            "type": "single_choice",
-            "options": [
-              "Low grade (99-100°F)",
-              "Moderate (100-102°F)",
-              "High (102-104°F)",
-              "Very high (above 104°F)"
-            ]
-          },
-          "duration": {
-            "question": "How long have you had the fever?",
-            "type": "single_choice",
-            "options": [
-              "Less than 24 hours",
-              "1-3 days",
-              "4-7 days",
-              "More than 1 week",
-              "Chronic (months+)"
-            ]
-          },
-          "pain_character": {
-            "question": "How does the fever feel?",
-            "type": "single_choice",
-            "options": [
-              "Constant",
-              "Comes and goes",
-              "Spikes at night",
-              "Spikes after activity",
-              "Other"
-            ]
-          },
-          "associated_symptoms": {
-            "question": "Which other symptoms are present with the fever?",
-            "type": "multi_choice",
-            "options": [
-              "Chills",
-              "Sweating",
-              "Headache",
-              "Body aches",
-              "Sore throat",
-              "Cough",
-              "None"
-            ]
-          },
-          "aggravating_factors": {
-            "question": "What makes the fever worse?",
-            "type": "multi_choice",
-            "options": [
-              "Physical activity",
-              "Hot environment",
-              "Dehydration",
-              "Not taking medication",
-              "Nothing specific"
-            ]
-          },
-          "relieving_factors": {
-            "question": "What makes the fever better?",
-            "type": "multi_choice",
-            "options": [
-              "Acetaminophen",
-              "Ibuprofen",
-              "Cool compress",
-              "Rest or hydration",
-              "Nothing helps"
-            ]
-          }
-        },
-        "urgency_decision_logic": {
-          "red_emergency": [
-            "Temperature above 104°F with altered mental status",
-            "Fever with stiff neck and severe headache (possible meningitis)",
-            "Fever with non-blanching rash (possible meningococcemia)",
-            "Fever in infant under 3 months",
-            "Fever with difficulty breathing or hypotension"
-          ],
-          "yellow_doctor_visit": [
-            "Fever persisting more than 3 days without clear cause",
-            "Fever in child 3-36 months above 102°F (39°C)",
-            "Fever with localized infection signs (ear pain, throat pain)",
-            "Fever in immunocompromised patient"
-          ],
-          "green_home_care": [
-            "Low-grade fever in healthy adult with mild cold symptoms",
-            "Fever below 102°F responding to antipyretics",
-            "Fever with known viral illness improving over time"
-          ]
-        },
-        "llm_analysis_tips": [
-          "Always ask about travel history, as tropical infections cause fever.",
-          "Consider immunocompromised status when assessing severity.",
-          "Febrile seizure history is important in pediatric patients.",
-          "Assess hydration status alongside fever management."
-        ],
-        "advice": {
-          "action": "Monitor temperature, stay hydrated, use antipyretics for comfort, and seek care if fever is high or persistent.",
-          "emergency_if": [
-            "Temperature above 104°F",
-            "Fever with stiff neck or rash",
-            "Infant under 3 months with any fever"
-          ],
-          "doctor_visit_if": [
-            "Fever lasting more than 3 days",
-            "Fever with ear or throat pain needing antibiotics"
-          ],
-          "home_care_if": [
-            "Low-grade fever in healthy adult",
-            "Fever below 102°F responding well to acetaminophen or ibuprofen"
-          ],
-          "reason": "Most fevers are self-limiting but some indicate serious infection requiring treatment.",
-          "do_not_delay": false
         }
       },
       {
@@ -7049,518 +6886,168 @@
         }
       },
       {
-        "symptom_id": "rashes",
-        "label": "Rashes",
+        "symptom_id": "eye_inflammation",
+        "label": "Eye Inflammation",
         "keywords": [
-          "rash",
-          "itchy",
-          "red",
-          "painful",
-          "irritated",
-          "blisters",
-          "patches",
-          "raw skin",
-          "allergic",
-          "irritant",
-          "chemical",
-          "poison ivy"
+          "eye inflammation",
+          "red eye",
+          "painful eye",
+          "vision problems",
+          "eye infection",
+          "corneal ulcer",
+          "uveitis",
+          "eye pain",
+          "eye strain",
+          "eye fatigue",
+          "eye redness",
+          "eye discharge",
+          "eye sensitivity",
+          "eye watering"
         ],
         "default_urgency": "yellow_doctor_visit",
         "triage_rationale": {
           "why_assess_carefully": [
-            "Rashes can be a sign of a serious health condition",
-            "Severe pain, blisters, or yellow or green fluid in the rash area may indicate an infection",
-            "Fever could be a sign of a viral or bacterial infection",
-            "Rashes can be a symptom of many different medical problems"
+            "Eye inflammation can be caused by various conditions, including infections, autoimmune disorders, and exposure to toxins.",
+            "Prompt assessment is crucial to determine the underlying cause and prevent vision loss.",
+            "Some cases of eye inflammation may require immediate medical attention, while others can be managed at home.",
+            "Age, sex, and underlying health conditions can influence the severity and treatment of eye inflammation."
           ],
-          "age_factor": "Children and older adults may be more susceptible to serious complications from rashes",
-          "sex_specific_notes": "Pregnant women may be more prone to certain types of rashes",
-          "pregnancy_note": "Rashes during pregnancy may be a sign of a more serious condition"
+          "age_factor": "Children, older adults, and individuals with pre-existing medical conditions may be more susceptible to severe eye inflammation.",
+          "sex_specific_notes": "Women are more likely to develop uveitis, a type of eye inflammation.",
+          "pregnancy_note": "Pregnant women may experience changes in vision and eye sensitivity due to hormonal fluctuations."
         },
         "immediate_red_flags": [
-          "Severe pain",
-          "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
-          "Yellow or green fluid, warmth, and/or red streaks in the rash area",
-          "Fever",
-          "Difficulty breathing"
+          "Sudden vision loss",
+          "Severe eye pain",
+          "Eye redness with discharge or pus",
+          "Vision changes, such as blurred vision or double vision",
+          "Eye sensitivity to light"
         ],
         "followup_questions": {
           "onset_type": {
-            "question": "How did the rashes start?",
+            "question": "How did the eye inflammation start?",
             "type": "single_choice",
             "options": [
-              "Sudden",
-              "Gradual over minutes",
-              "Gradual over hours/days",
-              "Chronic or recurring",
-              "Not sure"
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
             ]
           },
           "severity": {
-            "question": "How severe is the rashes right now?",
+            "question": "How severe is the eye inflammation right now?",
             "type": "single_choice",
             "options": [
-              "Mild",
-              "Moderate",
-              "Severe",
-              "Very severe or unbearable"
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
             ]
           },
           "duration": {
-            "question": "How long have you had this rashes?",
+            "question": "How long have you had this eye inflammation?",
             "type": "single_choice",
             "options": [
-              "Less than 24 hours",
-              "1-3 days",
-              "4-7 days",
-              "More than 1 week",
-              "Chronic (months+)"
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
             ]
           },
           "pain_character": {
-            "question": "Is the rashes painful?",
+            "question": "Describe the pain in your eye:",
             "type": "single_choice",
             "options": [
-              "Yes",
-              "No",
-              "Sometimes"
+              "sharp",
+              "dull",
+              "aching",
+              "stabbing",
+              "other"
             ]
           },
           "associated_symptoms": {
-            "question": "Which other symptoms are present with the rashes?",
+            "question": "Which other symptoms are present with the eye inflammation?",
             "type": "multi_choice",
             "options": [
-              "Itching",
-              "Redness",
-              "Swelling",
-              "Fever",
-              "Difficulty breathing",
-              "None"
+              "headache",
+              "nausea",
+              "vomiting",
+              "sensitivity to light",
+              "eye watering",
+              "none"
             ]
           },
           "aggravating_factors": {
-            "question": "What makes the rashes worse?",
+            "question": "What makes the eye inflammation worse?",
             "type": "multi_choice",
             "options": [
-              "Sweating",
-              "Heat",
-              "Irritants",
-              "Allergens",
-              "Nothing specific"
+              "bright lights",
+              "windy conditions",
+              "dry air",
+              "contact lens wear",
+              "nothing_specific"
             ]
           },
           "relieving_factors": {
-            "question": "What makes the rashes better?",
+            "question": "What makes the eye inflammation better?",
             "type": "multi_choice",
             "options": [
-              "Cool compresses",
-              "Hydrocortisone cream",
-              "Oral antihistamines",
-              "Nothing helps"
+              "resting the eyes",
+              "cool compresses",
+              "artificial tears",
+              "over-the-counter pain medication",
+              "nothing_helps"
             ]
           }
         },
         "urgency_decision_logic": {
           "red_emergency": [
-            "Difficulty breathing",
-            "Severe pain",
-            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
-            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
-            "Fever"
+            "Sudden vision loss",
+            "Severe eye pain",
+            "Eye redness with discharge or pus",
+            "Vision changes, such as blurred vision or double vision",
+            "Eye sensitivity to light"
           ],
           "yellow_doctor_visit": [
-            "Rashes that do not go away",
-            "Rashes that are painful or itchy",
-            "Rashes that are accompanied by fever or difficulty breathing",
-            "Rashes that are worsening over time",
-            "Rashes that are causing significant distress"
+            "Eye inflammation with mild to moderate pain",
+            "Eye redness without discharge or pus",
+            "Vision changes, such as blurred vision or double vision",
+            "Eye sensitivity to light",
+            "Contact lens-related eye inflammation"
           ],
           "green_home_care": [
-            "Mild rashes that are not painful or itchy",
-            "Rashes that are improving over time",
-            "Rashes that are not accompanied by fever or difficulty breathing",
-            "Rashes that are not causing significant distress"
+            "Mild eye inflammation with no pain or vision changes",
+            "Eye redness without discharge or pus",
+            "Eye sensitivity to light",
+            "Dry eye or eye strain",
+            "Contact lens-related eye inflammation"
           ]
         },
         "llm_analysis_tips": [
-          "Consider the patient's medical history and any underlying conditions",
-          "Assess the patient's symptoms and physical examination findings",
-          "Order laboratory tests or imaging studies as necessary",
-          "Provide education and guidance on self-care and management"
+          "Consider the patient's medical history and any underlying conditions.",
+          "Assess the severity and duration of the eye inflammation.",
+          "Evaluate the presence of associated symptoms, such as headache or nausea.",
+          "Determine the aggravating and relieving factors for the eye inflammation.",
+          "Consider the patient's age, sex, and pregnancy status."
         ],
         "advice": {
-          "action": "Seek medical attention if the rashes worsen or do not improve with self-care",
+          "action": "Seek medical attention if the eye inflammation persists or worsens.",
           "emergency_if": [
-            "Difficulty breathing",
-            "Severe pain",
-            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
-            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
-            "Fever"
+            "Sudden vision loss",
+            "Severe eye pain",
+            "Eye redness with discharge or pus"
           ],
           "doctor_visit_if": [
-            "Rashes that do not go away",
-            "Rashes that are painful or itchy",
-            "Rashes that are accompanied by fever or difficulty breathing",
-            "Rashes that are worsening over time",
-            "Rashes that are causing significant distress"
+            "Eye inflammation with mild to moderate pain",
+            "Vision changes, such as blurred vision or double vision"
           ],
           "home_care_if": [
-            "Mild rashes that are not painful or itchy",
-            "Rashes that are improving over time",
-            "Rashes that are not accompanied by fever or difficulty breathing",
-            "Rashes that are not causing significant distress"
+            "Mild eye inflammation with no pain or vision changes",
+            "Eye redness without discharge or pus"
           ],
-          "reason": "To determine the underlying cause of the rashes and provide appropriate treatment",
-          "do_not_delay": true
-        }
-      },
-      {
-        "symptom_id": "dengue_fever",
-        "label": "Dengue Fever",
-        "keywords": [
-          "dengue fever",
-          "dengue",
-          "fever",
-          "rash",
-          "joint aches",
-          "muscle aches",
-          "nausea",
-          "vomiting",
-          "headache",
-          "sore throat",
-          "nasal stuffiness"
-        ],
-        "default_urgency": "yellow_doctor_visit",
-        "triage_rationale": {
-          "why_assess_carefully": [
-            "Dengue fever can progress to severe dengue, which can cause shock, internal bleeding, and death.",
-            "Severe dengue is more likely to occur in people who have had dengue before, are pregnant, or are infants.",
-            "Dengue fever can cause a range of symptoms, including fever, rash, joint aches, muscle aches, nausea, vomiting, headache, sore throat, and nasal stuffiness.",
-            "Dengue fever is caused by a virus that is spread by the bite of infected mosquitoes."
-          ],
-          "age_factor": "Children and infants are more susceptible to severe dengue.",
-          "sex_specific_notes": "Pregnant women are at higher risk for severe dengue.",
-          "pregnancy_note": "Pregnant women should seek medical attention immediately if they suspect they have dengue fever."
-        },
-        "immediate_red_flags": [
-          "Vomiting blood or passing blood in the stools or urine",
-          "Bleeding from the nose or gums",
-          "Difficulty breathing, rapid breathing",
-          "Severe stomach pain and tenderness",
-          "Bleeding under the skin (looks like bruises)"
-        ],
-        "followup_questions": {
-          "onset_type": {
-            "question": "How did the dengue fever start?",
-            "type": "single_choice",
-            "options": [
-              "Sudden",
-              "Gradual over minutes",
-              "Gradual over hours/days",
-              "Chronic or recurring",
-              "Not sure"
-            ]
-          },
-          "severity": {
-            "question": "How severe is the dengue fever right now?",
-            "type": "single_choice",
-            "options": [
-              "Mild",
-              "Moderate",
-              "Severe",
-              "Very severe or unbearable"
-            ]
-          },
-          "duration": {
-            "question": "How long have you had this dengue fever?",
-            "type": "single_choice",
-            "options": [
-              "Less than 24 hours",
-              "1-3 days",
-              "4-7 days",
-              "More than 1 week",
-              "Chronic (months+)"
-            ]
-          },
-          "pain_character": {
-            "question": "What is the character of the pain?",
-            "type": "single_choice",
-            "options": [
-              "Sharp",
-              "Dull",
-              "Aching",
-              "Burning",
-              "Other"
-            ]
-          },
-          "associated_symptoms": {
-            "question": "Which other symptoms are present with the dengue fever?",
-            "type": "multi_choice",
-            "options": [
-              "Headache",
-              "Joint aches",
-              "Muscle aches",
-              "Nausea",
-              "Vomiting",
-              "Sore throat",
-              "Nasal stuffiness",
-              "None"
-            ]
-          },
-          "aggravating_factors": {
-            "question": "What makes the dengue fever worse?",
-            "type": "multi_choice",
-            "options": [
-              "Physical activity",
-              "Stress",
-              "Heat",
-              "Humidity",
-              "Nothing specific"
-            ]
-          },
-          "relieving_factors": {
-            "question": "What makes the dengue fever better?",
-            "type": "multi_choice",
-            "options": [
-              "Rest",
-              "Fluid intake",
-              "Medication",
-              "Cooling measures",
-              "Nothing helps"
-            ]
-          }
-        },
-        "urgency_decision_logic": {
-          "red_emergency": [
-            "Vomiting blood or passing blood in the stools or urine",
-            "Bleeding from the nose or gums",
-            "Difficulty breathing, rapid breathing",
-            "Severe stomach pain and tenderness",
-            "Bleeding under the skin (looks like bruises)"
-          ],
-          "yellow_doctor_visit": [
-            "Fever over 104°F (40°C)",
-            "Rash or joint aches",
-            "Nausea or vomiting",
-            "Headache or sore throat",
-            "Nasal stuffiness"
-          ],
-          "green_home_care": [
-            "Mild symptoms",
-            "No fever",
-            "No rash or joint aches",
-            "No nausea or vomiting",
-            "No headache or sore throat"
-          ]
-        },
-        "llm_analysis_tips": [
-          "Consider the patient's travel history and potential exposure to mosquitoes.",
-          "Assess for signs of dehydration and provide fluid replacement as needed.",
-          "Monitor for signs of severe dengue, such as difficulty breathing, rapid breathing, or bleeding.",
-          "Provide pain management and rest as needed."
-        ],
-        "advice": {
-          "action": "Seek medical attention immediately if symptoms worsen or if you experience difficulty breathing, rapid breathing, or bleeding.",
-          "emergency_if": [
-            "Vomiting blood or passing blood in the stools or urine",
-            "Bleeding from the nose or gums",
-            "Difficulty breathing, rapid breathing",
-            "Severe stomach pain and tenderness",
-            "Bleeding under the skin (looks like bruises)"
-          ],
-          "doctor_visit_if": [
-            "Fever over 104°F (40°C)",
-            "Rash or joint aches",
-            "Nausea or vomiting",
-            "Headache or sore throat",
-            "Nasal stuffiness"
-          ],
-          "home_care_if": [
-            "Mild symptoms",
-            "No fever",
-            "No rash or joint aches",
-            "No nausea or vomiting",
-            "No headache or sore throat"
-          ],
-          "reason": "Dengue fever can progress to severe dengue, which can cause shock, internal bleeding, and death.",
-          "do_not_delay": true
-        }
-      },
-      {
-        "symptom_id": "malaria_symptoms",
-        "label": "Malaria Symptoms",
-        "keywords": [
-          "malaria",
-          "fever",
-          "chills",
-          "sweating",
-          "headache",
-          "muscle pain",
-          "nausea",
-          "vomiting",
-          "jaundice",
-          "anemia",
-          "bloody stools",
-          "coma",
-          "convulsions"
-        ],
-        "default_urgency": "yellow_doctor_visit",
-        "triage_rationale": {
-          "why_assess_carefully": [
-            "Malaria can be life-threatening if not treated promptly.",
-            "Symptoms can be similar to the flu, making it difficult to diagnose.",
-            "Prompt treatment is crucial to prevent death.",
-            "Malaria can cause severe anemia, jaundice, kidney failure, seizures, and coma."
-          ],
-          "age_factor": "Children under 5 and adults over 65 are at higher risk for severe malaria.",
-          "sex_specific_notes": "Pregnant women are at higher risk for severe malaria.",
-          "pregnancy_note": "Pregnant women should seek medical attention immediately if they suspect malaria."
-        },
-        "immediate_red_flags": [
-          "Severe anemia",
-          "Jaundice",
-          "Kidney failure",
-          "Seizures",
-          "Coma"
-        ],
-        "followup_questions": {
-          "onset_type": {
-            "question": "How did the malaria start?",
-            "type": "single_choice",
-            "options": [
-              "Sudden",
-              "Gradual over minutes",
-              "Gradual over hours/days",
-              "Chronic or recurring",
-              "Not sure"
-            ]
-          },
-          "severity": {
-            "question": "How severe is the malaria right now?",
-            "type": "single_choice",
-            "options": [
-              "Mild",
-              "Moderate",
-              "Severe",
-              "Very severe or unbearable"
-            ]
-          },
-          "duration": {
-            "question": "How long have you had this malaria?",
-            "type": "single_choice",
-            "options": [
-              "Less than 24 hours",
-              "1-3 days",
-              "4-7 days",
-              "More than 1 week",
-              "Chronic (months+)"
-            ]
-          },
-          "pain_character": {
-            "question": "What is the character of the pain?",
-            "type": "single_choice",
-            "options": [
-              "Sharp",
-              "Dull",
-              "Aching",
-              "Stabbing",
-              "Other"
-            ]
-          },
-          "associated_symptoms": {
-            "question": "Which other symptoms are present with the malaria?",
-            "type": "multi_choice",
-            "options": [
-              "Fever",
-              "Chills",
-              "Sweating",
-              "Headache",
-              "Muscle pain",
-              "Nausea",
-              "Vomiting",
-              "Jaundice",
-              "Anemia",
-              "Bloody stools",
-              "Coma",
-              "Convulsions",
-              "None"
-            ]
-          },
-          "aggravating_factors": {
-            "question": "What makes the malaria worse?",
-            "type": "multi_choice",
-            "options": [
-              "Exertion",
-              "Heat",
-              "Humidity",
-              "Stress",
-              "Nothing specific"
-            ]
-          },
-          "relieving_factors": {
-            "question": "What makes the malaria better?",
-            "type": "multi_choice",
-            "options": [
-              "Rest",
-              "Hydration",
-              "Medication",
-              "Nothing helps"
-            ]
-          }
-        },
-        "urgency_decision_logic": {
-          "red_emergency": [
-            "Severe anemia",
-            "Jaundice",
-            "Kidney failure",
-            "Seizures",
-            "Coma"
-          ],
-          "yellow_doctor_visit": [
-            "Fever over 104°F (40°C)",
-            "Chills or sweating",
-            "Headache or muscle pain",
-            "Nausea or vomiting",
-            "Jaundice"
-          ],
-          "green_home_care": [
-            "Mild symptoms",
-            "No fever",
-            "No chills or sweating",
-            "No headache or muscle pain",
-            "No nausea or vomiting"
-          ]
-        },
-        "llm_analysis_tips": [
-          "Consider the patient's travel history and potential exposure to malaria.",
-          "Assess the patient's overall health and any underlying medical conditions.",
-          "Be aware of the patient's age and sex, as these can affect the severity of malaria.",
-          "Use the patient's symptoms and medical history to determine the urgency of the situation."
-        ],
-        "advice": {
-          "action": "Seek medical attention immediately if you suspect malaria.",
-          "emergency_if": [
-            "Severe anemia",
-            "Jaundice",
-            "Kidney failure",
-            "Seizures",
-            "Coma"
-          ],
-          "doctor_visit_if": [
-            "Fever over 104°F (40°C)",
-            "Chills or sweating",
-            "Headache or muscle pain",
-            "Nausea or vomiting",
-            "Jaundice"
-          ],
-          "home_care_if": [
-            "Mild symptoms",
-            "No fever",
-            "No chills or sweating",
-            "No headache or muscle pain",
-            "No nausea or vomiting"
-          ],
-          "reason": "Prompt treatment is crucial to prevent death.",
+          "reason": "Prompt assessment and treatment are crucial to prevent vision loss and complications.",
           "do_not_delay": true
         }
       }
