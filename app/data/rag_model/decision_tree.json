@@ -119,7 +119,7 @@
             "options": [
               "Shortness of breath",
               "Sweating",
-              "Nausea / vomiting",
+              "Nausea or vomiting",
               "Dizziness or fainting",
               "Palpitations",
               "Cough",
@@ -204,9 +204,9 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–2 days",
-              "3–5 days",
-              "6–7 days",
+              "1-2 days",
+              "3-5 days",
+              "6-7 days",
               "More than 1 week",
               "Not sure"
             ]
@@ -215,10 +215,10 @@
             "question": "What is the highest recorded temperature?",
             "type": "single_choice",
             "options": [
-              "Below 38°C / 100°F",
-              "38–39°C / 100–102°F",
-              "39–40°C / 102–104°F",
-              "Above 40°C / 104°F",
+              "Below 38°C or 100°F",
+              "38-39°C or 100-102°F",
+              "39-40°C or 102-104°F",
+              "Above 40°C or 104°F",
               "Not measured"
             ]
           },
@@ -363,7 +363,7 @@
               "Band-like pressure",
               "Throbbing on one side",
               "Sharp or stabbing",
-              "Dull / generalized",
+              "Dull or generalized",
               "Other"
             ]
           },
@@ -372,8 +372,8 @@
             "type": "single_choice",
             "options": [
               "Less than 1 hour",
-              "1–4 hours",
-              "4–24 hours",
+              "1-4 hours",
+              "4-24 hours",
               "More than 24 hours",
               "Constant for days"
             ]
@@ -412,10 +412,10 @@
             "options": [
               "Fever",
               "Neck stiffness",
-              "Nausea / vomiting",
+              "Nausea or vomiting",
               "Confusion",
               "Vision changes",
-              "Weakness / numbness",
+              "Weakness or numbness",
               "None"
             ]
           }

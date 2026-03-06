@@ -67,7 +67,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -78,7 +78,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -86,8 +86,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -97,7 +97,7 @@
             "type": "single_choice",
             "options": [
               "Sharp or stabbing",
-              "Dull / aching",
+              "Dull or aching",
               "Both",
               "Neither"
             ]
@@ -233,7 +233,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -244,7 +244,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -252,8 +252,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -395,7 +395,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -406,7 +406,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -414,8 +414,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -560,7 +560,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -571,7 +571,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -579,8 +579,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -727,7 +727,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -738,7 +738,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -746,8 +746,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -899,7 +899,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -910,7 +910,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -918,8 +918,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1070,7 +1070,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -1081,7 +1081,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -1089,8 +1089,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1236,7 +1236,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -1247,7 +1247,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -1255,8 +1255,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1565,7 +1565,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -1576,7 +1576,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -1584,8 +1584,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1713,7 +1713,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -1724,7 +1724,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -1732,8 +1732,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1868,7 +1868,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -1876,9 +1876,9 @@
             "question": "How high is the temperature?",
             "type": "single_choice",
             "options": [
-              "Low grade (99–100°F)",
-              "Moderate (100–102°F)",
-              "High (102–104°F)",
+              "Low grade (99-100°F)",
+              "Moderate (100-102°F)",
+              "High (102-104°F)",
               "Very high (above 104°F)"
             ]
           },
@@ -1887,8 +1887,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -1935,7 +1935,7 @@
               "Acetaminophen",
               "Ibuprofen",
               "Cool compress",
-              "Rest / hydration",
+              "Rest or hydration",
               "Nothing helps"
             ]
           }
@@ -1950,7 +1950,7 @@
           ],
           "yellow_doctor_visit": [
             "Fever persisting more than 3 days without clear cause",
-            "Fever in child 3–36 months above 102°F (39°C)",
+            "Fever in child 3-36 months above 102°F (39°C)",
             "Fever with localized infection signs (ear pain, throat pain)",
             "Fever in immunocompromised patient"
           ],
@@ -2031,7 +2031,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2042,7 +2042,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -2050,8 +2050,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2071,7 +2071,7 @@
             "question": "Which other symptoms are present with the headache?",
             "type": "multi_choice",
             "options": [
-              "Nausea / vomiting",
+              "Nausea or vomiting",
               "Light sensitivity",
               "Sound sensitivity",
               "Visual aura",
@@ -2193,7 +2193,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2204,7 +2204,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -2212,8 +2212,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2354,7 +2354,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2373,8 +2373,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2435,7 +2435,7 @@
           ],
           "yellow_doctor_visit": [
             "Cough with fever and productive sputum lasting more than 3 days",
-            "Chronic cough lasting more than 2–3 weeks",
+            "Chronic cough lasting more than 2-3 weeks",
             "Cough with unexplained weight loss",
             "Cough with wheezing not controlled by inhaler"
           ],
@@ -2446,7 +2446,7 @@
           ]
         },
         "llm_analysis_tips": [
-          "Classify cough as acute (<3 weeks), subacute (3–8 weeks), or chronic (>8 weeks).",
+          "Classify cough as acute (<3 weeks), subacute (3-8 weeks), or chronic (>8 weeks).",
           "Chronic cough triad: postnasal drip, GERD, and asthma account for most cases.",
           "Always ask about smoking history and occupational exposures.",
           "ACE inhibitor use is a common reversible cause of dry cough."
@@ -2515,7 +2515,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2526,7 +2526,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -2534,8 +2534,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2674,7 +2674,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2685,7 +2685,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -2693,8 +2693,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2780,7 +2780,7 @@
           ],
           "home_care_if": [
             "Mild sore throat with cold symptoms",
-            "Sore throat improving after 2–3 days"
+            "Sore throat improving after 2-3 days"
           ],
           "reason": "Most sore throats are viral and self-limiting, but bacterial infections require antibiotics.",
           "do_not_delay": false
@@ -2833,7 +2833,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -2844,7 +2844,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -2852,8 +2852,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -2991,7 +2991,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3002,7 +3002,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -3010,8 +3010,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3150,7 +3150,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3169,8 +3169,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3306,7 +3306,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3317,7 +3317,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -3325,8 +3325,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3463,7 +3463,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3474,7 +3474,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -3482,8 +3482,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3547,7 +3547,7 @@
             "Insomnia secondary to untreated depression or anxiety"
           ],
           "green_home_care": [
-            "Short-term insomnia related to a specific stressor resolving within 1–2 weeks",
+            "Short-term insomnia related to a specific stressor resolving within 1-2 weeks",
             "Insomnia improving with sleep hygiene measures and reduced caffeine"
           ]
         },
@@ -3619,7 +3619,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3630,7 +3630,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -3734,7 +3734,7 @@
       },
       {
         "symptom_id": "swelling_edema",
-        "label": "Swelling / Edema",
+        "label": "Swelling or Edema",
         "keywords": [
           "swelling",
           "edema",
@@ -3778,7 +3778,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3789,7 +3789,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -3797,8 +3797,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3921,7 +3921,7 @@
           "pregnancy_note": "Nausea and loss of appetite in first trimester is usually normal; hyperemesis gravidarum requires treatment."
         },
         "immediate_red_flags": [
-          "Complete inability to eat or drink for more than 24–48 hours with dehydration",
+          "Complete inability to eat or drink for more than 24-48 hours with dehydration",
           "Loss of appetite with significant rapid unintentional weight loss",
           "Loss of appetite in a known cancer patient with rapid deterioration",
           "Anorexia with signs of malnutrition or electrolyte imbalance",
@@ -3935,7 +3935,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -3954,8 +3954,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -3976,7 +3976,7 @@
             "type": "multi_choice",
             "options": [
               "Weight loss",
-              "Nausea / vomiting",
+              "Nausea or vomiting",
               "Abdominal pain",
               "Fatigue",
               "Depression",
@@ -4091,7 +4091,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4110,8 +4110,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -4135,7 +4135,7 @@
               "Pale stools",
               "Itching",
               "Fever",
-              "Nausea / vomiting",
+              "Nausea or vomiting",
               "Confusion",
               "None"
             ]
@@ -4165,7 +4165,7 @@
         "urgency_decision_logic": {
           "red_emergency": [
             "Jaundice with confusion or encephalopathy",
-            "Jaundice with fever and rigors (cholangitis — Charcot's triad)",
+            "Jaundice with fever and rigors (cholangitis - Charcot's triad)",
             "Jaundice with signs of coagulopathy or GI bleeding"
           ],
           "yellow_doctor_visit": [
@@ -4199,7 +4199,7 @@
       },
       {
         "symptom_id": "numbness_tingling",
-        "label": "Numbness / Tingling",
+        "label": "Numbness or Tingling",
         "keywords": [
           "numbness",
           "tingling",
@@ -4242,7 +4242,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4253,7 +4253,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -4261,8 +4261,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -4357,7 +4357,7 @@
       },
       {
         "symptom_id": "confusion",
-        "label": "Confusion / Altered Mental Status",
+        "label": "Confusion or Altered Mental Status",
         "keywords": [
           "confusion",
           "altered mental status",
@@ -4401,7 +4401,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4420,8 +4420,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -4551,7 +4551,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4562,7 +4562,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -4570,8 +4570,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -4640,7 +4640,7 @@
           ]
         },
         "llm_analysis_tips": [
-          "Dental abscesses require drainage in addition to antibiotics — antibiotics alone are not sufficient.",
+          "Dental abscesses require drainage in addition to antibiotics - antibiotics alone are not sufficient.",
           "Always consider cardiac referred jaw pain in patients with risk factors for MI.",
           "Ludwig's angina is a surgical emergency requiring airway protection.",
           "Encourage regular dental visits to prevent dental disease."
@@ -4709,7 +4709,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4720,7 +4720,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -4728,8 +4728,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -4795,7 +4795,7 @@
           ],
           "green_home_care": [
             "Mild ear pain after swimming, no fever, mild blocked sensation",
-            "Mild earache improving in 24–48 hours in an adult without fever"
+            "Mild earache improving in 24-48 hours in an adult without fever"
           ]
         },
         "llm_analysis_tips": [
@@ -4816,7 +4816,7 @@
             "Hearing loss"
           ],
           "home_care_if": [
-            "Mild ear pain after swimming without fever improving in 24–48 hours"
+            "Mild ear pain after swimming without fever improving in 24-48 hours"
           ],
           "reason": "Most ear infections are treatable but complications like mastoiditis can be serious.",
           "do_not_delay": false
@@ -4851,7 +4851,7 @@
           "pregnancy_note": "Nosebleeds are more frequent in pregnancy due to increased nasal vascularity; usually benign."
         },
         "immediate_red_flags": [
-          "Heavy nosebleed not stopping after 20–30 minutes of pressure",
+          "Heavy nosebleed not stopping after 20-30 minutes of pressure",
           "Nosebleed with signs of significant blood loss (dizziness, paleness, rapid HR)",
           "Nosebleed following head trauma with clear fluid (CSF)",
           "Nosebleed in a patient with known coagulation disorder or on anticoagulants",
@@ -4865,7 +4865,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -4940,7 +4940,7 @@
         },
         "urgency_decision_logic": {
           "red_emergency": [
-            "Heavy nosebleed not controlled after 20–30 minutes of direct pressure",
+            "Heavy nosebleed not controlled after 20-30 minutes of direct pressure",
             "Nosebleed with dizziness, pallor, or rapid heart rate from blood loss",
             "Posterior nosebleed with blood running down throat"
           ],
@@ -4950,12 +4950,12 @@
             "Nosebleed after head trauma"
           ],
           "green_home_care": [
-            "Mild anterior nosebleed stopping within 10–15 minutes with direct pressure",
+            "Mild anterior nosebleed stopping within 10-15 minutes with direct pressure",
             "Occasional nosebleed from dry air with no systemic symptoms"
           ]
         },
         "llm_analysis_tips": [
-          "First aid: lean forward, pinch the soft part of nose for 10–15 minutes continuously.",
+          "First aid: lean forward, pinch the soft part of nose for 10-15 minutes continuously.",
           "Review anticoagulant and antiplatelet medications in recurrent epistaxis.",
           "Hypertension is associated with more severe posterior nosebleeds.",
           "Recurrent epistaxis warrants ENT referral and possible nasal endoscopy."
@@ -4963,7 +4963,7 @@
         "advice": {
           "action": "Lean forward and pinch nose firmly for 15 minutes. Seek emergency care if bleeding is heavy and uncontrolled.",
           "emergency_if": [
-            "Bleeding not stopping after 20–30 minutes",
+            "Bleeding not stopping after 20-30 minutes",
             "Dizziness or signs of blood loss"
           ],
           "doctor_visit_if": [
@@ -5007,7 +5007,7 @@
           ],
           "age_factor": "Elderly patients commonly have dry skin (xerosis) as the cause; systemic causes should be excluded in unexplained pruritus.",
           "sex_specific_notes": "Intrahepatic cholestasis of pregnancy uniquely affects pregnant women and requires prompt management.",
-          "pregnancy_note": "Severe itching on palms and soles in late pregnancy may indicate intrahepatic cholestasis of pregnancy — requires urgent evaluation."
+          "pregnancy_note": "Severe itching on palms and soles in late pregnancy may indicate intrahepatic cholestasis of pregnancy - requires urgent evaluation."
         },
         "immediate_red_flags": [
           "Generalized itching progressing to hives, swelling, and difficulty breathing (anaphylaxis)",
@@ -5023,7 +5023,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5034,7 +5034,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5042,8 +5042,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5164,7 +5164,7 @@
         "immediate_red_flags": [
           "Rapid severe weight loss with pain and jaundice (possible pancreatic cancer)",
           "Weight loss with coughing blood (possible lung cancer or tuberculosis)",
-          "Weight loss with lymphadenopathy, night sweats, and fever (lymphoma — B symptoms)",
+          "Weight loss with lymphadenopathy, night sweats, and fever (lymphoma - B symptoms)",
           "Weight loss with severe weakness and electrolyte imbalance",
           "Weight loss in a diabetic with excessive thirst and urination (uncontrolled diabetes)"
         ],
@@ -5176,7 +5176,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5195,8 +5195,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5269,7 +5269,7 @@
           "Screen for depression, substance use, and eating disorders."
         ],
         "advice": {
-          "action": "Seek medical evaluation if weight loss is unintentional and more than 2–3 kg over a few weeks.",
+          "action": "Seek medical evaluation if weight loss is unintentional and more than 2-3 kg over a few weeks.",
           "emergency_if": [
             "Rapid weight loss with jaundice and severe pain",
             "Weight loss with coughing blood"
@@ -5326,7 +5326,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5337,7 +5337,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5345,8 +5345,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5489,7 +5489,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5500,7 +5500,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5508,8 +5508,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5655,7 +5655,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5666,7 +5666,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5674,8 +5674,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5807,7 +5807,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5818,7 +5818,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5826,8 +5826,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -5837,7 +5837,7 @@
             "type": "single_choice",
             "options": [
               "Cramping",
-              "Dull / aching",
+              "Dull or aching",
               "Sharp or stabbing",
               "Burning",
               "Other"
@@ -5965,7 +5965,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -5976,7 +5976,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -5984,8 +5984,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -6449,7 +6449,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -6460,7 +6460,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -6468,8 +6468,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -6616,7 +6616,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -6627,7 +6627,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -6635,8 +6635,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -6776,7 +6776,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -6787,7 +6787,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -6795,8 +6795,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -6934,7 +6934,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -6945,7 +6945,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -6953,8 +6953,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -7092,7 +7092,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -7103,7 +7103,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -7111,8 +7111,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -7257,7 +7257,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -7268,7 +7268,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -7276,8 +7276,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
@@ -7431,7 +7431,7 @@
               "Sudden",
               "Gradual over minutes",
               "Gradual over hours/days",
-              "Chronic / recurring",
+              "Chronic or recurring",
               "Not sure"
             ]
           },
@@ -7442,7 +7442,7 @@
               "Mild",
               "Moderate",
               "Severe",
-              "Very severe / unbearable"
+              "Very severe or unbearable"
             ]
           },
           "duration": {
@@ -7450,8 +7450,8 @@
             "type": "single_choice",
             "options": [
               "Less than 24 hours",
-              "1–3 days",
-              "4–7 days",
+              "1-3 days",
+              "4-7 days",
               "More than 1 week",
               "Chronic (months+)"
             ]
