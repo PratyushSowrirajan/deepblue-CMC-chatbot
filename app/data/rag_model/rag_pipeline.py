@@ -312,7 +312,12 @@ SYSTEM_PROMPT = """You are a senior medical AI engineer and clinical decision-su
 Your job is to produce a SINGLE, VALID JSON object (no markdown fences, no extra text) 
 that represents a clinical triage decision tree for a given medical symptom.
 The JSON must follow the exact schema provided by the user and use ONLY medically accurate
-information drawn from the provided RAG context."""
+information drawn from the provided RAG context.
+
+CRITICAL: Every symptom you generate must be CLINICALLY UNIQUE. The associated_symptoms,
+aggravating_factors, relieving_factors, and pain_character options must be completely different
+for different symptoms — derived exclusively from the RAG context, not from generic templates.
+Never reuse the same option lists across different symptoms."""
 
 
 def build_llm_prompt(symptom: str, rag_chunks: list[str]) -> str:
@@ -353,39 +358,64 @@ The JSON object must follow this EXACT schema (same field names, same nesting de
 
   "followup_questions": {{
     "onset_type": {{
-      "question": "<How did the {symptom} start?>",
+      "question": "How did the {symptom} start?",
       "type": "single_choice",
       "options": ["Sudden", "Gradual over minutes", "Gradual over hours or days", "Chronic or recurring", "Not sure"]
     }},
     "severity": {{
-      "question": "<How severe is the {symptom} right now?>",
+      "question": "How severe is the {symptom} right now?",
       "type": "single_choice",
       "options": ["Mild", "Moderate", "Severe", "Very severe or unbearable"]
     }},
     "duration": {{
-      "question": "<How long have you had this {symptom}?>",
+      "question": "How long have you had this {symptom}?",
       "type": "single_choice",
       "options": ["Less than 24 hours", "1-3 days", "4-7 days", "More than 1 week", "Chronic (months+)"]
     }},
     "pain_character": {{
-      "question": "<Symptom-appropriate character question>",
+      "question": "<Write a question specific to {symptom} asking about its quality or character — e.g. 'Is the rash itchy or burning?' or 'Describe the chest pain character'>",
       "type": "single_choice",
-      "options": ["Sharp", "Dull", "Aching", "Throbbing", "Other"]
+      "options": [
+        "<UNIQUE clinical term for {symptom} quality drawn from RAG — e.g. 'Itchy' for rash, 'Crushing' for chest pain>",
+        "<another clinically specific term from RAG>",
+        "<another>",
+        "<another>",
+        "Other"
+      ]
     }},
     "associated_symptoms": {{
-      "question": "<Which other symptoms are present with the {symptom}?>",
+      "question": "<Write a question asking which OTHER symptoms commonly accompany {symptom} based on the RAG — name them specifically>",
       "type": "multi_choice",
-      "options": ["Fever", "Nausea", "Fatigue", "Dizziness", "Headache", "None"]
+      "options": [
+        "<co-occurring symptom #1 from RAG specific to {symptom} — e.g. 'Joint pain' for dengue, 'Blisters' for rash>",
+        "<co-occurring symptom #2 from RAG>",
+        "<co-occurring symptom #3 from RAG>",
+        "<co-occurring symptom #4 from RAG>",
+        "<co-occurring symptom #5 from RAG if relevant>",
+        "None"
+      ]
     }},
     "aggravating_factors": {{
-      "question": "<What makes the {symptom} worse?>",
+      "question": "<Write a question asking what makes the {symptom} worse — use factors known to worsen this specific condition based on RAG>",
       "type": "multi_choice",
-      "options": ["Physical activity", "Stress", "Eating", "Lying down", "Nothing specific"]
+      "options": [
+        "<aggravating factor #1 specific to {symptom} from RAG — e.g. 'Sunlight' for rash, 'Eating spicy food' for ulcer>",
+        "<factor #2 from RAG>",
+        "<factor #3 from RAG>",
+        "<factor #4 from RAG if relevant>",
+        "Nothing specific"
+      ]
     }},
     "relieving_factors": {{
-      "question": "<What makes the {symptom} better?>",
+      "question": "<Write a question asking what makes the {symptom} better — use relief measures specific to this condition from RAG>",
       "type": "multi_choice",
-      "options": ["Rest", "Medication", "Hydration", "Nothing helps"]
+      "options": [
+        "<relief measure #1 specific to {symptom} from RAG — e.g. 'Antacids' for ulcer, 'Cool compresses' for rash>",
+        "<relief measure #2 from RAG>",
+        "<relief measure #3 from RAG>",
+        "<relief measure #4 from RAG if relevant>",
+        "Nothing helps"
+      ]
     }}
   }},
 
@@ -416,16 +446,23 @@ The JSON object must follow this EXACT schema (same field names, same nesting de
 }}
 
 RULES:
-1. Use ONLY medically accurate information from the RAG context.
-2. Replace ALL placeholder text (e.g. "Fever", "Dizziness") with real symptoms relevant to "{symptom}".
-3. The followup_questions must be clinically relevant to "{symptom}".
+1. Use ONLY medically accurate information from the RAG context above.
+2. The onset_type, severity, and duration option lists are FIXED — copy them exactly as shown.
+3. For pain_character, associated_symptoms, aggravating_factors, and relieving_factors:
+   - IGNORE the placeholder text in the schema — it is only a structural guide.
+   - DERIVE every question and every option from the RAG context for "{symptom}".
+   - No two symptoms should share the same associated_symptoms, aggravating_factors, or relieving_factors options.
+   - Example: rash → associated_symptoms might be ["Itching", "Blisters", "Swelling", "Fever", "Skin peeling", "None"]
+             dengue fever → associated_symptoms might be ["Joint aches", "Muscle aches", "Rash", "Eye pain", "Low platelet signs", "None"]
+             ulcer → associated_symptoms might be ["Bloating", "Heartburn", "Nausea", "Dark stools", "Vomiting", "None"]
+   - Example: rash → aggravating_factors might be ["Sweating", "Heat", "Scratching", "Allergen exposure", "Nothing specific"]
+             dengue fever → aggravating_factors might be ["Physical exertion", "Dehydration", "Hot weather", "Missing fluids", "Nothing specific"]
+             ulcer → aggravating_factors might be ["Spicy food", "Alcohol", "NSAIDs", "Skipping meals", "Nothing specific"]
 4. Return ONLY the raw JSON object — NO markdown fences, NO explanation text.
 5. Ensure the JSON is 100% valid and parseable.
-6. CRITICAL — ALL option values in every followup_questions options array MUST be human-readable display strings:
+6. CRITICAL — ALL option values MUST be human-readable display strings:
    - Write "1-3 days" NOT "1_3_days"
    - Write "Less than 24 hours" NOT "less_than_24_hours"
-   - Write "Nothing specific" NOT "nothing_specific"
-   - Write "Physical activity" NOT "physical_activity"
    - Use plain words with spaces, hyphens for ranges — NO underscores, NO snake_case.
    - Questions must be full grammatical sentences.
    - Options must be short phrases a patient can read aloud naturally.
