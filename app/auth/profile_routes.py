@@ -351,3 +351,81 @@ async def get_reports(request: Request):
         status_code=status.HTTP_200_OK,
         content=reports
     )
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Bootstrap (single call after login)
+# ─────────────────────────────────────────────────────────────────────────────
+
+@router.get("/bootstrap", status_code=status.HTTP_200_OK)
+async def bootstrap(request: Request):
+    """
+    Single endpoint called once after login to hydrate the app's local DB.
+
+    Returns reports, profile answers, and medical answers in one response.
+    The app can clear and re-insert its local SQLDelight tables from this data.
+
+    Request:
+      GET /user/bootstrap
+      Authorization: Bearer <jwt_token>
+
+    Response:
+      {
+        "reports": [
+          {
+            "report_id": "...",
+            "assessment_topic": "...",
+            "urgency_level": "...",
+            "report_data": { ...full report JSON... },
+            "created_at": "2026-..."
+          }
+        ],
+        "profile": [
+          {
+            "question_id": "q_name",
+            "question_text": "Full Name",
+            "answer_json": { "type": "text", "value": "John Doe" }
+          }
+        ],
+        "medical": [
+          {
+            "question_id": "q_smoking",
+            "question_text": "Smoking status",
+            "answer_json": { "type": "single_choice", "selected_option_label": "never_smoked" }
+          }
+        ]
+      }
+    """
+    user_id = extract_user_id_from_request(request)
+    if not user_id:
+        return JSONResponse(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            content={"success": False, "message": "Invalid token"}
+        )
+
+    try:
+        reports = get_reports_by_user_id(user_id)
+    except Exception as e:
+        reports = []
+        print(f"[BOOTSTRAP] Failed to fetch reports for {user_id[:8]}: {e}")
+
+    try:
+        profile = get_profile_by_user_id(user_id)
+    except Exception as e:
+        profile = []
+        print(f"[BOOTSTRAP] Failed to fetch profile for {user_id[:8]}: {e}")
+
+    try:
+        medical = get_medical_by_user_id(user_id)
+    except Exception as e:
+        medical = []
+        print(f"[BOOTSTRAP] Failed to fetch medical for {user_id[:8]}: {e}")
+
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={
+            "reports": reports,
+            "profile": profile,
+            "medical": medical,
+        }
+    )
