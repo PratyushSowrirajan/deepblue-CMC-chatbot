@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Activity, MessageCircle, FileText, ChevronRight, Shield, Brain, ClipboardList } from 'lucide-react'
-import { reportsStore, buildChatContext } from '../store/healthStore'
+import { Activity, MessageCircle, FileText, ChevronRight, Shield, Brain, ClipboardList, LogIn, LogOut } from 'lucide-react'
+import { reportsStore, buildChatContext, tokenStore } from '../store/healthStore'
 
 const FEATURES = [
   {
@@ -28,10 +28,12 @@ const FEATURES = [
 
 export default function HomePage() {
   const navigate = useNavigate()
-  const [hasReports, setHasReports] = useState(false)
-  const [latestDate, setLatestDate] = useState<string | null>(null)
+  const [hasReports,  setHasReports]  = useState(false)
+  const [latestDate,  setLatestDate]  = useState<string | null>(null)
+  const [isLoggedIn,  setIsLoggedIn]  = useState(tokenStore.isLoggedIn())
 
   useEffect(() => {
+    setIsLoggedIn(tokenStore.isLoggedIn())
     const has = reportsStore.hasReports()
     setHasReports(has)
     if (has) {
@@ -40,7 +42,19 @@ export default function HomePage() {
     }
   }, [])
 
+  function handleLogout() {
+    tokenStore.clear()
+    setIsLoggedIn(false)
+  }
+
   function handleChatWithRemy() {
+    if (!tokenStore.isLoggedIn()) {
+      const latest = reportsStore.getLatest()
+      if (latest) sessionStorage.setItem('chat_current_report_id', latest.report_id)
+      sessionStorage.setItem('auth_return_to', '/chat')
+      navigate('/auth')
+      return
+    }
     const latest = reportsStore.getLatest()
     if (!latest) return
     const ctx = buildChatContext(latest.report_id)
@@ -71,7 +85,27 @@ export default function HomePage() {
           </div>
           <span className="font-semibold text-base" style={{ color: 'var(--navy)' }}>HealthAssistant</span>
         </div>
-        <span className="chip-outline text-xs">Web</span>
+        <div className="flex items-center gap-2">
+          <span className="chip-outline text-xs">Web</span>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
+              style={{ background: '#FFF0F0', color: '#B71C1C' }}
+              title="Log out"
+            >
+              <LogOut className="w-3.5 h-3.5" /> Log out
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate('/auth')}
+              className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
+              style={{ background: '#EEF4FF', color: 'var(--brand)' }}
+            >
+              <LogIn className="w-3.5 h-3.5" /> Log in
+            </button>
+          )}
+        </div>
       </header>
 
       <div className="max-w-3xl mx-auto px-5 pb-16 space-y-6 pt-6">
@@ -163,9 +197,7 @@ export default function HomePage() {
           </button>
         </div>
 
-        <p className="text-center text-xs" style={{ color: 'var(--hint)' }}>
-          For informational purposes only. Not a substitute for professional medical advice.
-        </p>
+
       </div>
     </div>
   )

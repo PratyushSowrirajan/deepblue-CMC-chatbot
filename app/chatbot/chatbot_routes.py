@@ -13,10 +13,14 @@ Tables written to: chat_sessions, chat_messages
 DB tables read:    user_profiles, user_medical_data, reports
 """
 
+import asyncio
+import logging
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 from typing import Optional
 from jose import jwt, JWTError
+
+logger = logging.getLogger(__name__)
 
 from app.chatbot.chatbot_client import chatbot_client
 from app.chatbot.chatbot_config import CHATBOT_SYSTEM_PROMPT
@@ -109,6 +113,8 @@ def _answer_to_text(answer_json: dict) -> str:
     if t == "multi_choice":
         options = answer_json.get("selected_options", [])
         return ", ".join(o.get("label", "") for o in options)
+    if t == "image":
+        return ""  # skip — base64 blobs must not go into the text prompt
     # Fallback
     return str(answer_json.get("value", ""))
 
@@ -280,9 +286,12 @@ async def start_chat(request: Request, body: StartChatRequest):
             )
 
         try:
-            welcome = chatbot_client.generate_response(
-                user_message=start_instruction,
-                system_prompt_override=system_prompt,
+            welcome = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: chatbot_client.generate_response(
+                    user_message=start_instruction,
+                    system_prompt_override=system_prompt,
+                )
             )
         except Exception:
             welcome = (
@@ -342,12 +351,16 @@ async def send_message(request: Request, body: SendMessageRequest):
         conversation_history = history[:-1] if len(history) > 1 else None
 
         try:
-            reply = chatbot_client.generate_response(
-                user_message=body.message,
-                conversation_history=conversation_history,
-                system_prompt_override=session["system_prompt"],
+            reply = await asyncio.get_event_loop().run_in_executor(
+                None,
+                lambda: chatbot_client.generate_response(
+                    user_message=body.message,
+                    conversation_history=conversation_history,
+                    system_prompt_override=session["system_prompt"],
+                )
             )
-        except Exception:
+        except Exception as e:
+            logger.error("Chatbot generate_response failed: %s", e, exc_info=True)
             reply = FALLBACK_MESSAGE
 
         # Persist assistant reply

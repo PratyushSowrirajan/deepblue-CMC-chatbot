@@ -1,3 +1,16 @@
+// ─── Auth Types ───────────────────────────────────────────────
+
+export interface AuthRequest {
+  email: string
+  password: string
+}
+
+export interface AuthResponse {
+  success: boolean
+  message: string
+  token?: string
+}
+
 // ─── Assessment Types ─────────────────────────────────────────
 
 export interface ResponseOption {
@@ -13,9 +26,16 @@ export interface Question {
   is_compulsory: boolean
 }
 
+export interface StoredAnswerItem {
+  question_id: string
+  question_text: string
+  answer_json: Record<string, unknown>
+}
+
 export interface AssessmentStartResponse {
   session_id: string
   question: Question
+  stored_answers?: StoredAnswerItem[]
 }
 
 export interface AnswerPayload {
@@ -47,8 +67,7 @@ export interface SimpleQA {
 }
 
 export interface SubmitReportRequest {
-  session_id?: string
-  responses: SimpleQA[]
+  session_id: string
 }
 
 export interface CauseDetail {
@@ -93,24 +112,18 @@ export interface ProfileEntry {
 }
 
 export interface ChatStartRequest {
-  profile_data: ProfileEntry[]
-  reports: Record<string, unknown>[]
+  entry_point: string          // "home" | "assessment"
+  main_report_id?: string | null
 }
 
 export interface ChatStartResponse {
   session_id: string
   message: string
-  is_first: boolean
-}
-
-export interface ChatMessage {
-  role: 'user' | 'assistant'
-  content: string
 }
 
 export interface ChatMessageRequest {
   session_id: string
-  history: ChatMessage[]
+  message: string
 }
 
 export interface ChatMessageResponse {

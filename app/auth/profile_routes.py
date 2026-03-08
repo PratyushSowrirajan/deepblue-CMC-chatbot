@@ -222,11 +222,11 @@ async def onboard_medical(request: Request, body: OnboardingRequest):
       Authorization: Bearer <jwt_token>
       {
         "answer_json": [
-          { "question_id": "q_med_history",
-            "question_text": "Do you have any past medical conditions?",
-            "answer_json": { "type": "single_choice", "selected_option_label": "diabetes" } },
-          { "question_id": "q_medication_list",
-            "question_text": "Please list all medications and supplements:",
+          { "question_id": "q_past_conditions",
+            "question_text": "Do you have any diagnosed medical conditions?",
+            "answer_json": { "type": "single_choice", "selected_option_label": "Yes" } },
+          { "question_id": "q_medication_details",
+            "question_text": "Please list the medications or supplements you take regularly",
             "answer_json": { "type": "text", "value": "Metformin 500mg daily" } }
         ]
       }

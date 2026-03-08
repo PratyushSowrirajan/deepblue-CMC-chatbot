@@ -196,3 +196,27 @@ export function buildChatContext(currentReportId: string | null = null) {
 
   return { profile_data: profileData, reports }
 }
+
+// ─────────────────────────────────────────────────────────────
+// TOKEN STORE  (auth JWT — persists across sessions)
+// ─────────────────────────────────────────────────────────────
+
+const TOKEN_KEY = 'HA_AUTH_TOKEN'
+
+export const tokenStore = {
+  set(token: string) {
+    localStorage.setItem(TOKEN_KEY, token)
+  },
+
+  get(): string | null {
+    return localStorage.getItem(TOKEN_KEY)
+  },
+
+  clear() {
+    localStorage.removeItem(TOKEN_KEY)
+  },
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(TOKEN_KEY)
+  },
+}

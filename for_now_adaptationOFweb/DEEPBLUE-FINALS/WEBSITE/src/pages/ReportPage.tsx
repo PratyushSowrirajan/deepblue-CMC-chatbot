@@ -284,9 +284,7 @@ export default function ReportPage() {
           <Home className="w-4 h-4" /> End Assessment
         </button>
 
-        <p className="text-center text-xs pb-4" style={{ color: 'var(--hint)' }}>
-          For informational purposes only. Always consult a qualified healthcare professional.
-        </p>
+
       </div>
     </div>
   )

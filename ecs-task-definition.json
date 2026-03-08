@@ -21,15 +21,15 @@
       "environment": [
         {
           "name": "CEREBRAS_API_KEY",
-          "value": "csk-fe8ntvvnx6d8rvnky45dhp5y8j6et5kffy4pcy84kr8264ew"
+          "value": "YOUR_CEREBRAS_API_KEY"
         },
         {
           "name": "CHATBOT_CEREBRAS_API_KEY",
-          "value": "csk-5tmvfx29vmkjrcjyvrfv4pvwydp5ke6vfxed6pmt4m2drxkv"
+          "value": "YOUR_CHATBOT_CEREBRAS_API_KEY"
         },
         {
           "name": "DATABASE_URL",
-          "value": "postgresql://postgres:Pratyushsec077@RDS_ENDPOINT:5432/DeepBlue"
+          "value": "YOUR_DATABASE_URL"
         },
         {
           "name": "PYTHONUNBUFFERED",

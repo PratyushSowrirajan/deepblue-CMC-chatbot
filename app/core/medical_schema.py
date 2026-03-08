@@ -91,8 +91,12 @@ def build_medical_schema(answers: dict) -> dict:
     if "q_gender" in answers:
         schema["demographics"]["gender"] = normalize_value(answers["q_gender"])
     
-    if "q_med_history" in answers:
-        schema["medical_history"] = parse_medical_history(answers["q_med_history"])
+    if "q_condition_details" in answers:
+        schema["medical_history"] = parse_medical_history(answers["q_condition_details"])
+    elif "q_past_conditions" in answers:
+        val = answers["q_past_conditions"]
+        if val and normalize_value(val) not in ["no", "none"]:
+            schema["medical_history"] = ["unspecified conditions (patient confirmed yes)"]
     
     if "q_current_ailment" in answers:
         schema["current_complaint"] = normalize_value(answers["q_current_ailment"])

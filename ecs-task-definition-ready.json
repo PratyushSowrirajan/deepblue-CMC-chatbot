@@ -1,7 +1,9 @@
 {
   "family": "healthcare-chatbot-task",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
   "executionRoleArn": "arn:aws:iam::730128024439:role/ecsTaskExecutionRole",
@@ -20,20 +22,60 @@
       "essential": true,
       "environment": [
         {
+          "name": "PYTHONUNBUFFERED",
+          "value": "1"
+        },
+        {
           "name": "CEREBRAS_API_KEY",
-          "value": "csk-fe8ntvvnx6d8rvnky45dhp5y8j6et5kffy4pcy84kr8264ew"
+          "value": "YOUR_CEREBRAS_API_KEY"
         },
         {
           "name": "CHATBOT_CEREBRAS_API_KEY",
-          "value": "csk-5tmvfx29vmkjrcjyvrfv4pvwydp5ke6vfxed6pmt4m2drxkv"
+          "value": "YOUR_CHATBOT_CEREBRAS_API_KEY"
         },
         {
           "name": "DATABASE_URL",
-          "value": "postgresql://postgres:Pratyushsec077@healthcare-chatbot-db.c7e68mge8k5c.eu-north-1.rds.amazonaws.com:5432/postgres"
+          "value": "YOUR_DATABASE_URL"
         },
         {
-          "name": "PYTHONUNBUFFERED",
-          "value": "1"
+          "name": "GEMINI_API_KEY",
+          "value": "YOUR_GEMINI_API_KEY"
+        },
+        {
+          "name": "JWT_SECRET_KEY",
+          "value": "YOUR_JWT_SECRET_KEY"
+        },
+        {
+          "name": "TAVILY_API_KEY",
+          "value": "YOUR_TAVILY_API_KEY"
+        },
+        {
+          "name": "RAG_CEREBRAS_API_KEY",
+          "value": "YOUR_RAG_CEREBRAS_API_KEY"
+        },
+        {
+          "name": "CALL_FUNC_CEREBRAS_API_KEY",
+          "value": "YOUR_CALL_FUNC_CEREBRAS_API_KEY"
+        },
+        {
+          "name": "CALL_FUNC_CEREBRAS_MODEL",
+          "value": "llama3.1-8b"
+        },
+        {
+          "name": "TWILIO_ACCOUNT_SID",
+          "value": "YOUR_TWILIO_ACCOUNT_SID"
+        },
+        {
+          "name": "TWILIO_AUTH_TOKEN",
+          "value": "YOUR_TWILIO_AUTH_TOKEN"
+        },
+        {
+          "name": "TWILIO_PHONE_NUMBER",
+          "value": "YOUR_TWILIO_PHONE_NUMBER"
+        },
+        {
+          "name": "TWILIO_VERIFIED_CALLER_ID",
+          "value": "YOUR_TWILIO_VERIFIED_CALLER_ID"
         }
       ],
       "logConfiguration": {
@@ -48,4 +90,3 @@
     }
   ]
 }
-

@@ -1,0 +1,10 @@
+[33m3470b9a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Replaced the use of SQLDelight Database(APP) to PostGreSQL(SERVE SIDE)
+[33m05c50c5[m Implemented the Login, Signup, OnBoardingProfile and OnBoardingMedical Screen, AND also Server Database
+[33m4af48d0[m Implemented Multi-lingual for TEXT (partially) Added App Logo
+[33m8a445dd[m Modified UI of Assessment Screen
+[33m09b67f6[m Modified Home Screen with the implementations for cards
+[33med4698d[m Created Local Database for Reports and Implemented assessment new endpoint 'assessment/end'
+[33mc0e0fe1[m Completed the UI and Integration of News Screen(using NewsAPI) & Implemented App with Backend (Till Report Generation Section)
+[33m90f34f2[m Implemented complete Home screen UI
+[33me5e69aa[m Modified Assessment Backend Interconnection
+[33m80c0cef[m Initial commit - KMP Health Assistant project

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, Send, Loader2, X } from 'lucide-react'
+import { ChevronLeft, Send, Loader2, X, LogIn } from 'lucide-react'
 import { api } from '../api/api'
-import type { ChatMessage } from '../types/api.types'
+import { tokenStore } from '../store/healthStore'
 
 interface Bubble { role: 'user' | 'assistant'; text: string }
 
@@ -13,38 +13,53 @@ export default function ChatPage() {
 
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [bubbles,   setBubbles]   = useState<Bubble[]>([])
-  const [history,   setHistory]   = useState<ChatMessage[]>([])
   const [input,     setInput]     = useState('')
   const [loading,   setLoading]   = useState(true)
   const [sending,   setSending]   = useState(false)
   const [error,     setError]     = useState<string | null>(null)
   const [ended,     setEnded]     = useState(false)
 
+  // ── Auth guard ────────────────────────────────────────────
+  useEffect(() => {
+    if (!tokenStore.isLoggedIn()) {
+      sessionStorage.setItem('auth_return_to', '/chat')
+      navigate('/auth', { replace: true })
+    }
+  }, [navigate])
+
   // ── Start session ─────────────────────────────────────────
   useEffect(() => {
+    if (!tokenStore.isLoggedIn()) return
     let cancelled = false
     ;(async () => {
       try {
-        const profileRaw = sessionStorage.getItem('chat_profile_data')
-        const reportsRaw = sessionStorage.getItem('chat_reports')
-        const profile_data = profileRaw ? JSON.parse(profileRaw) : []
-        const reports      = reportsRaw ? JSON.parse(reportsRaw) : []
+        const main_report_id = sessionStorage.getItem('chat_current_report_id') || null
+        const entry_point    = main_report_id ? 'assessment' : 'home'
 
-        const res = await api.chat.start({ profile_data, reports })
+        const res = await api.chat.start({ entry_point, main_report_id })
         if (cancelled) return
 
         setSessionId(res.session_id)
         const welcome = res.message ?? "Hi, I'm Remy. How can I help you today?"
         setBubbles([{ role: 'assistant', text: welcome }])
-        setHistory([{ role: 'assistant', content: welcome }])
       } catch (e) {
-        if (!cancelled) setError('Could not connect to Remy. Please try again.')
+        if (!cancelled) {
+          const msg = (e as Error).message
+          if (msg.includes('401')) {
+            // Token expired — clear and redirect to auth
+            tokenStore.clear()
+            sessionStorage.setItem('auth_return_to', '/chat')
+            navigate('/auth', { replace: true })
+          } else {
+            setError('Could not connect to Remy. Please try again.')
+          }
+        }
       } finally {
         if (!cancelled) setLoading(false)
       }
     })()
     return () => { cancelled = true }
-  }, [])
+  }, [navigate])
 
   // ── Auto-scroll ───────────────────────────────────────────
   useEffect(() => {
@@ -56,27 +71,20 @@ export default function ChatPage() {
     const text = input.trim()
     if (!text || !sessionId || sending || ended) return
 
-    const userBubble: Bubble     = { role: 'user',      text }
-    const userMsg:    ChatMessage = { role: 'user',      content: text }
-    setBubbles(prev => [...prev, userBubble])
-    const newHistory = [...history, userMsg]
-    setHistory(newHistory)
+    setBubbles(prev => [...prev, { role: 'user', text }])
     setInput('')
     setSending(true)
 
     try {
-      const res = await api.chat.message({ session_id: sessionId, history: newHistory })
-      const replyBubble: Bubble     = { role: 'assistant', text: res.message }
-      const replyMsg:    ChatMessage = { role: 'assistant', content: res.message }
-      setBubbles(prev => [...prev, replyBubble])
-      setHistory(prev => [...prev, replyMsg])
+      const res = await api.chat.message({ session_id: sessionId, message: text })
+      setBubbles(prev => [...prev, { role: 'assistant', text: res.message }])
     } catch {
       setBubbles(prev => [...prev, { role: 'assistant', text: 'Sorry, I ran into an error. Please try again.' }])
     } finally {
       setSending(false)
       setTimeout(() => inputRef.current?.focus(), 50)
     }
-  }, [input, sessionId, sending, ended, history])
+  }, [input, sessionId, sending, ended])
 
   // ── End ───────────────────────────────────────────────────
   async function handleEnd() {
@@ -127,9 +135,17 @@ export default function ChatPage() {
         {error && (
           <div className="card border" style={{ borderColor: '#FFCDD2', background: '#FFF0F0', color: '#B71C1C' }}>
             <p className="text-sm">{error}</p>
-            <button onClick={() => window.location.reload()} className="text-sm underline mt-2 font-medium">
-              Retry
-            </button>
+            <div className="flex gap-3 mt-2">
+              <button onClick={() => window.location.reload()} className="text-sm underline font-medium">
+                Retry
+              </button>
+              <button
+                onClick={() => { sessionStorage.setItem('auth_return_to', '/chat'); navigate('/auth') }}
+                className="text-sm underline font-medium flex items-center gap-1"
+              >
+                <LogIn className="w-3.5 h-3.5" /> Log in
+              </button>
+            </div>
           </div>
         )}
 
@@ -225,13 +241,7 @@ export default function ChatPage() {
         </button>
       </div>
 
-      {/* Disclaimer */}
-      <div
-        className="flex-shrink-0 text-center text-xs py-2 bg-white"
-        style={{ color: 'var(--hint)', borderTop: '1px solid var(--border)' }}
-      >
-        Powered by llama3.1-8b &nbsp;·&nbsp; Not a substitute for professional medical advice
-      </div>
+
     </div>
   )
 }

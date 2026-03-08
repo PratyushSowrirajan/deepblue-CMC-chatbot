@@ -150,34 +150,8 @@
       "is_compulsory": false
     },
     {
-      "id": "q_med_history",
-      "text": "Do you have any past medical conditions?",
-      "type": "single_choice",
-      "options": [
-        "Diabetes",
-        "Hypertension",
-        "Heart disease",
-        "Asthma or COPD",
-        "Kidney disease",
-        "Liver disease",
-        "Cancer history",
-        "Autoimmune disease",
-        "Mental health conditions",
-        "Multiple conditions",
-        "None"
-      ],
-      "is_compulsory": false
-    },
-    {
-      "id": "q_med_history_details",
-      "text": "Please list all your medical conditions:",
-      "type": "text",
-      "hint": "E.g., Type 2 diabetes, high blood pressure, asthma",
-      "is_compulsory": false
-    },
-    {
-      "id": "q_surgeries",
-      "text": "Have you had any surgeries?",
+      "id": "q_past_conditions",
+      "text": "Do you have any diagnosed medical conditions?",
       "type": "single_choice",
       "options": [
         "Yes",
@@ -186,37 +160,56 @@
       "is_compulsory": false
     },
     {
-      "id": "q_family_history",
-      "text": "Any significant family medical history?",
+      "id": "q_condition_details",
+      "text": "Please list your diagnosed medical conditions",
+      "type": "text",
+      "hint": "E.g., Type 2 diabetes, high blood pressure, asthma",
+      "is_compulsory": false
+    },
+    {
+      "id": "q_surgeries",
+      "text": "Have you undergone any surgical procedures?",
       "type": "single_choice",
       "options": [
-        "Heart disease",
+        "Yes",
+        "No"
+      ],
+      "is_compulsory": false
+    },
+    {
+      "id": "q_surgery_details",
+      "text": "Please describe the surgery and approximate year",
+      "type": "text",
+      "hint": "E.g., Appendectomy 2020, Knee replacement 2018",
+      "is_compulsory": false
+    },
+    {
+      "id": "q_family_history",
+      "text": "Is there any significant medical history in your family?",
+      "type": "single_choice",
+      "options": [
+        "Heart Disease",
         "Diabetes",
+        "Hypertension",
         "Cancer",
         "Stroke",
-        "Mental illness",
-        "Autoimmune disease",
-        "Multiple conditions",
-        "None known"
+        "None Known"
       ],
       "is_compulsory": false
     },
     {
-      "id": "q_current_medications",
-      "text": "Are you currently taking any medications?",
+      "id": "q_current_medication",
+      "text": "Are you currently taking any medications or health supplements?",
       "type": "single_choice",
       "options": [
-        "Prescription medications",
-        "Over-the-counter only",
-        "Herbal supplements",
-        "Multiple medications",
-        "None"
+        "Yes",
+        "No"
       ],
       "is_compulsory": false
     },
     {
-      "id": "q_medication_list",
-      "text": "Please list all medications and supplements:",
+      "id": "q_medication_details",
+      "text": "Please list the medications or supplements you take regularly",
       "type": "text",
       "hint": "Include dosages if known, or write 'none'",
       "is_compulsory": false
@@ -226,44 +219,38 @@
       "text": "Do you have any known allergies?",
       "type": "single_choice",
       "options": [
-        "Medication allergy",
-        "Food allergy",
-        "Environmental allergy",
-        "Latex allergy",
-        "Multiple allergies",
-        "None known"
+        "Yes",
+        "No"
       ],
       "is_compulsory": false
     },
     {
       "id": "q_allergy_details",
-      "text": "Please specify your allergies and reactions:",
+      "text": "Please describe your allergies and reactions",
       "type": "text",
       "hint": "E.g., Penicillin (rash), Peanuts (anaphylaxis), or 'none'",
       "is_compulsory": false
     },
     {
-      "id": "q_smoking_status",
-      "text": "What is your smoking status?",
+      "id": "q_smoking",
+      "text": "What best describes your smoking status?",
       "type": "single_choice",
       "options": [
-        "Never smoked",
-        "Former smoker",
-        "Current smoker",
-        "Vaping only"
+        "Never Smoked",
+        "Former Smoker",
+        "Current Smoker"
       ],
       "is_compulsory": false
     },
     {
-      "id": "q_alcohol_use",
-      "text": "How often do you consume alcohol?",
+      "id": "q_alcohol",
+      "text": "How often do you consume alcoholic beverages?",
       "type": "single_choice",
       "options": [
         "Never",
-        "Rarely",
+        "Occasionally",
         "Socially",
-        "Regularly",
-        "Daily"
+        "Regularly"
       ],
       "is_compulsory": false
     },

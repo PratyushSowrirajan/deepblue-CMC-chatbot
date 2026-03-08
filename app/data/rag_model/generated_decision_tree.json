@@ -4,7 +4,7 @@
       "version": "2.0",
       "purpose": "Symptom-specific triage + deep-dive questionnaire",
       "source": "MedlinePlus via Tavily RAG + Cerebras LLM",
-      "generated_date": "2026-03-06",
+      "generated_date": "2026-03-07",
       "medlineplus_url": "https://medlineplus.gov/",
       "assumes_prior_data": [
         "age",
@@ -7223,33 +7223,36 @@
         "label": "Rashes",
         "keywords": [
           "rash",
-          "itchy skin",
-          "red skin",
-          "skin irritation",
-          "skin inflammation",
-          "allergic reaction",
+          "itchy",
+          "red",
+          "painful",
+          "irritated",
+          "blisters",
+          "patches",
+          "raw skin",
           "infection",
           "fever",
-          "painful skin"
+          "allergic reaction",
+          "anaphylaxis"
         ],
-        "default_urgency": "yellow_doctor_visit",
+        "default_urgency": "green_home_care",
         "triage_rationale": {
           "why_assess_carefully": [
-            "Rashes can be a sign of a serious health condition, such as an infection or allergic reaction.",
-            "Some rashes can be contagious, so it's essential to assess the situation carefully.",
-            "Rashes can be a symptom of a systemic infection, which requires prompt medical attention.",
-            "Rashes can be a sign of an allergic reaction, which can be life-threatening if not treated promptly."
+            "Rashes can be a sign of a serious health condition.",
+            "Infections can spread quickly and require prompt treatment.",
+            "Allergic reactions can be life-threatening if not treated promptly.",
+            "Fever can be a sign of a viral or bacterial infection."
           ],
-          "age_factor": "Children and older adults are more susceptible to serious skin conditions.",
-          "sex_specific_notes": "Pregnant women may be more prone to skin conditions due to hormonal changes.",
-          "pregnancy_note": "Pregnant women should consult their healthcare provider if they experience any skin symptoms."
+          "age_factor": "Children and older adults may be more susceptible to infections and allergic reactions.",
+          "sex_specific_notes": "Pregnant women may be more susceptible to infections and allergic reactions.",
+          "pregnancy_note": "Pregnant women should seek medical attention if they experience any unusual symptoms."
         },
         "immediate_red_flags": [
           "Severe pain",
           "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
           "Yellow or green fluid, warmth, and/or red streaks in the rash area",
           "Fever",
-          "Difficulty breathing"
+          "Confusion"
         ],
         "followup_questions": {
           "onset_type": {
@@ -7297,10 +7300,15 @@
             "question": "Which other symptoms are present with the rashes?",
             "type": "multi_choice",
             "options": [
-              "fever",
               "itching",
               "swelling",
-              "redness",
+              "fever",
+              "chills",
+              "headache",
+              "nausea",
+              "vomiting",
+              "diarrhea",
+              "abdominal pain",
               "none"
             ]
           },
@@ -7311,7 +7319,8 @@
               "sweating",
               "heat",
               "cold",
-              "irritating substances",
+              "stress",
+              "hormonal changes",
               "nothing_specific"
             ]
           },
@@ -7322,6 +7331,498 @@
               "cool compresses",
               "hydrocortisone cream",
               "antihistamines",
+              "rest",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever",
+            "Confusion"
+          ],
+          "yellow_doctor_visit": [
+            "Itching",
+            "Swelling",
+            "Fever",
+            "Chills",
+            "Headache"
+          ],
+          "green_home_care": [
+            "Mild rashes",
+            "Rashes that are not painful",
+            "Rashes that are not itchy"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any underlying conditions.",
+          "Assess the patient's symptoms and any associated symptoms.",
+          "Determine the severity and duration of the rashes.",
+          "Consider the patient's age and sex when assessing the rashes."
+        ],
+        "advice": {
+          "action": "Seek medical attention if the rashes worsen or do not improve with home treatment.",
+          "emergency_if": [
+            "Severe pain",
+            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
+            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
+            "Fever",
+            "Confusion"
+          ],
+          "doctor_visit_if": [
+            "Itching",
+            "Swelling",
+            "Fever",
+            "Chills",
+            "Headache"
+          ],
+          "home_care_if": [
+            "Mild rashes",
+            "Rashes that are not painful",
+            "Rashes that are not itchy"
+          ],
+          "reason": "To determine the cause and severity of the rashes and to provide appropriate treatment.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "jjj",
+        "label": "Head Injury or Concussion",
+        "keywords": [
+          "head injury",
+          "concussion",
+          "headache",
+          "confusion",
+          "loss of consciousness",
+          "severe headache",
+          "sudden speech difficulties",
+          "weakness or numbness of the arms and legs",
+          "seizures",
+          "stroke symptoms",
+          "sickle cell anemia",
+          "fever",
+          "acute chest syndrome",
+          "avascular necrosis"
+        ],
+        "default_urgency": "red_emergency",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Head injuries can be unpredictable and may worsen over time.",
+            "Concussions can lead to serious complications if not treated promptly.",
+            "Sickle cell anemia and stroke symptoms require immediate medical attention.",
+            "Acute chest syndrome and avascular necrosis are life-threatening conditions that require emergency care."
+          ],
+          "age_factor": "Children and older adults are more susceptible to serious complications from head injuries.",
+          "sex_specific_notes": "Pregnant women may be more vulnerable to complications from head injuries.",
+          "pregnancy_note": "Pregnant women should seek medical attention immediately if they experience a head injury."
+        },
+        "immediate_red_flags": [
+          "Severe headache",
+          "Confusion",
+          "Loss of consciousness",
+          "Sudden speech difficulties",
+          "Weakness or numbness of the arms and legs",
+          "Seizures",
+          "Stroke symptoms",
+          "Fever",
+          "Acute chest syndrome",
+          "Avascular necrosis"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the head injury or concussion start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the head injury or concussion right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this head injury or concussion?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "What is the character of the pain?",
+            "type": "single_choice",
+            "options": [
+              "sharp",
+              "dull",
+              "aching",
+              "throbbing",
+              "other"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the head injury or concussion?",
+            "type": "multi_choice",
+            "options": [
+              "headache",
+              "confusion",
+              "dizziness",
+              "nausea",
+              "vomiting",
+              "seizures",
+              "weakness or numbness of the arms and legs",
+              "sudden speech difficulties",
+              "fever",
+              "acute chest syndrome",
+              "avascular necrosis",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the head injury or concussion worse?",
+            "type": "multi_choice",
+            "options": [
+              "bending or lifting",
+              "coughing or sneezing",
+              "lying down or changing positions",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the head injury or concussion better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "ice",
+              "compression",
+              "elevation",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Severe headache",
+            "Confusion",
+            "Loss of consciousness",
+            "Sudden speech difficulties",
+            "Weakness or numbness of the arms and legs"
+          ],
+          "yellow_doctor_visit": [
+            "Mild headache",
+            "Dizziness",
+            "Nausea or vomiting"
+          ],
+          "green_home_care": [
+            "Mild dizziness",
+            "Mild nausea or vomiting"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any previous head injuries.",
+          "Assess the patient's level of consciousness and any signs of confusion.",
+          "Evaluate the patient's ability to speak and any signs of sudden speech difficulties.",
+          "Check for any signs of weakness or numbness in the arms and legs."
+        ],
+        "advice": {
+          "action": "Seek immediate medical attention if you experience any of the following: severe headache, confusion, loss of consciousness, sudden speech difficulties, or weakness or numbness of the arms and legs.",
+          "emergency_if": [
+            "severe headache",
+            "confusion",
+            "loss of consciousness",
+            "sudden speech difficulties",
+            "weakness or numbness of the arms and legs"
+          ],
+          "doctor_visit_if": [
+            "mild headache",
+            "dizziness",
+            "nausea or vomiting"
+          ],
+          "home_care_if": [
+            "mild dizziness",
+            "mild nausea or vomiting"
+          ],
+          "reason": "Head injuries can be unpredictable and may worsen over time.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "aids_symptom",
+        "label": "Acquired Immunodeficiency Syndrome (AIDS)",
+        "keywords": [
+          "AIDS",
+          "HIV",
+          "immunodeficiency",
+          "infection",
+          "symptoms",
+          "diagnosis",
+          "treatment"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "AIDS is a serious condition that requires prompt medical attention.",
+            "Untreated HIV can progress to AIDS, leading to severe health complications.",
+            "Early diagnosis and treatment can prevent progression to AIDS.",
+            "AIDS can cause a range of symptoms, including severe weight loss, persistent fever, night sweats, and prolonged fatigue."
+          ],
+          "age_factor": "AIDS can affect people of all ages, but it is more common in adults and older adults.",
+          "sex_specific_notes": "Women and men are equally affected by AIDS, but women are more likely to develop AIDS-related illnesses.",
+          "pregnancy_note": "Pregnant women with HIV are at higher risk of transmitting the virus to their babies."
+        },
+        "immediate_red_flags": [
+          "Severe weight loss",
+          "Persistent fever",
+          "Night sweats",
+          "Prolonged fatigue",
+          "Severe headache"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the AIDS start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the AIDS right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this AIDS?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is the AIDS accompanied by severe headache?",
+            "type": "single_choice",
+            "options": [
+              "yes",
+              "no",
+              "not_applicable"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the AIDS?",
+            "type": "multi_choice",
+            "options": [
+              "severe_weight_loss",
+              "persistent_fever",
+              "night_sweats",
+              "prolonged_fatigue",
+              "severe_headache",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the AIDS worse?",
+            "type": "multi_choice",
+            "options": [
+              "physical_activity",
+              "stress",
+              "poor_nutrition",
+              "none_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the AIDS better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "medication",
+              "good_nutrition",
+              "none_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Severe weight loss",
+            "Persistent fever",
+            "Night sweats",
+            "Prolonged fatigue",
+            "Severe headache with slurred speech, change in vision, or loss of balance"
+          ],
+          "yellow_doctor_visit": [
+            "Mild to moderate AIDS symptoms",
+            "AIDS symptoms that worsen with physical activity or stress",
+            "AIDS symptoms that improve with rest or medication"
+          ],
+          "green_home_care": [
+            "Mild AIDS symptoms that do not worsen with physical activity or stress",
+            "AIDS symptoms that are well-managed with good nutrition and self-care"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and risk factors for HIV.",
+          "Assess the patient's symptoms and physical examination findings.",
+          "Order laboratory tests to confirm the diagnosis of HIV and AIDS.",
+          "Develop a treatment plan that includes antiretroviral therapy and management of opportunistic infections."
+        ],
+        "advice": {
+          "action": "Seek medical attention immediately if you experience severe weight loss, persistent fever, night sweats, or prolonged fatigue.",
+          "emergency_if": [
+            "Severe weight loss",
+            "Persistent fever",
+            "Night sweats",
+            "Prolonged fatigue"
+          ],
+          "doctor_visit_if": [
+            "Mild to moderate AIDS symptoms",
+            "AIDS symptoms that worsen with physical activity or stress"
+          ],
+          "home_care_if": [
+            "Mild AIDS symptoms that do not worsen with physical activity or stress",
+            "AIDS symptoms that are well-managed with good nutrition and self-care"
+          ],
+          "reason": "Prompt medical attention is necessary to prevent progression to AIDS and manage symptoms.",
+          "do_not_delay": true
+        }
+      },
+      {
+        "symptom_id": "cold_symptom",
+        "label": "Cold",
+        "keywords": [
+          "cold",
+          "flu",
+          "fever",
+          "chills",
+          "cough",
+          "sore_throat",
+          "runny_nose",
+          "stuffy_nose",
+          "headache",
+          "fatigue",
+          "muscle_ache",
+          "joint_pain"
+        ],
+        "default_urgency": "green_home_care",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Cold symptoms can be caused by a viral infection, which can lead to complications if not treated properly.",
+            "Some people, such as older adults and young children, are more susceptible to complications from the flu.",
+            "If left untreated, a cold can lead to secondary infections, such as sinusitis or bronchitis.",
+            "Some people may experience severe symptoms, such as difficulty breathing or chest pain, which require immediate medical attention."
+          ],
+          "age_factor": "Babies under 3 months old should be seen by a healthcare professional early in the illness.",
+          "sex_specific_notes": "Pregnant women should be aware of the risks of flu complications and take precautions to prevent infection.",
+          "pregnancy_note": "Pregnant women are at higher risk for flu complications and should be vaccinated against the flu."
+        },
+        "immediate_red_flags": [
+          "Difficulty breathing",
+          "Chest pain or pressure",
+          "Severe headache or confusion",
+          "Fever over 103°F (39.4°C)",
+          "Severe sore throat or difficulty swallowing"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the cold start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the cold right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this cold?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is the sore throat or cough severe enough to interfere with eating or drinking?",
+            "type": "single_choice",
+            "options": [
+              "yes",
+              "no"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the cold?",
+            "type": "multi_choice",
+            "options": [
+              "fever",
+              "chills",
+              "cough",
+              "sore_throat",
+              "runny_nose",
+              "stuffy_nose",
+              "headache",
+              "fatigue",
+              "muscle_ache",
+              "joint_pain",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the cold worse?",
+            "type": "multi_choice",
+            "options": [
+              "exposure_to_cold_air",
+              "exposure_to_cold_water",
+              "exertion",
+              "stress",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the cold better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "fluid_intake",
+              "medication",
               "nothing_helps"
             ]
           }
@@ -7329,53 +7830,384 @@
         "urgency_decision_logic": {
           "red_emergency": [
             "Difficulty breathing",
-            "Severe pain",
-            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
-            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
-            "Fever"
+            "Chest pain or pressure",
+            "Severe headache or confusion",
+            "Fever over 103°F (39.4°C)",
+            "Severe sore throat or difficulty swallowing"
           ],
           "yellow_doctor_visit": [
-            "Mild to moderate pain",
-            "Itching or swelling",
-            "Redness or inflammation",
-            "Fever",
-            "Recent exposure to allergens or irritants"
+            "Fever over 102°F (39°C)",
+            "Severe sore throat or difficulty swallowing",
+            "Coughing up blood or yellow or green mucus",
+            "Severe headache or facial pain",
+            "Difficulty sleeping or concentrating"
           ],
           "green_home_care": [
-            "Mild rashes without pain or itching",
-            "Rashes that are improving with self-care",
-            "No fever or other concerning symptoms"
+            "Mild symptoms",
+            "No fever",
+            "No difficulty breathing or swallowing",
+            "No severe headache or facial pain",
+            "No difficulty sleeping or concentrating"
           ]
         },
         "llm_analysis_tips": [
-          "Consider the patient's medical history and any recent exposures to allergens or irritants.",
-          "Assess the patient's overall condition and any potential underlying conditions.",
-          "Be aware of any potential interactions between medications and the patient's symptoms.",
-          "Consider the patient's age and any age-specific considerations."
+          "Consider the patient's age and underlying medical conditions when assessing the severity of the cold.",
+          "Be aware of the potential for complications, such as secondary infections or flu.",
+          "Use the follow-up questions to gather more information about the patient's symptoms and medical history.",
+          "Consider the patient's occupation and lifestyle when determining the urgency of the situation."
         ],
         "advice": {
-          "action": "Seek medical attention if the rashes worsen or do not improve with self-care.",
+          "action": "Rest, stay hydrated, and use over-the-counter medications to relieve symptoms.",
           "emergency_if": [
             "Difficulty breathing",
-            "Severe pain",
-            "Blisters, especially if they affect the skin around the eyes, mouth, or genitals",
-            "Yellow or green fluid, warmth, and/or red streaks in the rash area",
-            "Fever"
+            "Chest pain or pressure",
+            "Severe headache or confusion",
+            "Fever over 103°F (39.4°C)",
+            "Severe sore throat or difficulty swallowing"
           ],
           "doctor_visit_if": [
-            "Mild to moderate pain",
-            "Itching or swelling",
-            "Redness or inflammation",
-            "Fever",
-            "Recent exposure to allergens or irritants"
+            "Fever over 102°F (39°C)",
+            "Severe sore throat or difficulty swallowing",
+            "Coughing up blood or yellow or green mucus",
+            "Severe headache or facial pain",
+            "Difficulty sleeping or concentrating"
           ],
           "home_care_if": [
-            "Mild rashes without pain or itching",
-            "Rashes that are improving with self-care",
-            "No fever or other concerning symptoms"
+            "Mild symptoms",
+            "No fever",
+            "No difficulty breathing or swallowing",
+            "No severe headache or facial pain",
+            "No difficulty sleeping or concentrating"
           ],
-          "reason": "To determine the underlying cause of the rashes and provide appropriate treatment.",
-          "do_not_delay": true
+          "reason": "To help manage symptoms and prevent complications.",
+          "do_not_delay": false
+        }
+      },
+      {
+        "symptom_id": "rash_symptom",
+        "label": "Rash",
+        "keywords": [
+          "rash",
+          "skin rash",
+          "itchy rash",
+          "red rash",
+          "blisters",
+          "hives",
+          "allergic reaction",
+          "irritant contact dermatitis",
+          "poison ivy",
+          "poison oak",
+          "poison sumac",
+          "skin irritation"
+        ],
+        "default_urgency": "green_home_care",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Rash can be a symptom of various conditions, some of which may require immediate medical attention.",
+            "Assessing the rash carefully will help determine the underlying cause and appropriate course of action.",
+            "Rash can be a sign of an allergic reaction, which can be life-threatening if not treated promptly.",
+            "Rash can also be a sign of irritant contact dermatitis, which may require medical attention if severe."
+          ],
+          "age_factor": "Children and older adults may be more susceptible to skin infections and allergic reactions.",
+          "sex_specific_notes": "Pregnant women may be more prone to skin irritation and allergic reactions.",
+          "pregnancy_note": "If pregnant, inform your healthcare provider about any skin symptoms or rashes."
+        },
+        "immediate_red_flags": [
+          "Difficulty breathing",
+          "Swelling of the face, lips, tongue, or throat",
+          "Hives or itchy rash that spreads rapidly",
+          "Hoarse voice or difficulty speaking",
+          "Loss of consciousness"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the rash start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the rash right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this rash?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is the rash painful or itchy?",
+            "type": "single_choice",
+            "options": [
+              "itchy",
+              "painful",
+              "both_itchy_and_painful",
+              "neither_itchy_nor_painful",
+              "other"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the rash?",
+            "type": "multi_choice",
+            "options": [
+              "fever",
+              "chills",
+              "headache",
+              "nausea",
+              "vomiting",
+              "diarrhea",
+              "abdominal pain",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the rash worse?",
+            "type": "multi_choice",
+            "options": [
+              "sweating",
+              "heat",
+              "cold",
+              "irritating substances",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the rash better?",
+            "type": "multi_choice",
+            "options": [
+              "cool compresses",
+              "over-the-counter hydrocortisone cream",
+              "antihistamines",
+              "avoiding irritants",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Difficulty breathing",
+            "Swelling of the face, lips, tongue, or throat",
+            "Hives or itchy rash that spreads rapidly",
+            "Hoarse voice or difficulty speaking",
+            "Loss of consciousness"
+          ],
+          "yellow_doctor_visit": [
+            "Severe rash that covers a large area of the body",
+            "Rash that is accompanied by fever, chills, or other systemic symptoms",
+            "Rash that is painful or itchy and does not improve with self-care",
+            "Rash that is caused by an allergic reaction or irritant contact dermatitis"
+          ],
+          "green_home_care": [
+            "Mild rash that is itchy but not painful",
+            "Rash that is caused by a minor irritant or allergen",
+            "Rash that improves with self-care and over-the-counter treatments"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any underlying conditions that may be contributing to the rash.",
+          "Assess the rash carefully for signs of infection, allergic reaction, or irritant contact dermatitis.",
+          "Use the patient's symptoms and medical history to determine the underlying cause of the rash.",
+          "Provide guidance on self-care and over-the-counter treatments for mild rashes."
+        ],
+        "advice": {
+          "action": "Seek medical attention if the rash is severe, spreads rapidly, or is accompanied by systemic symptoms.",
+          "emergency_if": [
+            "Difficulty breathing",
+            "Swelling of the face, lips, tongue, or throat",
+            "Hives or itchy rash that spreads rapidly",
+            "Hoarse voice or difficulty speaking",
+            "Loss of consciousness"
+          ],
+          "doctor_visit_if": [
+            "Severe rash that covers a large area of the body",
+            "Rash that is accompanied by fever, chills, or other systemic symptoms",
+            "Rash that is painful or itchy and does not improve with self-care"
+          ],
+          "home_care_if": [
+            "Mild rash that is itchy but not painful",
+            "Rash that is caused by a minor irritant or allergen",
+            "Rash that improves with self-care and over-the-counter treatments"
+          ],
+          "reason": "To determine the underlying cause of the rash and provide appropriate treatment.",
+          "do_not_delay": false
+        }
+      },
+      {
+        "symptom_id": "amenorrhea",
+        "label": "Amenorrhea",
+        "keywords": [
+          "amenorrhea",
+          "no periods",
+          "absent periods",
+          "absent menses",
+          "absence of periods",
+          "amenorrhea diagnosis",
+          "amenorrhea treatment",
+          "amenorrhea causes",
+          "amenorrhea symptoms",
+          "amenorrhea tests",
+          "amenorrhea prognosis"
+        ],
+        "default_urgency": "yellow_doctor_visit",
+        "triage_rationale": {
+          "why_assess_carefully": [
+            "Amenorrhea can be a symptom of a serious underlying condition.",
+            "Amenorrhea can be caused by a variety of factors, including hormonal imbalances, birth defects, and genetic disorders.",
+            "Amenorrhea can be a sign of an underlying medical condition that requires prompt attention.",
+            "Amenorrhea can be a symptom of a condition that requires ongoing medical care."
+          ],
+          "age_factor": "Amenorrhea in a female who has not yet begun menstruating or is experiencing delayed puberty may indicate a underlying condition.",
+          "sex_specific_notes": "Amenorrhea is a symptom that affects females.",
+          "pregnancy_note": "Amenorrhea in a pregnant female may indicate a complication with the pregnancy."
+        },
+        "immediate_red_flags": [
+          "Severe abdominal pain",
+          "Vision changes",
+          "Severe headaches",
+          "Chronic or long-term illnesses, such as cystic fibrosis or heart disease",
+          "Genetic defects or disorders"
+        ],
+        "followup_questions": {
+          "onset_type": {
+            "question": "How did the amenorrhea start?",
+            "type": "single_choice",
+            "options": [
+              "sudden",
+              "gradual_over_minutes",
+              "gradual_over_hours_days",
+              "chronic_recurring",
+              "not_sure"
+            ]
+          },
+          "severity": {
+            "question": "How severe is the amenorrhea right now?",
+            "type": "single_choice",
+            "options": [
+              "mild",
+              "moderate",
+              "severe",
+              "very_severe_unbearable"
+            ]
+          },
+          "duration": {
+            "question": "How long have you had this amenorrhea?",
+            "type": "single_choice",
+            "options": [
+              "less_than_24_hours",
+              "1_3_days",
+              "4_7_days",
+              "more_than_1_week",
+              "chronic_months"
+            ]
+          },
+          "pain_character": {
+            "question": "Is there any pain associated with the amenorrhea?",
+            "type": "single_choice",
+            "options": [
+              "yes",
+              "no",
+              "cramping",
+              "dull_ache",
+              "sharp_stabbing"
+            ]
+          },
+          "associated_symptoms": {
+            "question": "Which other symptoms are present with the amenorrhea?",
+            "type": "multi_choice",
+            "options": [
+              "weight loss",
+              "fatigue",
+              "mood changes",
+              "headaches",
+              "none"
+            ]
+          },
+          "aggravating_factors": {
+            "question": "What makes the amenorrhea worse?",
+            "type": "multi_choice",
+            "options": [
+              "stress",
+              "exercise",
+              "hormonal changes",
+              "menstrual cycle",
+              "nothing_specific"
+            ]
+          },
+          "relieving_factors": {
+            "question": "What makes the amenorrhea better?",
+            "type": "multi_choice",
+            "options": [
+              "rest",
+              "medication",
+              "hormonal therapy",
+              "menstrual cycle",
+              "nothing_helps"
+            ]
+          }
+        },
+        "urgency_decision_logic": {
+          "red_emergency": [
+            "Severe abdominal pain",
+            "Vision changes",
+            "Severe headaches",
+            "Chronic or long-term illnesses, such as cystic fibrosis or heart disease",
+            "Genetic defects or disorders"
+          ],
+          "yellow_doctor_visit": [
+            "Amenorrhea in a female who has not yet begun menstruating or is experiencing delayed puberty",
+            "Amenorrhea in a pregnant female",
+            "Amenorrhea with associated symptoms such as weight loss, fatigue, or mood changes",
+            "Amenorrhea with a history of chronic or long-term illnesses"
+          ],
+          "green_home_care": [
+            "Mild amenorrhea with no associated symptoms",
+            "Amenorrhea with a history of regular menstrual cycles"
+          ]
+        },
+        "llm_analysis_tips": [
+          "Consider the patient's medical history and any underlying conditions.",
+          "Assess the patient's symptoms and associated factors.",
+          "Evaluate the patient's age and sex-specific considerations.",
+          "Consider the patient's pregnancy status."
+        ],
+        "advice": {
+          "action": "Schedule a doctor visit to discuss the amenorrhea and associated symptoms.",
+          "emergency_if": [
+            "Severe abdominal pain",
+            "Vision changes",
+            "Severe headaches",
+            "Chronic or long-term illnesses, such as cystic fibrosis or heart disease",
+            "Genetic defects or disorders"
+          ],
+          "doctor_visit_if": [
+            "Amenorrhea in a female who has not yet begun menstruating or is experiencing delayed puberty",
+            "Amenorrhea in a pregnant female",
+            "Amenorrhea with associated symptoms such as weight loss, fatigue, or mood changes",
+            "Amenorrhea with a history of chronic or long-term illnesses"
+          ],
+          "home_care_if": [
+            "Mild amenorrhea with no associated symptoms",
+            "Amenorrhea with a history of regular menstrual cycles"
+          ],
+          "reason": "To determine the underlying cause of the amenorrhea and develop a treatment plan.",
+          "do_not_delay": false
         }
       }
     ]

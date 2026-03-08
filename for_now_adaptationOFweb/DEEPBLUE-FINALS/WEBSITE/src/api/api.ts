@@ -1,4 +1,6 @@
 import type {
+  AuthRequest,
+  AuthResponse,
   AssessmentStartResponse,
   SubmitAnswerRequest,
   SubmitAnswerResponse,
@@ -9,6 +11,7 @@ import type {
   ChatMessageRequest,
   ChatMessageResponse,
 } from '../types/api.types'
+import { tokenStore } from '../store/healthStore'
 
 const BASE_URL = '/api'
 
@@ -16,8 +19,13 @@ async function request<T>(
   path: string,
   options?: RequestInit
 ): Promise<T> {
+  const token = tokenStore.get()
+  const authHeader: Record<string, string> = token
+    ? { Authorization: `Bearer ${token}` }
+    : {}
+
   const res = await fetch(`${BASE_URL}${path}`, {
-    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    headers: { 'Content-Type': 'application/json', ...authHeader, ...options?.headers },
     ...options,
   })
   if (!res.ok) {
@@ -27,9 +35,27 @@ async function request<T>(
   return res.json() as Promise<T>
 }
 
-// ─── Assessment ────────────────────────────────────────────────
+// ─── Auth ──────────────────────────────────────────────────────
 
 export const api = {
+  auth: {
+    signup(body: AuthRequest): Promise<AuthResponse> {
+      return request<AuthResponse>('/auth/signup', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      })
+    },
+
+    login(body: AuthRequest): Promise<AuthResponse> {
+      return request<AuthResponse>('/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      })
+    },
+  },
+
+  // ─── Assessment ────────────────────────────────────────────────
+
   assessment: {
     /** GET /assessment/start — creates session and returns first question */
     start(): Promise<AssessmentStartResponse> {
@@ -44,7 +70,7 @@ export const api = {
       })
     },
 
-    /** POST /assessment/report — send all Q&A, receive full AI medical report */
+    /** POST /assessment/report — session_id only; backend reconstructs from DB */
     report(body: SubmitReportRequest): Promise<MedicalReportResponse> {
       return request<MedicalReportResponse>('/assessment/report', {
         method: 'POST',
@@ -62,7 +88,7 @@ export const api = {
   },
 
   chat: {
-    /** POST /chat/start — begin chat with Remy, passing profile + optional report */
+    /** POST /chat/start — begin chat with Remy (requires JWT) */
     start(body: ChatStartRequest): Promise<ChatStartResponse> {
       return request<ChatStartResponse>('/chat/start', {
         method: 'POST',
@@ -70,7 +96,7 @@ export const api = {
       })
     },
 
-    /** POST /chat/message — send message, get Remy's response */
+    /** POST /chat/message — send message, get Remy's response (requires JWT) */
     message(body: ChatMessageRequest): Promise<ChatMessageResponse> {
       return request<ChatMessageResponse>('/chat/message', {
         method: 'POST',

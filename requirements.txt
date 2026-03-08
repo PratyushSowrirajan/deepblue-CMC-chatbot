@@ -20,3 +20,6 @@ sentence-transformers
 scikit-learn
 numpy
 rank-bm25
+
+# Call Function (Twilio AI Voice Agent)
+twilio

@@ -57,16 +57,22 @@ from app.auth.medical_db import init_medical_db
 from app.auth.reports_db import init_reports_db, save_report
 app.include_router(profile_router)
 
+# ─────────────────────────────
+# Include Call Function Routes  (/api/twilio/*)
+# ─────────────────────────────
+from app.call_function.call_routes import router as call_function_router
+app.include_router(call_function_router)
+
 # Vision routes are handled inline in this file (no separate router)
 
 
 @app.on_event("startup")
 async def startup_event():
     """Initialize database tables on startup"""
+    # Initialize auth DB FIRST (users table — other tables reference it via FK)
+    init_auth_db()
     # Initialize chatbot DB (chat_sessions + chat_messages tables)
     init_chat_db()
-    # Initialize auth DB (users table — separate from chat_sessions)
-    init_auth_db()
     # Initialize profile DB (user_profiles table — linked to users via FK)
     init_profile_db()
     # Initialize medical DB (user_medical_data table — linked to users via FK)

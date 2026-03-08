@@ -1,0 +1,20 @@
+CREATE TABLE chat_messages (
+    id TEXT NOT NULL PRIMARY KEY,
+    session_id TEXT NOT NULL,
+    role TEXT NOT NULL,
+    content TEXT NOT NULL,
+    timestamp INTEGER NOT NULL
+);
+
+insertMessage:
+INSERT OR REPLACE INTO chat_messages(id, session_id, role, content, timestamp)
+VALUES (?, ?, ?, ?, ?);
+
+getMessagesBySession:
+SELECT * FROM chat_messages
+WHERE session_id = ?
+ORDER BY timestamp ASC;
+
+deleteBySession:
+DELETE FROM chat_messages
+WHERE session_id = ?;

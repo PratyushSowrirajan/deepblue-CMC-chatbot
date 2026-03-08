@@ -78,7 +78,7 @@ class ChatbotClient:
                 self.api_url,
                 json=payload,
                 headers=headers,
-                timeout=30
+                timeout=90
             )
             
             response.raise_for_status()

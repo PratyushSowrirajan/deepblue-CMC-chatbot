@@ -1,0 +1,15 @@
+CREATE TABLE GeneralProfile (
+    question_id TEXT NOT NULL PRIMARY KEY,
+    question_text TEXT NOT NULL,
+    answer_json TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO GeneralProfile(question_id, question_text, answer_json)
+VALUES (?, ?, ?);
+
+getAll:
+SELECT * FROM GeneralProfile;
+
+deleteAll:
+DELETE FROM GeneralProfile;

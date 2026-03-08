@@ -1,0 +1,20 @@
+CREATE TABLE reports (
+    id TEXT NOT NULL PRIMARY KEY,
+    report_json TEXT NOT NULL,
+    date TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO reports(id, report_json, date)
+VALUES (?, ?, ?);
+
+getAll:
+SELECT * FROM reports
+ORDER BY date DESC;
+
+getById:
+SELECT * FROM reports
+WHERE id = ?;
+
+deleteAll:
+DELETE FROM reports;

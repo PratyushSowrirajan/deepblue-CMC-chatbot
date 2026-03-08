@@ -53,3 +53,21 @@ model.safetensors
 
 # Environment file (handle separately for production)
 # .env will be passed via docker-compose or AWS secrets
+
+# Non-backend directories
+for_now_adaptationOFweb/
+app_for_understanding/
+svg_mapping/
+CallFunction/
+db_replication/
+
+# Deployment docs & templates
+DEPLOYMENT.md
+FREE-DEPLOYMENT.md
+BACKEND_README.md
+ecs-task-definition.json
+ecs-task-definition-ready.json
+cloudwatch-logs-policy.json
+setup-ec2.sh
+Dockerfile.ec2-optimized
+docker-compose.yml

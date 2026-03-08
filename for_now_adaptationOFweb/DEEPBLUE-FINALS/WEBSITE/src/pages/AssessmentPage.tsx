@@ -1,15 +1,23 @@
 import { useState, useCallback, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { X, ChevronRight, Loader2, Check, Upload, ImageIcon } from 'lucide-react'
+import { X, ChevronRight, Loader2, Check, Upload, ImageIcon, Camera } from 'lucide-react'
 import { api } from '../api/api'
-import type { Question, AnswerPayload, ResponseOption, SimpleQA } from '../types/api.types'
+import type { Question, AnswerPayload, ResponseOption, StoredAnswerItem } from '../types/api.types'
 import { profileStore, sessionStore, reportsStore } from '../store/healthStore'
+
+// Convert backend stored answer_json → plain text for profileStore
+function answerJsonToText(aj: Record<string, unknown>): string {
+  const type = aj.type as string
+  if (type === 'single_choice') return (aj.selected_option_label as string) ?? ''
+  if (type === 'multi_choice') return ((aj.selected_option_labels as string[]) ?? []).join(', ')
+  if (type === 'number') return String(aj.value ?? '')
+  return String(aj.value ?? '')
+}
  
 // ── Types ──────────────────────────────────────────────────────
 interface SessionState {
   sessionId: string
   currentQuestion: Question
-  collectedQAs: SimpleQA[]
   visibleCount: number
 }
 type Phase = 'loading' | 'question' | 'autofilling' | 'submitting' | 'generating' | 'done' | 'error'
@@ -57,12 +65,12 @@ export default function AssessmentPage() {
   const imageInputRef = useRef<HTMLInputElement>(null)
 
   const sessionIdRef    = useRef<string>('')
-  const collectedQAsRef = useRef<SimpleQA[]>([])
   const visibleCountRef = useRef(0)
   const startedRef      = useRef(false)
+  const cameraInputRef  = useRef<HTMLInputElement>(null)
 
   // ── Recursive question handler (auto-fill) ─────────────────
-  const handleIncomingQuestion = useCallback(async (question: Question, currentQAs: SimpleQA[]) => {
+  const handleIncomingQuestion = useCallback(async (question: Question) => {
     if (!question.is_compulsory) {
       const stored = profileStore.get(question.question_id)
       if (stored) {
@@ -70,11 +78,7 @@ export default function AssessmentPage() {
         setPhase('autofilling')
         setAutoFillMsg(stored.questionText)
 
-        const payload   = payloadFromStoredText(question, stored.answerText)
-        const newQA: SimpleQA = { question: question.text, answer: stored.answerText }
-        const updatedQAs      = [...currentQAs, newQA]
-        collectedQAsRef.current = updatedQAs
-
+        const payload = payloadFromStoredText(question, stored.answerText)
         sessionStore.add({
           questionId:    question.question_id,
           questionText:  question.text,
@@ -84,28 +88,27 @@ export default function AssessmentPage() {
 
         try {
           const res = await api.assessment.answer({ session_id: sessionIdRef.current, question, answer: payload })
-          if (res.status === 'completed' || !res.question) { await generateReport(updatedQAs) }
-          else { await handleIncomingQuestion(res.question, updatedQAs) }
+          if (res.status === 'completed' || !res.question) { await generateReport() }
+          else { await handleIncomingQuestion(res.question) }
         } catch (e) { setErrorMsg((e as Error).message); setPhase('error') }
         return
       }
     }
 
     visibleCountRef.current += 1
-    setSession(() => ({
+    setSession({
       sessionId:       sessionIdRef.current,
       currentQuestion: question,
-      collectedQAs:    currentQAs,
       visibleCount:    visibleCountRef.current,
-    }))
+    })
     setTextInput(''); setSelOpt(null); setSelOpts([]); setErrorMsg(''); setImageFile(null)
     setPhase('question')
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const generateReport = async (qas: SimpleQA[]) => {
+  const generateReport = async () => {
     setPhase('generating')
     try {
-      const report = await api.assessment.report({ session_id: sessionIdRef.current, responses: qas })
+      const report = await api.assessment.report({ session_id: sessionIdRef.current })
       reportsStore.insert(report)
       sessionStore.clear()
       sessionStorage.setItem('medical_report', JSON.stringify(report))
@@ -120,12 +123,22 @@ export default function AssessmentPage() {
     ;(async () => {
       try {
         const res = await api.assessment.start()
-        sessionIdRef.current      = res.session_id
-        collectedQAsRef.current   = []
-        visibleCountRef.current   = 0
-        await handleIncomingQuestion(res.question, [])
+        sessionIdRef.current    = res.session_id
+        visibleCountRef.current = 0
+        // Seed profileStore from backend stored_answers (logged-in users)
+        if (res.stored_answers) {
+          seedProfileFromStoredAnswers(res.stored_answers)
+        }
+        await handleIncomingQuestion(res.question)
       } catch (e) { setErrorMsg((e as Error).message); setPhase('error') }
     })()
+  }
+
+  function seedProfileFromStoredAnswers(stored: StoredAnswerItem[]) {
+    for (const sa of stored) {
+      const text = answerJsonToText(sa.answer_json)
+      if (text) profileStore.set(sa.question_id, sa.question_text, text)
+    }
   }
 
   // ── Submit current question ───────────────────────────────
@@ -141,13 +154,10 @@ export default function AssessmentPage() {
     if (!valid) { setErrorMsg('Please provide an answer.'); return }
 
     setErrorMsg(''); setPhase('submitting')
-    const payload  = buildPayload(q, textInput, selOpt, selOpts)
-    const answer   = q.response_type === 'image'
+    const payload = buildPayload(q, textInput, selOpt, selOpts)
+    const answer  = q.response_type === 'image'
       ? (imageFile ? imageFile.name : 'skipped')
       : humanAnswerStr(q, textInput, selOpt, selOpts)
-    const newQA: SimpleQA    = { question: q.text, answer }
-    const updatedQAs          = [...session.collectedQAs, newQA]
-    collectedQAsRef.current   = updatedQAs
 
     sessionStore.add({ questionId: q.question_id, questionText: q.text, answerText: answer, answerPayload: payload as unknown as Record<string, unknown> })
     if (!q.is_compulsory) profileStore.set(q.question_id, q.text, answer)
@@ -155,21 +165,25 @@ export default function AssessmentPage() {
     try {
       let res
       if (q.response_type === 'image' && imageFile) {
-        // Send as multipart/form-data with image
+        // Send as multipart/form-data with image (JWT added manually)
+        const { tokenStore } = await import('../store/healthStore')
+        const token = tokenStore.get()
         const form = new FormData()
         form.append('session_id', sessionIdRef.current)
         form.append('question_id', q.question_id)
         form.append('question_text', q.text)
         form.append('answer_json', JSON.stringify({ type: 'image' }))
         form.append('image', imageFile)
-        const raw = await fetch('/api/assessment/answer', { method: 'POST', body: form })
+        const headers: Record<string, string> = { 'ngrok-skip-browser-warning': 'true' }
+        if (token) headers['Authorization'] = `Bearer ${token}`
+        const raw = await fetch('/api/assessment/answer', { method: 'POST', body: form, headers })
         if (!raw.ok) throw new Error(`API error ${raw.status}`)
         res = await raw.json()
       } else {
         res = await api.assessment.answer({ session_id: sessionIdRef.current, question: q, answer: payload })
       }
-      if (res.status === 'completed' || !res.question) { await generateReport(updatedQAs) }
-      else { await handleIncomingQuestion(res.question, updatedQAs) }
+      if (res.status === 'completed' || !res.question) { await generateReport() }
+      else { await handleIncomingQuestion(res.question) }
     } catch (e) { setErrorMsg((e as Error).message); setPhase('error') }
   }
 
@@ -178,6 +192,8 @@ export default function AssessmentPage() {
   const q = session?.currentQuestion
 
   // ── Render ────────────────────────────────────────────────
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _unused = session?.visibleCount  // keep session in scope
   return (
     <div className="min-h-screen flex flex-col page-enter" style={{ background: 'var(--bg-page)' }}>
 
@@ -185,7 +201,7 @@ export default function AssessmentPage() {
       <header className="topbar flex-shrink-0">
         <div>
           <p className="text-xs font-medium" style={{ color: 'var(--hint)' }}>
-            {session ? `Question ${session.visibleCount}` : 'Starting...'}
+            {session ? `Question ${visibleCountRef.current}` : 'Starting...'}
           </p>
           <p className="font-semibold text-sm" style={{ color: 'var(--navy)' }}>New Assessment</p>
         </div>
@@ -328,9 +344,10 @@ export default function AssessmentPage() {
               />
             )}
 
-            {/* Image upload */}
+            {/* Image upload / camera capture */}
             {q.response_type === 'image' && (
               <div className="space-y-3">
+                {/* Hidden file inputs */}
                 <input
                   ref={imageInputRef}
                   type="file"
@@ -338,17 +355,48 @@ export default function AssessmentPage() {
                   className="hidden"
                   onChange={e => setImageFile(e.target.files?.[0] ?? null)}
                 />
-                <button
-                  onClick={() => imageInputRef.current?.click()}
-                  className="w-full py-4 rounded-2xl font-medium text-sm flex items-center justify-center gap-3 transition-all"
-                  style={{
-                    background: imageFile ? 'linear-gradient(90deg, var(--grad-start), var(--grad-end))' : 'var(--surface)',
-                    color: imageFile ? '#fff' : 'var(--navy)',
-                    border: '1.5px dashed var(--border)',
-                  }}
-                >
-                  {imageFile ? <><Check className="w-4 h-4" />{imageFile.name}</> : <><Upload className="w-4 h-4" />Choose photo</>}
-                </button>
+                <input
+                  ref={cameraInputRef}
+                  type="file"
+                  accept="image/*"
+                  capture="user"
+                  className="hidden"
+                  onChange={e => setImageFile(e.target.files?.[0] ?? null)}
+                />
+
+                {/* Show chosen file name OR the two action buttons */}
+                {imageFile ? (
+                  <div
+                    className="w-full py-4 rounded-2xl font-medium text-sm flex items-center justify-center gap-3"
+                    style={{ background: 'linear-gradient(90deg, var(--grad-start), var(--grad-end))', color: '#fff', border: '1.5px solid transparent' }}
+                  >
+                    <Check className="w-4 h-4" />{imageFile.name}
+                    <button
+                      onClick={() => setImageFile(null)}
+                      className="ml-2 text-white/70 hover:text-white text-xs underline"
+                    >Change</button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      onClick={() => imageInputRef.current?.click()}
+                      className="py-4 rounded-2xl font-medium text-sm flex flex-col items-center justify-center gap-2 transition-all"
+                      style={{ background: 'var(--surface)', color: 'var(--navy)', border: '1.5px dashed var(--border)' }}
+                    >
+                      <Upload className="w-5 h-5" style={{ color: 'var(--brand)' }} />
+                      <span>Upload photo</span>
+                    </button>
+                    <button
+                      onClick={() => cameraInputRef.current?.click()}
+                      className="py-4 rounded-2xl font-medium text-sm flex flex-col items-center justify-center gap-2 transition-all"
+                      style={{ background: 'var(--surface)', color: 'var(--navy)', border: '1.5px dashed var(--border)' }}
+                    >
+                      <Camera className="w-5 h-5" style={{ color: 'var(--brand)' }} />
+                      <span>Front camera</span>
+                    </button>
+                  </div>
+                )}
+
                 {!imageFile && (
                   <p className="text-center text-xs" style={{ color: 'var(--hint)' }}>
                     <ImageIcon className="w-3 h-3 inline mr-1" />You can skip if no image is available

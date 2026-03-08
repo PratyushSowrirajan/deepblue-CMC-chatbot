@@ -1,0 +1,15 @@
+CREATE TABLE MedicalProfile (
+    question_id TEXT NOT NULL PRIMARY KEY,
+    question_text TEXT NOT NULL,
+    answer_json TEXT NOT NULL
+);
+
+insertOrReplace:
+INSERT OR REPLACE INTO MedicalProfile(question_id, question_text, answer_json)
+VALUES (?, ?, ?);
+
+getAll:
+SELECT * FROM MedicalProfile;
+
+deleteAll:
+DELETE FROM MedicalProfile;
