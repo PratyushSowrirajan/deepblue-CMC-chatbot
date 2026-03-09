@@ -1,0 +1,7 @@
+[build]
+  publish = "web-app"
+  command = "echo 'Static site, no build needed'"
+  ignore = "exit 0"
+
+[build.environment]
+  PYTHON_VERSION = ""
