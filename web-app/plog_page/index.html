@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Checker - DeepBlue Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="hero-section" id="heroSection">
+        <!-- Decorative Images -->
+        <div class="hero-images">
+            <img src="istockphoto-1194838679-612x612.jpg" alt="Healthcare" class="hero-img hero-img-1">
+            <img src="mp4Fzdleen7h6BXh0qHU-LpyB31_SHtTrM-BqHuzIj5Ggr5X0LIuSi5ZWh6UclGWwYo_TazKbMWLPsHPJcY-TxOgQiXT8mYBsL5KbOPXnZA.jpg" alt="Healthcare" class="hero-img hero-img-2">
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="title">Symptom Checker with Multilingual Chatbot for Basic Healthcare Guidance</h1>
+            <p class="subtitle">Revolutionizing the way rural people take charge of their health.</p>
+            
+            <!-- Like Button -->
+            <div class="interaction-buttons">
+                <button class="like-btn" id="likeBtn">
+                    <svg class="heart-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span>Like</span>
+                    <span class="like-count" id="likeCount">0</span>
+                </button>
+                
+                <a href="https://github.com/PratyushSowrirajan/deepblue-CMC-chatbot" target="_blank" class="github-btn">
+                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <!-- Unified Gallery Section -->
+            <section class="gallery-section">
+                <div class="gallery-container">
+                    <button class="gallery-nav prev" id="prevImage">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="gallery-image-wrapper">
+                        <div class="gallery-image" id="currentImage">
+                            <!-- Content will be injected by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <button class="gallery-nav next" id="nextImage">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Dots Indicator -->
+                <div class="dots-container" id="dotsContainer"></div>
+            </section>
+
+            <!-- Submission Info Section -->
+            <section class="submission-section">
+            <div class="submission-box">
+                <h3>SUBMITTED TO</h3>
+                <div class="organization-info">
+                    <div class="org-logo">
+                        <img src="Mastek-logo.svg" alt="Mastek Logo">
+                    </div>
+                    <div class="org-details">
+                        <h2>Project DeepBlue</h2>
+                        <p>Organized by Mastek</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!-- Project Details -->
+        <section class="details-section">
+            <div class="detail-card">
+                <h2>What is Cura?</h2>
+                <p>Cura is an AI-powered medical symptom checker built for rural India — a kiosk-based system that speaks your language, checks your symptoms through structured triage, and connects you to guidance when no doctor is around. This is the story of how it came together over 3 months.</p>
+            </div>
+
+            <div class="detail-card mentor-card">
+                <h2>Our Mentor</h2>
+                <div class="mentor-profile">
+                    <div class="mentor-photo">
+                        <img src="../imgs/yuvaraj%20singh%20raghuvanshi.jpeg" alt="Yuvraj Singh Raghuwanshi">
+                    </div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Yuvraj Singh Raghuwanshi</h3>
+                        <p class="mentor-title">Associate Consultant, Mastek</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h2>The Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">
+                            <img src="../imgs/WhatsApp%20Image%202026-03-09%20at%206.02.10%20PM.jpeg" alt="Gowtham A">
+                        </div>
+                        <h3 class="team-name">Gowtham A</h3>
+                        <p class="team-role">Mobile App (KMP) & System Design</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">
+                            <img src="../imgs/image.jpg" alt="S Pratyush">
+                        </div>
+                        <h3 class="team-name">S Pratyush</h3>
+                        <p class="team-role">Backend & Cloud Deployment</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">
+                            <img src="../imgs/Photo_KOUNDAR_BARATHIRAJA_SUDHAKAR-1.jpg" alt="Barathiraja S">
+                        </div>
+                        <h3 class="team-name">Barathiraja S</h3>
+                        <p class="team-role">IoT Wearable & Presentation</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">
+                            <img src="../imgs/roshan.jpeg" alt="Roshan J">
+                        </div>
+                        <h3 class="team-name">Roshan J</h3>
+                        <p class="team-role">Kiosk Web, RAG Model & Frontend</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Horizontal Curved Timeline -->
+    <section class="timeline-section">
+        <h2>The Journey So Far</h2>
+        <p class="timeline-subtitle">From shortlisting to finals — with a lot of in-between</p>
+
+        <div class="h-timeline">
+            <!-- SVG curved dashed path -->
+            <svg viewBox="0 0 1200 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 30 80 C 150 20, 250 140, 400 80 C 550 20, 650 140, 800 80 C 950 20, 1050 140, 1170 80" 
+                      fill="none" 
+                      stroke="#48C9B0" 
+                      stroke-width="3" 
+                      stroke-dasharray="12 8"
+                      stroke-linecap="round"/>
+            </svg>
+
+            <div class="h-timeline-items">
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot milestone">🏁</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Nov 3, 2025</span>
+                        <p class="h-timeline-title">Shortlisted for Semi-Finals</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot">💡</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Nov — Dec</span>
+                        <p class="h-timeline-title">Ideation & Architecture</p>
+                        <p class="h-timeline-desc">Problem research, tech stack decisions, system design</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot">⚙️</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Dec — Jan</span>
+                        <p class="h-timeline-title">Core Development</p>
+                        <p class="h-timeline-desc">Backend, assessment engine, LLM integration, app</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot">🔧</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Jan — Feb</span>
+                        <p class="h-timeline-title">Integration & Testing</p>
+                        <p class="h-timeline-desc">Voice agent, vision model, RAG pipeline, IoT</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot milestone">⚡</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Feb 21, 2026</span>
+                        <p class="h-timeline-title">Semi-Finals</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot">📦</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Feb — Mar</span>
+                        <p class="h-timeline-title">Polish & Deploy</p>
+                        <p class="h-timeline-desc">Docker, AWS, NGO outreach, compliance docs</p>
+                    </div>
+                </div>
+
+                <div class="h-timeline-item">
+                    <div class="h-timeline-dot milestone">🏆</div>
+                    <div class="h-timeline-card">
+                        <span class="h-timeline-label">Mar 10, 2026</span>
+                        <p class="h-timeline-title">Finals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Blog -->
+    <section class="blog-section">
+        <div class="blog-container">
+            <h1 class="blog-title">Building Cura: The Honest Version</h1>
+            
+            <article class="blog-content">
+
+                <!-- How It Started -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">How It Actually Started</h2>
+                    <p class="journey-intro">We didn't start with some big vision. We picked the problem statement — <em>"Symptom Checker with Multilingual Chatbot for Basic Healthcare Guidance"</em> — looked at each other, and went "okay, so... chatbot?" That was about the extent of our planning for the first few days.</p>
+                    <p>The first real decision came when we sat down and asked: should the LLM be the main thing? And pretty quickly we realized — no. Letting an AI be the first point of contact for someone describing chest pain felt wrong. So we landed on a three-phase approach: <strong>structured questionnaire first</strong>, <strong>decision tree second</strong>, <strong>LLM chatbot last</strong>. The AI never runs cold. By the time it talks to the user, we already have 20+ data points about them.</p>
+                    <div class="reflection-box">
+                        The principle we kept coming back to: don't let the LLM be the first thing the user talks to. Let it be the last.
+                    </div>
+                    <p>Some weeks were productive. Some weeks nothing happened — exams, other commitments, or just being stuck on a problem we didn't know how to solve yet. That's how it actually went.</p>
+                </section>
+
+                <!-- Architecture Decisions -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">Why We Chose What We Chose</h2>
+                    
+                    <h3>FastAPI, No ORM, Raw SQL</h3>
+                    <p>We needed async for concurrent LLM calls, auto-generated API docs (Gowtham needed Swagger to build the app against), and Pydantic validation. FastAPI hit all three. Django was too heavy for what we were doing.</p>
+                    <p>The no-ORM choice raised a few eyebrows. We use PostgreSQL with <code>JSONB</code> columns everywhere — assessment answers, medical history, chat messages all go in as JSON. ORMs make JSONB queries clunky. We wanted to write <code>data->>'symptoms'</code> directly, not wrestle with an abstraction.</p>
+
+                    <h3>Cerebras Over OpenAI</h3>
+                    <p>This was purely about latency. In rural areas with spotty connectivity, if the LLM takes 2 seconds to respond, the user is already walking away. Cerebras runs llama3.1-8b on their wafer-scale engine — sub-300ms responses. That's 5-6x faster than GPT-4 for our use case. Cost was a bonus: ₹0.60 per million tokens vs ₹15 for GPT-4.</p>
+                    <p>And since the API is OpenAI-compatible, switching later is a one-line config change. We're not locked in.</p>
+
+                    <h3>PostgreSQL JSONB Over MongoDB</h3>
+                    <p>We know the shape of our data — assessment sessions, user profiles, chat logs. It's semi-structured, not unstructured. PostgreSQL's JSONB gives us the document-store flexibility we need with proper joins, transactions, and aggregate queries on top. We didn't want to run a separate database just because some columns have variable schemas.</p>
+                </section>
+
+                <!-- App Design in Figma -->
+                <section class="blog-segment svg-showcase">
+                    <h2 class="segment-title">Designing the App — From Figma to KMP</h2>
+                    <div class="svg-video-wrapper">
+                        <video controls playsinline preload="metadata">
+                            <source src="../vids/Blog_Figma.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Before writing a single line of Kotlin, Gowtham designed every screen in Figma — Home, Symptom Assessment (with its multiple sub-flows), Medical History, News feed, and the bottom navigation. Each frame maps 1:1 to a Compose screen in the KMP app. The design system uses a green-teal color palette with gradient accents, and every state — loading, empty, error — was mocked up before implementation. Having this as a reference meant the app looked polished from the start, not "developer UI that we'll fix later."</p>
+                </section>
+
+                <!-- Things Built and Pivoted -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">Things We Built, Broke, and Changed Our Minds About</h2>
+                    <p>Not everything we built made it to the final version. Some things we spent real time on and had to let go. That's just how it goes.</p>
+
+                    <div class="pivots-section">
+                        <h3>The Pivots</h3>
+                        <p>Stuff we invested time in and eventually replaced or dropped:</p>
+
+                        <div class="pivot-story dropped">
+                            <h4>🔄 LLaVA → Gemini Vision</h4>
+                            <p>We spent about a week trying to run LLaVA locally for image-based symptom assessment — rashes, wounds, skin conditions. The model worked but it was 7GB and needed a GPU. On a kiosk? Not practical. We swapped it for Gemini 2.5 Flash via API. Faster, cheaper, no GPU headaches. The old LLaVA code is still sitting in <code>llava_client.py</code> as a monument to that week.</p>
+                        </div>
+
+                        <div class="pivot-story dropped">
+                            <h4>🔄 Node.js Voice Agent → Python Rewrite</h4>
+                            <p>The original Twilio voice integration was in Node.js. It worked fine in isolation, but running two runtimes — Python backend + Node voice server — made Docker and deployment a mess. We rewrote the whole thing in Python. Same features, one container, one language.</p>
+                        </div>
+
+                        <div class="pivot-story dropped">
+                            <h4>🔄 Bhashini API → Twilio TTS/STT</h4>
+                            <p>We tried Bhashini for Indian language translation. Timeouts, inconsistent output for medical terminology. It wasn't reliable enough. We fell back to Twilio's built-in speech recognition and text-to-speech with language-specific voices. Not perfect, but it works consistently.</p>
+                        </div>
+
+                        <div class="pivot-story kept">
+                            <h4>✦ RAG Pipeline — Rebuilt and Kept</h4>
+                            <p>This almost got cut. Version 1 was "search Tavily, dump everything into the LLM." The answers were useless. Roshan rebuilt it with a proper retrieval pipeline: Tavily searches medical databases, BM25 + sentence-transformers rank the results, and only the top-k passages get fed to Cerebras. Now it handles symptoms the decision tree doesn't cover — which is the whole point of having it.</p>
+                        </div>
+
+                        <div class="pivot-story kept">
+                            <h4>✦ The <code>is_compulsory</code> Field — Small but Important</h4>
+                            <p>A simple boolean on each questionnaire question. If it's not compulsory, the app auto-fills it from the user's profile (name, age, gender, allergies). If it is, the user has to answer manually. Returning users skip about 60% of the intake. On a kiosk where someone might be in pain and running out of patience, this matters a lot.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SVG Body Mapping -->
+                <section class="blog-segment svg-showcase">
+                    <h2 class="segment-title">Mapping the Human Body in SVG</h2>
+                    <div class="svg-video-wrapper">
+                        <video controls playsinline preload="metadata">
+                            <source src="../vids/Blog_SVG.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>One of the most unique parts of Cura's kiosk interface is the interactive body map. Instead of asking users to type where it hurts, we let them tap on the body. Gowtham designed a full SVG model in Figma — every body region is its own named layer: <code>body_region_chest</code>, <code>body_region_left_thigh</code>, <code>body_region_upper_abdomen</code>, and so on. Each region is a separate SVG path that can be individually highlighted, tapped, and mapped to symptoms. When a user taps a region, the system knows exactly which body part they're pointing at and pulls up the relevant symptom questions. No typing, no medical jargon — just point where it hurts.</p>
+                </section>
+
+                <!-- The Hard Parts -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">The Stuff That Was Harder Than Expected</h2>
+
+                    <div class="challenge-item">
+                        <h3>People Describe Symptoms in Infinite Ways</h3>
+                        <p>We started with 5 keywords per symptom. Now it's 30+. "Chest pain," "my heart hurts," "tightness in my chest," "something feels wrong here" — users never describe things the way medical textbooks do. We added fuzzy matching with rapidfuzz as a fallback. It catches most things. Most.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h3>LLM Said "Apply Turmeric" for a Cardiac Event</h3>
+                        <p>That actually happened during testing. The LLM suggested a home remedy for something that could've been a heart attack. We added three layers after that: strict system prompts, post-processing filters for red-flag phrases, and a mandatory "always consult a doctor" disclaimer on every single response. The LLM is a guide, never a doctor.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h3>Session State Was a Nightmare</h3>
+                        <p>A user starts the questionnaire, drops off at question 14, comes back 2 hours later. They shouldn't have to restart. We store the full session in PostgreSQL with a 24-hour TTL. Sounds simple — but the session spans three phases (questionnaire → decision tree → chatbot) with completely different data shapes. It took three rewrites.</p>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h3>Voice in 3 Languages</h3>
+                        <p>Making Remy speak Hindi wasn't just translation — it's a different way of describing symptoms, different medical vocabulary, different conversational flow. Each language gets its own system prompt, TTS voice, and example conversations. Marathi was the hardest because Twilio's voice options for it are still limited.</p>
+                    </div>
+                </section>
+
+                <!-- Deployment -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">Getting It to Actually Run Somewhere</h2>
+                    <p>Local development and production deployment are two very different experiences.</p>
+
+                    <h3>The Docker Diet</h3>
+                    <p>First Docker image was 1.2 GB. It had build tools, compilers, debug utilities — the works. Multi-stage builds brought that down to 380 MB: one stage compiles everything, the runtime stage only copies the installed packages. We also built a separate EC2-optimized Dockerfile for deployments that don't need GPU libraries.</p>
+
+                    <h3>AWS Fargate</h3>
+                    <p>We went with ECS Fargate — serverless containers, no EC2 instances to babysit, auto-scaling if traffic spikes. The task definition has health checks, CloudWatch logging, and environment variables for all the API keys. For organizations that prefer self-hosting, there's a full EC2 setup script too.</p>
+                </section>
+
+                <!-- Reflections -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">Looking Back</h2>
+                    <ol class="takeaways-list">
+                        <li><strong>Structure before AI.</strong> Questionnaires and decision trees beat raw LLM calls for medical triage. Every time.</li>
+                        <li><strong>Kill things that aren't working.</strong> LLaVA, Node.js voice agent, Bhashini — all got replaced. The project got better each time.</li>
+                        <li><strong>Latency matters more than model size.</strong> 300ms vs 2 seconds isn't a benchmark — it's whether someone on a 2G connection actually gets an answer.</li>
+                        <li><strong>Build for the worst-case user.</strong> Can't read? Voice. Can't type? Auto-fill. Dropped off mid-session? Resume where you left off.</li>
+                        <li><strong>Talk to the people it's for.</strong> NGO partnerships gave us real feedback that no amount of internal testing would have surfaced.</li>
+                    </ol>
+                </section>
+
+                <!-- Tech Stack Summary -->
+                <section class="blog-segment">
+                    <h2 class="segment-title">The Full Stack</h2>
+                    <div class="tech-stack-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Layer</th>
+                                    <th>Technology</th>
+                                    <th>Why</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Backend</td>
+                                    <td>FastAPI + Uvicorn</td>
+                                    <td>Async, auto-docs, Pydantic</td>
+                                </tr>
+                                <tr>
+                                    <td>LLM</td>
+                                    <td>Cerebras llama3.1-8b</td>
+                                    <td>Sub-300ms, cost-effective</td>
+                                </tr>
+                                <tr>
+                                    <td>Vision</td>
+                                    <td>Gemini 2.5 Flash</td>
+                                    <td>Replaced LLaVA — no GPU needed</td>
+                                </tr>
+                                <tr>
+                                    <td>RAG</td>
+                                    <td>Tavily + BM25 + sentence-transformers</td>
+                                    <td>Hybrid retrieval for unknown symptoms</td>
+                                </tr>
+                                <tr>
+                                    <td>Database</td>
+                                    <td>PostgreSQL + JSONB</td>
+                                    <td>SQL + document flexibility</td>
+                                </tr>
+                                <tr>
+                                    <td>Voice</td>
+                                    <td>Twilio (EN/HI/MR)</td>
+                                    <td>Phone access for non-smartphone users</td>
+                                </tr>
+                                <tr>
+                                    <td>Mobile App</td>
+                                    <td>Kotlin Multiplatform</td>
+                                    <td>iOS + Android from one codebase</td>
+                                </tr>
+                                <tr>
+                                    <td>Deployment</td>
+                                    <td>Docker → AWS ECS Fargate</td>
+                                    <td>Serverless, auto-scaling</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <section class="blog-footer">
+                    <p class="built-with">Built over 3 months with too much coffee and not enough sleep ☕</p>
+                    <p style="color: #666; margin-bottom: 25px;">Sri Sairam Engineering College, Chennai · Mastek Project DeepBlue 2025-26</p>
+                    <div class="footer-links">
+                        <a href="https://github.com/PratyushSowrirajan/deepblue-CMC-chatbot" target="_blank" class="footer-link">
+                            🔗 GitHub Repository
+                        </a>
+                        <a href="https://youtu.be/gwjvKSyTRrw" target="_blank" class="footer-link">
+                            📺 Watch Demo
+                        </a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
