@@ -315,6 +315,15 @@
                     <p>One of the most unique parts of Cura's kiosk interface is the interactive body map. Instead of asking users to type where it hurts, we let them tap on the body. Gowtham designed a full SVG model in Figma — every body region is its own named layer: <code>body_region_chest</code>, <code>body_region_left_thigh</code>, <code>body_region_upper_abdomen</code>, and so on. Each region is a separate SVG path that can be individually highlighted, tapped, and mapped to symptoms. When a user taps a region, the system knows exactly which body part they're pointing at and pulls up the relevant symptom questions. No typing, no medical jargon — just point where it hurts.</p>
                 </section>
 
+                <!-- Architecture Diagram -->
+                <section class="blog-segment svg-showcase">
+                    <h2 class="segment-title">The Full Architecture — How Everything Connects</h2>
+                    <div class="svg-video-wrapper">
+                        <img src="../final_arc.png" alt="Cura System Architecture Diagram" style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    <p>Roshan mapped out the entire system architecture in Draw.io — and this is what Cura actually looks like under the hood. On the left, the mobile app and kiosk handle user-facing flows: login, symptom questions, SVG body mapping, vision model uploads, and medical reports. Everything routes through the FastAPI backend, which manages JWT auth, user profiles, chat history, and reports across PostgreSQL databases. The RAG pipeline pulls structured medical questions from WHO, CDC, and MedlinePlus via Tavily search. The Cerebras LLM (Llama 3.1-8B) powers both the assessment report generation and the REMI chatbot. On the IoT side, the ESP32-C3 microcontroller reads heart rate (MAX30102) and temperature (MLX90640) from the MED-BAND, pushing real-time data through Firebase. The admin and NGO dashboards connect to the same backend, and Twilio handles multilingual voice calls with GCP's text-to-speech and speech-to-text. One diagram, every moving part.</p>
+                </section>
+
                 <!-- The Hard Parts -->
                 <section class="blog-segment">
                     <h2 class="segment-title">The Stuff That Was Harder Than Expected</h2>
