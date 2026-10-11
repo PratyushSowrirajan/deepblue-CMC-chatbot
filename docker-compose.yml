@@ -17,9 +17,9 @@ services:
       # Optional: Override default settings
       - PYTHONUNBUFFERED=1
       - HF_HOME=/app/.cache
-      # Database URL for Docker (connecting to Windows PostgreSQL via TCP/IP)
-      # Note: @ symbol in password must be URL-encoded as %40
-      - DATABASE_URL=postgresql://postgres:Pratyushsec077%40@host.docker.internal:5432/DeepBlue
+      # Set DATABASE_URL in .env (e.g. postgresql://user:pass@host.docker.internal:5432/DeepBlue)
+      # Note: @ symbol in a password must be URL-encoded as %40
+      - DATABASE_URL=${DATABASE_URL}
     env_file:
       - .env
     volumes:

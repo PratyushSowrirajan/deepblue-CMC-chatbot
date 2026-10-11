@@ -50,3 +50,32 @@ test_output.txt
 test_images/
 *QUICKSTART.md
 CHAT_API_REFERENCE.md
+
+# ---- Hidden from GitHub (still on disk, see docs/archive/HIDDEN_FROM_GITHUB.md) ----
+app_for_understanding/
+web-building/
+for_now_adaptationOFweb/
+CallFunction/
+db_replication/
+DEPLOYMENT.md
+FREE-DEPLOYMENT.md
+BACKEND_README.md
+setup-ec2.sh
+Dockerfile.ec2-optimized
+cloudwatch-logs-policy.json
+ecs-task-definition-ready.json
+app/vision_model/vision_client.py
+app/vision_model/llava_client.py
+app/vision_model/vision_config.py
+app/vision_model/vision_routes.py
+app/vision_model/README.md
+app/chatbot/README.md
+app/data/rag_model/README.md
+app/data/rag_model/validate.py
+
+# Local-only docs (letters, reports, images)
+docs/*.docx
+!docs/DeepBlue_Project_Dossier.docx
+docs/generate_*.py
+!docs/generate_dossier.py
+docs/images/
